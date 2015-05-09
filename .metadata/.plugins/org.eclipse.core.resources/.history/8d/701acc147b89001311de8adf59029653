@@ -1,0 +1,25 @@
+import os, sys
+import PIL
+import mahotas
+import numpy    
+import pylab
+import scipy
+from PIL.Image import Image
+from Tkinter import *
+from tkFileDialog import askopenfilename
+import Image, ImageTk
+
+
+print 'Reading image from file'
+trackimage = mahotas.imread('track.png')
+
+pylab.imshow(trackimage)
+pylab.show()
+
+
+
+
+
+
+
+

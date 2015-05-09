@@ -1,0 +1,8 @@
+import os, sys
+import Image
+#from PIL import so
+
+print "Reading an Image"
+
+trackImage = Image.OPEN("track.png")
+trackImage.show()

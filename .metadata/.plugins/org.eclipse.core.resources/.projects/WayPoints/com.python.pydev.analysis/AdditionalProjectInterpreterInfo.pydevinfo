@@ -1,0 +1,23 @@
+-- VERSION_4
+-- START DISKCACHE
+/home/nsshayan/workspace/Programming/Python/.metadata/.plugins/org.eclipse.core.resources/.projects/WayPoints/com.python.pydev.analysis/v2_indexcache
+Test|0|/home/nsshayan/workspace/Programming/Python/WayPoints/Test.py
+-- END DISKCACHE
+-- START DICTIONARY
+1
+1=Test
+-- END DICTIONARY
+-- START TREE 1
+8
+cal|1|callback!10@
+can|1|canvas!11@
+im|0|
+ima|2|image!11@image_tk!11@
+onm|0|
+px|0|
+py|0|
+win|1|window!11@
+-- END TREE
+-- START TREE 2
+0
+-- END TREE

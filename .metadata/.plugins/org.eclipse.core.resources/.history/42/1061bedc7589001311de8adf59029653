@@ -1,0 +1,9 @@
+import os, sys
+import Image
+#from PIL import so
+
+print "Reading an Image"
+
+import mahotas
+
+

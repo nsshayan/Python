@@ -1,0 +1,11 @@
+import matplotlib.pyplot as plt
+
+img = open('track.png','rb')
+
+im = plt.imread(img)
+
+implot = plt.imshow(im)
+
+
+
+ 

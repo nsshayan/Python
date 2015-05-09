@@ -1,0 +1,27 @@
+import Tkinter
+from PIL import ImageDraw, Image, ImageTk
+import sys
+from orca.eventsynthesizer import generateMouseEvent
+from ImageDraw import Draw
+
+window = Tkinter.Tk(className="Track Image")
+
+image = Image.open("track.png")
+image = image.resize((900, 600), Image.ANTIALIAS)
+
+canvas = Tkinter.Canvas(window, width=image.size[0], height=image.size[1])
+canvas.pack()
+image_tk = ImageTk.PhotoImage(image)
+
+canvas.create_image(image.size[0]//2, image.size[1]//2, image=image_tk)
+
+def callback(event):
+    print "clicked at: ", event.x, event.y
+    draw = ImageDraw.Draw(image, None)
+    draw.point((event.x,event.y),fill=(255,0,0))
+    #.point(event.x, event.y,'red')    
+        
+
+
+canvas.bind("<Button-1>", callback)
+Tkinter.mainloop()

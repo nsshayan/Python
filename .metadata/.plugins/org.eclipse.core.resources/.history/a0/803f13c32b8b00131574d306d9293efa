@@ -1,0 +1,7 @@
+import matplotlib as plt
+
+im = plt.imread()
+
+
+
+ 

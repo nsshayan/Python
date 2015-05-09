@@ -1,0 +1,10 @@
+import os, sys
+import PIL
+import mahotas
+import numpy    
+
+print 'Reading image from file'
+trackimage = mahotas.imread('track.png')
+
+
+
