@@ -1,0 +1,13 @@
+import matplotlib.pyplot as plt
+from ImageLibrary import * 
+
+
+img = open('track.png','rb')
+
+im = plt.imread(img)
+
+plt.show()
+
+
+
+ 

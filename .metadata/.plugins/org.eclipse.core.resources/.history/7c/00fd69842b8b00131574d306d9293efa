@@ -1,0 +1,8 @@
+import sys
+import matplotlib
+
+print "This is my first program in Python"
+
+print "Second line of first program"
+
+ 

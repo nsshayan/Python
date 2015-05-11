@@ -1,0 +1,7 @@
+import sys
+
+print "This is my first program in Python"
+
+print "Second line of first program"
+
+print sys.modules 
