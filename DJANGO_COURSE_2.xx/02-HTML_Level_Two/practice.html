@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Tables</title>
+  </head>
+  <body>
+      <!--Table practice-->
+      <table border="1">
+          <thead>
+              <th>Number</th>
+              <th>Color</th>
+              <th>Country</th>
+          </thead>
+          <tr>
+              <td>250</td>
+              <td>Red</td>
+              <td>India</td>
+          </tr>
+          <tr>
+              <td>100</td>
+              <td>Blue</td>
+              <td>France</td>
+          </tr>
+      </table>
+
+      <!--Forms Practice-->
+      <form>
+          <h1>Log In</h1>
+          <h2>Please input your Email and Password</h2>
+
+          <input type="email" name="useremail" value="Email Here">
+          <input type="password" name="password" value="">
+          <input type="submit" name="" value="Click Me">
+
+          <h1>Choose Color</h1>
+          <h2>Click on Button</h2>
+          <input type="color" name="" value="">
+
+          <h2>Enter some text</h2>
+          <input type="text" name="" value="Text goes her">
+
+      </form>
+      
+      <!--Forms and labels. Action on clicking the submit button-->
+
+      <form>
+          <input type="email" name="useremail" value="">
+          <input type="submit" name="" value="submit">
+          <label for="">
+              Enter text :
+                <input type="text" name="" value="">
+          </label>
+          <label for="">
+              <input type="text" name="" value="">
+          </label>
+
+          <label for="userinput">Enter Input:</label>
+          <input id="userinput" type="text">
+          
+      </form>
+
+      <!--Radio buttons, drop down-->
+      <h1>Hotel Feedback form</h1>
+      <form action="" method="GET">
+          <h3>Are you from inside US ? or Outside US</h3>
+          <label for="inusa">Inside:</label>
+          <input type="radio" name="loc" id="inusa">
+          <label for="outusa">Outside:</label>
+          <input type="radio" name="loc" id="outusa">
+
+          <h2>How was your service?</h2>
+          <select name="stars" id="">
+              <option value="Great">3</option>
+              <option value="Okay">2</option>
+              <option value="Bad">1</option>
+          </select>
+
+          <h2>Any other feedback?</h2>
+
+          <textarea name="mytext" id="" cols="30" rows="10"></textarea>
+
+          <input type="submit" value="SUBMIT">
+      </form>
+
+    
+  </body>
+</html>

@@ -7,8 +7,8 @@ Generate k-ary strings from string of length n
 
 K = "shayan"
 
-n = 2
-
+n = 3
+    
 A = [None] * n
 
 
