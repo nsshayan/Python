@@ -1,0 +1,41 @@
+/* Font in css */
+h1{
+    font-family: "Arial";
+}
+
+p{
+    font-family: monospace;
+}
+
+/* default is 16px font-size */
+body{
+    font-size: 20px;
+}
+/* default is 20px as defined above. Computer defined default is 16px */
+#two{
+    font-size: 1.0em;
+}
+
+p{
+    font-style: italic;
+    font-weight: bold;
+}
+
+h1{
+    text-align: center;
+}
+
+#top{
+    border: 4px solid blue;
+    width: 25%;
+    text-align: center;
+    /* top,right,bottom,left */
+    margin: auto;
+}
+
+#bottom{
+    border:  4px solid red;
+    width: 50%;
+    padding: 200px;
+    text-align: center;
+}

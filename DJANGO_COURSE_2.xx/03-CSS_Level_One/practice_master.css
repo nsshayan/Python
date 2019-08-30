@@ -1,0 +1,73 @@
+/* selected tag{
+    property: value;
+} */
+/* Different coloring techniques */
+h1{
+    color:blue;
+}
+
+li{
+    color: rgb(8,84 ,1);
+}
+
+p{
+    color: yellow;
+}
+
+h2{
+    color: rgba(225, 97, 0, 1)
+}
+
+body{
+    background-color: gray;
+}
+
+div{
+    background-color:blue;
+    border-color: orange;
+    border-width: thick;
+    border-style: double;
+}
+
+span{
+    background: red;
+    color: black;
+    
+}
+
+.firstDiv{
+    background-color: yellow;
+    color: black;
+}
+
+/* ids on the page */
+
+/* #idname{
+ } */
+
+/* Every element on the page */
+
+*{
+    color:black;
+}
+
+h3 + ul{
+    border :4px dotted purple;
+}
+
+li a{
+    color:red;
+}
+
+li a[href="www.npr.com"]{
+    color:blue;
+    border: 5px solid orange;
+}
+
+.topitems{
+    color:orangered;
+}
+
+#two{
+    border: 3px solid black;
+}

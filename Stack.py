@@ -23,7 +23,7 @@ class stack:
         return self.stackData[0]
 
     def isEmpty(self):
-        if self.stackData == None :
+        if len(self.stackData) == 0 :
             return True
         else :
             return False
