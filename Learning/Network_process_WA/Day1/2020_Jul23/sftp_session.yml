@@ -1,0 +1,10 @@
+sftp -P 12276 user1@dhrona.net:
+- !!python/tuple
+  - 'password:'
+  - welcome
+- !!python/tuple
+  - sftp>
+  - get /etc/passwd
+- !!python/tuple
+  - sftp>
+  - exit

@@ -1,0 +1,11 @@
+PyShell> testtest
+Got test
+PyShell> hellohello
+Got hello
+PyShell> worldworld
+Got world
+PyShell> aaaaaa
+Got aaa
+>>> dddddd
+Got ddd
+*** exitexit

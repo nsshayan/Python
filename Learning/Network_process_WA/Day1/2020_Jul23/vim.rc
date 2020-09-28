@@ -1,0 +1,35 @@
+set nobackup
+
+"if has("cscope")
+"	set csprg=/usr/bin/cscope
+"	set csto=0
+"	set cst
+"	set nocsverb
+	" add any database in current directory
+"	if filereadable("/usr/local/build/linux-4.2.0-vbox/cscope.out")
+"	    cs add cscope.out
+	" else add database pointed to by environment
+"	elseif $CSCOPE_DB != 
+"	    cs add $CSCOPE_DB
+"	endif
+"	set csverb
+"endif
+
+filetype plugin on 
+set shiftwidth=4
+set tabstop=4
+set expandtab
+set textwidth=79
+set autoindent
+set ruler
+
+autocmd BufRead,BufNewFile *.py syntax on
+autocmd BufRead,BufNewFile *.py set ai
+autocmd BufRead *.py set smartindent
+
+autocmd BufRead,BufNewFile *.c set cindent
+autocmd BufRead,BufNewfile *.c set comments=sl:/*,mb:*,elx:*/
+
+syntax on
+
+

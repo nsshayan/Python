@@ -1,0 +1,43 @@
+http://www.chandrashekar.info/user/login
+  -> name = "testuser", pass = "w3lc0me"
+
+
+python post_blog.py
+Enter title: this is a test title
+Enter body: ldj fklsdjfkls djflk jsf jsdlkf jdskljsdkjksljsd jklsdj fksfjsd
+sdlkf kldsjfklsdjklsdjfds
+fsdkf sdkfj sdkf ksdj fklsdjflksdf
+sdflsdj fklsdjfklsdjlfksjdklfsd
+fsdlf sdkfljslkfsdf
+^D
+
+--------------------
+pip3 install robobrowser
+
+from robobrowser import RoboBrowser
+br = RoboBrowser()
+br.open("http://www.chandrashekar.info/user/login")
+
+login_form = br.get_form()
+login_form["name"] = "testuser"
+login_form["pass"] = "w3lc0me"
+br.submit_form(login_form)
+
+view = br.get_link(text="View recent blog entries")
+br.follow_link(view)
+
+post = br.get_link(text="Post new blog entry.")
+br.follow_link(post)
+blog_form = br.get_form()
+blog_form["title"] = "A test blog again..."
+blog_form["body[und][0][value]"] = "s fds fsdhjf dsjkfds jkfh sdjk dfhsk"
+save = next(blog_form.submit_fields.items())[1]
+br.submit_form(blog_form, save)
+
+
+
+
+
+
+
+

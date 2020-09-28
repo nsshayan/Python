@@ -1,0 +1,10 @@
+host: 192.168.56.101
+port: 2023
+session:
+    "archvm login:": pythonista
+    "Password:": welcome
+    '\[pythonista@archvm ~\]\$ ':
+        - whoami
+        - uname -a
+        - ls /etc
+        - exit

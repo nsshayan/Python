@@ -1,0 +1,22 @@
+http://www.chandrashekar.info/user/login
+    get form with id = "user-login"
+     username = testuser
+     password = w3lc0me
+
+On successful login, verify URL to be:
+    http://www.chandrashekar.info/user/16
+
+    Select the link (text="View recent blog entries")
+    http://www.chandrashekar.info/blog/16
+
+        Select the link(text="Post new blog entries")
+        http://www.chandrashekar.info/node/add/blog
+
+          get form with id = "blog-node-form"
+            title="Any test title"
+            "body[und][0][summary]" ="dlkfjklsdjfklsdjf"
+            "body[und][0][value]" = "... same as above ..."
+
+        Submit form by selecting "Save" button
+
+        Verify browser url to be "http://www.chandrashekar.info/node/..."

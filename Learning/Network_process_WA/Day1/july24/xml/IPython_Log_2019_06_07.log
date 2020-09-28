@@ -1,0 +1,451 @@
+
+import xml.etree.ElementTree as et
+et
+et.parse("books.xml")
+books = et.parse("books.xml")
+books
+books.getroot()
+catalog = books.getroot()
+catalog.tag
+root = books.getroot()
+root.tag
+print(root.tag)
+print(root.text)
+print(root.tag)
+print(repr(root.text))
+print(root.tag)
+print(repr(root.text))
+print(root.attrib)
+len(root)
+print(len(root))
+print(root[0])
+print(len(root))
+print(root[-1])
+print(len(root))
+print(root[:3])
+book = root[0]
+print(book.tag, book.text, book.attrib)
+root
+root[1]
+root[1][0]
+root[1][0].text
+for book in root:
+    print(book[1].text)
+root.find("./book/title")
+root.find("./book/title").text
+root.findall("./book/title")
+[ t.text for t in root.findall("./book/title") ]
+[ f"<{t.tag}>{t.text}</{t.tag}>" for t in root.findall("./book/title") ]
+[ f"<{t.tag}>{t.text}</{t.tag}>" for t in root.findall("./book/author") ]
+root.iterfind("./book/title")
+for t in root.iterfind("./book/title"):
+    print(t.text)
+root.findall(".//title")
+root.findall("./book/@id")
+root.findall("./book[@id='bk104']")
+root.find("./book[@id='bk104']/title").text
+root.find("./book[author='Corets, Eva']/title").text
+[ t.text for t in root.findall("./book[author='Corets, Eva']/title") ]
+[ b for b in root.findall("./book") ]
+[ b for b in root.findall("./book") if float(b.find("./price")) < 10.0 ]
+[ b for b in root.findall("./book") if float(b.find("./price").text) < 10.0 ]
+[ b.find("./title").text for b in root.findall("./book") \
+    if float(b.find("./price").text) < 10.0 ]
+import xml.etree as et
+et
+books = et.parse("books.xml")
+books
+import xml.etree as et
+et
+books = et.parse("books.xml")
+books
+import lxml.etree as et
+et
+books = et.parse("books.xml")
+books
+root = books.getroot()
+root = books.getroot()
+root
+print(root.tag)
+print(repr(root.text))
+print(root.attrib)
+print(len(root))
+print(root[:3])
+book = root[0]
+print(book.tag, book.text, book.attrib)
+root[1][0].text
+for book in root:
+    print(book[1].text)
+root.find("./book/title").text
+[ f"<{t.tag}>{t.text}</{t.tag}>" for t in root.findall("./book/author") ]
+for t in root.iterfind("./book/title"):
+    print(t.text)
+root.findall(".//title")
+[ b.find("./title").text for b in root.findall("./book") \
+    if float(b.find("./price").text) < 10.0 ]
+root.xpath("./book/title")
+root.xpath("./book/title/text()")
+root.xpath("./book[price < '10.0']")
+root.xpath("./book[price < '10.0']/title/text()")
+#import lxml.etree as et
+import lxml.html as parser
+parser
+parser.parse("github.html")
+#parser.parse("github.html")
+parser.parse("http://www.cisco.com/")
+#parser.parse("github.html")
+parser.parse("https://www.cisco.com/")
+html = parser.parse("github.html")
+#parser.parse("https://www.cisco.com/")
+html.xpath(".//a")
+html.xpath(".//a/@href")
+html.xpath(".//form")
+html.xpath(".//div[@class='footer container-lg px-3']")
+html.xpath(".//div[@class='footer container-lg px-3']//a")
+html.xpath(".//div[@class='footer container-lg px-3']//a/@href")
+import json
+with open("../db.json") as json_file:
+    data = json.load(json_file)
+print(data)
+json_string = """
+{
+    name: "Jonathan",
+    logged_in: false,
+    roles: null,
+    hosts: ["host1", "host2"]
+}
+
+"""
+
+result = json.loads(json_string)
+print(result)
+json_string = """
+{
+    "name": "Jonathan",
+    "logged_in": false,
+    "roles": null,
+    "hosts": ["host1", "host2"]
+}
+
+"""
+
+result = json.loads(json_string)
+print(result)
+from bs4 import BeautifulSoup
+
+with open("github.html") as infile:
+soup = BeautifulSoup(infile.read())
+soup
+from bs4 import BeautifulSoup
+
+with open("github.html") as infile:
+    soup = BeautifulSoup(infile.read())
+soup
+from bs4 import BeautifulSoup
+
+with open("github.html") as infile:
+    soup = BeautifulSoup(infile.read(), parser="lxml")
+soup
+from bs4 import BeautifulSoup
+
+with open("github.html") as infile:
+    soup = BeautifulSoup(infile.read(), "lxml")
+soup
+from bs4 import BeautifulSoup
+
+with open("github.html") as infile:
+    soup = BeautifulSoup(infile.read(), "lxml")
+soup.head
+from bs4 import BeautifulSoup
+
+with open("github.html") as infile:
+    soup = BeautifulSoup(infile.read(), "lxml")
+soup.head.title
+from bs4 import BeautifulSoup
+
+with open("github.html") as infile:
+    soup = BeautifulSoup(infile.read(), "lxml")
+soup.head
+from bs4 import BeautifulSoup
+
+with open("github.html") as infile:
+    soup = BeautifulSoup(infile.read(), "lxml")
+soup.head.link
+from bs4 import BeautifulSoup
+
+with open("github.html") as infile:
+    soup = BeautifulSoup(infile.read(), "lxml")
+l = soup.head.link
+print(l)
+l.next_sibling()
+l.next_sibling
+l = l.next_sibling
+l
+l = l.next_sibling
+l
+l = l.next_sibling
+l
+l = l.next_sibling
+l
+l = l.next_sibling
+l
+l = l.next_sibling
+l
+l = l.next_sibling
+l
+l = l.next_sibling
+l
+l = l.next_sibling
+l
+l = l.next_sibling
+l
+l = l.next_sibling
+l
+l = l.next_sibling
+l
+l = l.next_sibling
+l
+l = l.next_sibling
+l
+type(soup)
+type(l)
+l
+l["crossorigin"]
+get_ipython().run_line_magic('pinfo', 'soup.select')
+soup.select("a")
+soup.select("a @href")
+soup.select("a@href")
+soup.select("a[href]")
+soup.select("a [href]")
+soup.select("a [href]")
+dir(l)
+from urllib.request import urlopen
+
+response = urlopen("http://www.chandrashekar.info/")
+print(response, response.code)
+response.headers
+for k, v in response.headers.items():
+    print(k, v)
+response.read()
+from http.client import HTTPConnection
+get_ipython().run_line_magic('pinfo', 'HTTPConnection')
+c = HTTPConnection("www.chandrashekar.info", 80)
+c
+get_ipython().run_line_magic('pinfo', 'c.send')
+import requests
+response = requests.get("http://www.chandrashekar.info/")
+response
+print(response.status_code, response.ok)
+response = requests.get("http://www.chandrashekar.info/gdfg")
+print(response.status_code, response.ok)
+response = requests.get("http://www.chandrashekar.info/")
+print(response.status_code, response.ok)
+print(response.headers)
+print(response.headers)
+print(response.headers["Content-Type"])
+print(response.headers["Content-Type"])
+print(response.headers["content-type"])
+print(response.text)
+print(response.text.splitlines()[:3])
+response.content
+response.content.splitlines()[:3]
+get_ipython().run_line_magic('pinfo', 'requests.Request')
+weather_url = "http://api.openweathermap.org/data/2.5/weather"
+
+# ?q={city}&units=metric&APPID={api_key}"
+
+parameters = {
+    "q": "Bengaluru", 
+    "APPID": api_key, 
+    "units": "metric"
+}
+
+response = requests.get(weather_url, params=parameters)
+weather_url = "http://api.openweathermap.org/data/2.5/weather"
+
+# ?q={city}&units=metric&APPID={api_key}"
+
+api_key = "932c152d6ff8d185bfdd9d2a5f8e33e4"
+parameters = {
+    "q": "Bengaluru", 
+    "APPID": api_key, 
+    "units": "metric"
+}
+
+response = requests.get(weather_url, params=parameters)
+response
+response.headers["content-type"]
+response.headers["content-type"]
+response.json()
+response.headers["content-type"]
+response.json()["main"]["temp"]
+weather_url = "http://api.openweathermap.org/data/2.5/weather"
+
+# ?q={city}&units=metric&APPID={api_key}"
+
+api_key = "932c152d6ff8d185bfdd9d2a5f8e33e4"
+parameters = {
+    "q": "Chennai", 
+    "APPID": api_key, 
+    "units": "metric"
+}
+
+response = requests.get(weather_url, params=parameters)
+response.headers["content-type"]
+response.json()["main"]["temp"]
+posts = "http://localhost:3000/posts"
+
+requests.get(posts)
+posts = "http://localhost:3000/posts"
+
+requests.get(posts).json()
+requests.post(posts, 
+              json={"title": "a new post", "author": "Guido Van Rossum"})
+requests.get(posts).json()
+requests.get("http://localhost:3000/posts/8").json()
+#requests.get("http://localhost:3000/posts/8").json()
+response = requests.get("http://localhost:3000/posts/8")
+if response.ok and "json" in response.headers["content-type"]:
+    print(response.json())
+
+response = requests.patch("http://localhost:3000/posts/8", json={"title": "a modified post"})
+if response.ok and "json" in response.headers["content-type"]:
+    print(response.status_code, response.json())
+#requests.get("http://localhost:3000/posts/8").json()
+response = requests.get("http://localhost:3000/posts/8")
+if response.ok and "json" in response.headers["content-type"]:
+    print(response.json())
+
+response = requests.put("http://localhost:3000/posts/8", json={"title": "a modified post"})
+if response.ok and "json" in response.headers["content-type"]:
+    print(response.status_code, response.json())
+#requests.get("http://localhost:3000/posts/8").json()
+response = requests.get("http://localhost:3000/posts/8")
+if response.ok and "json" in response.headers["content-type"]:
+    print(response.json())
+
+response = requests.delete("http://localhost:3000/posts/8", json={"title": "a modified post"})
+if response.ok and "json" in response.headers["content-type"]:
+    print(response.status_code, response.json())
+from robobrowser import RoboBrowser
+from robobrowser import RoboBrowser
+import re
+re._pattern_type = re.Pattern
+br = RoboBrowser(parser="lxml")
+br.open("http://www.python.org/")
+br.response
+br.response, br.url
+br.get_links()
+br.get_links()[:5]
+br.get_link("Engineering")
+en = br.get_link("Engineering")
+br.follow_link(en)
+br.url
+br.get_links()
+br.get_forms()
+br.get_form()
+f = br.get_form()
+f
+f["q"] = "Guido"
+br.submit_form(f)
+br.url
+get_ipython().run_line_magic('pinfo', 'f.submit_fields')
+f.submit_fields
+submit = f.submit_fields
+submit["submit"] = "GO"
+br.open("http://testing.chandrashekar.info/")
+br.response.ok
+br.response.ok, br.response.status_code
+login_link = br.get_link("Log in")
+login_link
+br.follow_link(login_link)
+br.url
+br.get_form()
+br.select("form")
+len(br.select("form"))
+login_form
+br.select("form")
+login_form = br.get_form()
+login_form
+login_form = br.get_form()
+login_form
+login_form["log"] = "pythonista"
+login_form["pwd"] = "w3lc0me"
+br.submit_form(login_form)
+print(br.response.ok, br.url)
+br.close()
+del br
+from robobrowser import RoboBrowser
+import re
+re._pattern_type = re.Pattern
+br = RoboBrowser(parser="lxml")
+br.open("http://testing.chandrashekar.info/")
+br.response.ok, br.response.status_code
+login_link = br.get_link("Log in")
+login_link
+br.follow_link(login_link)
+br.url
+login_form = br.get_form()
+login_form
+login_form["log"] = "pythonista"
+login_form["pwd"] = "w3ldfme"
+br.submit_form(login_form)
+print(br.response.ok, br.url)
+br.submit_form(login_form)
+print(br.response.ok, br.url)
+if br.select("div#login_error a")
+br.submit_form(login_form)
+print(br.response.ok, br.url)
+br.select("div#login_error a")
+login_form["log"] = "pythonista"
+login_form["pwd"] = "w3lc0me"
+login_form["log"] = "pythonista"
+login_form["pwd"] = "w3lc0me"
+br.submit_form(login_form)
+print(br.response.ok, br.url)
+#br.select("div#login_error a")
+get_ipython().run_line_magic('pinfo', 'br.follow_link')
+new_blog_link = br.get_link("Add new")
+new_blog_link
+new_blog_link = br.get_link("add new")
+new_blog_link
+new_blog_link = br.get_link("add")
+new_blog_link
+new_blog_link = br.get_link("add new")
+new_blog_link
+br.follow_link(new_blog_link)
+br.url
+br.get_forms()
+len(br.get_forms())
+forms = br.get_forms()
+forms[0]
+forms[1]
+forms[1]["name"]
+forms[1]["id"]
+forms[1]
+br.get_form(name="post")
+br.get_forms(name="post")
+br.get_form(id="post")
+post_form = br.get_form(id="post")
+post_form["post_title"]
+post_form["post_title"], post_form["content"]
+post_form.submit_fields
+submit_fields = post_form.submit_fields
+submit_fields
+submit_fields[1]
+submit_fields["save"]
+submit_fields["publish"]
+br.submit(post_form, submit_fields["publish"])
+br.response.ok, br.url
+br.submit_form(post_form, submit_fields["publish"])
+br.response.ok, br.url
+br.open("http://testing.chandrashekar.info/")
+br.select("h3#entry-title a")
+br.submit_form(post_form, submit_fields["publish"])
+br.response.ok, br.url
+br.open("http://testing.chandrashekar.info/")
+br.select("h3#entry-title")
+br.select("h3.entry-title")
+br.select("h3.entry-title a")
+br.select("h3.entry-title a ::text")
+br.select("h3.entry-title a")

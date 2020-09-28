@@ -1,0 +1,8 @@
+SSH CONNECT 192.168.56.101 pythonista welcome
+SFTP MKDIR testfolder
+CHDIR testfolder
+PUT localfile.txt ./remotefile.txt
+GET /etc/passwd p.txt
+PUT myscript.sh /home/pythonista/testfolder/testscript.sh
+EXEC_COMMAND /home/pythonista/testfolder/testscript.sh
+

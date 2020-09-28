@@ -1,0 +1,412 @@
+
+import os
+os.cmd
+os.listdir(".")
+os.listdir(".")
+os.walk(".")
+list(os.walk("."))
+g = os.walk(".")
+g
+next(g)
+next(g)
+next(g)
+for path, subdirs, files in os.walk("."):
+    print("Path:", path)
+    print("-" * 40)
+    print("Subdirs:", subdirs)
+    print("-" * 40)
+    print("Files:", files)
+    
+get_ipython().run_line_magic('ls', '')
+os.path.getsize("test_dummy_script.py")
+get_ipython().run_line_magic('ls', '-l')
+dir(os.path)
+p = "/usr"
+p
+f = "ls"
+p
+f
+os.path.join(p, f)
+from pathlib import Path
+p = Path(".")
+p
+p.glob("*.py")
+list(p.glob("*.py"))
+list(p.glob("*"))
+list(p.glob("**/*"))
+Path("./telnet_example.py")
+Path("./telnet_example.py").stat
+Path("./telnet_example.py").stat()
+Path("./telnet_example.py").stat().st_size
+list(p.glob("**/*"))
+[ p.stat().st_size for p in Path(".").glob("**/*") ]
+sum([ p.stat().st_size for p in Path(".").glob("**/*") ])
+sum([ p.stat().st_size for p in Path(".").glob("**/*") if p.is_file()])
+
+a = "this       is\t\t\t\ta\n\r\n\r    test    string"
+a
+print(a)
+a
+a.split()
+import shlex
+a
+a.split()
+c = '''mkdir 'Program Files' "Documents and Settings"'''
+a
+c
+print(c)
+c.split()
+shlex.split(c)
+a = "Hello world"
+a
+type(a)
+a = "Hello \u0904 world"
+print(a)
+b = b"Hello world"
+b
+a
+b = bytes(a, encoding="utf8")
+b
+f = open("names.txt")
+f
+r.readline()
+"\u00A9"
+b
+str(b, encoding="utf8")
+f.readline()
+f.close()
+f = open("names.txt", "rb")
+f.readline()
+f
+import re
+regex = r"(\d{1,3})(\.\d{1,3}){3}"
+p = re.compile(regex)
+p
+p.search("ldklksfjlkdsf")
+p.search("dlskfjldkfjldsf 10.15.67.88 dslkfjdslkfdf")
+p.search("dlskfjldkfjldsf 10.15.67.88 dslkfjdslkfd 4.5.6.7 f")
+p.findall("dlskfjldkfjldsf 10.15.67.88 dslkfjdslkfd 4.5.6.7 f")
+p.finditer("dlskfjldkfjldsf 10.15.67.88 dslkfjdslkfd 4.5.6.7 f")
+for m in p.finditer("dlskfjldkfjldsf 10.15.67.88 dslkfjdslkfd 4.5.6.7 f"):
+    print(m)
+    
+from get_ipaddr_generic import *
+for m in parse_command_output("tail -f /var/log/system.log", "error"):
+    print(m)
+    
+for m in parse_command_output("tail -f /var/log/system.log", "error"):
+    print(m.string)
+    
+def foo(a, b, c):
+    print(a, b, c)
+    
+foo(10, 20, 30)
+def foo(a, b=10, c=20):
+    print(a, b, c)
+    
+foo(10)
+foo(10, 200)
+foo(10, 200, 300)
+def foo(a, *, b=10, c=20):
+    print(a, b, c)
+    
+foo(10)
+foo(10, 20)
+foo(10, c=20, b=30)
+def foo(a, *args):
+    print(a)
+    
+foo(10)
+foo(10, 20, 30, 40, 50)
+def foo(a, b=10):
+    print(a)
+    
+foo(10)
+foo(10, 20)
+def foo(a, *, b=10):
+    print(a)
+    
+foo(10)
+foo(10, 20)
+foo(10, b=40)
+def foo(a, *, b=20):
+    print(a)
+    
+def foo(*args, b=20, a):
+    print(args, b, a)
+    
+foo()
+foo(10)
+foo(a=10)
+foo(10, 20, 30)
+foo(10, 20, 30, a=56)
+foo(10, 20, 30, a=56)
+foo(10, 20, 30, a=56, b=40)
+def foo(*dummy, a, b):
+    print(b, a)
+    
+foo()
+foo(a=10, b=20)
+def foo(*, a, b):
+    print(b, a)
+    
+foo()
+foo(10, 20)
+foo(b=100, a=40)
+
+password = input("Enter password: ")
+read
+from getpass import getpass
+password = getpass("Enter password: ")
+password
+import yaml
+with open("telnet_session.yml") as infile: d = yaml.load(infile, Loader=yaml.CLoader)
+d
+from pssh.clients import SFTPClient
+from pssh.clients import SSHClient
+get_ipython().set_next_input('s = SSHClient');get_ipython().run_line_magic('pinfo', 'SSHClient')
+get_ipython().run_line_magic('pinfo', 'SSHClient')
+s = SSHClient("dhrona.net", user="user1", password="welcome", port=12276)
+s
+get_ipython().run_line_magic('pinfo', 's.session')
+get_ipython().run_line_magic('pinfo', 's.session.sftp_init')
+f = s.session.sftp_init()
+f
+s.close()
+s.disconnect()
+import pssh
+dir(pssh)
+dir(pssh.clients)
+import prompt_toolkit.lexers
+dir(prompt_toolkit.lexers)
+get_ipython().run_line_magic('pinfo', 'prompt_toolkit.lexers.DynamicLexer')
+get_ipython().run_line_magic('pinfo', 'prompt_toolkit.lexers.SimpleLexer')
+get_ipython().run_line_magic('pinfo', 'prompt_toolkit.lexers.SyntaxSync')
+get_ipython().run_line_magic('pinfo', 'prompt_toolkit.lexers.PygmentsLexer')
+from tqdm import tqdm
+get_ipython().run_line_magic('pinfo', 'tqdm')
+import yaml
+with open("telnet_session.yml") as infile:
+    yml = yaml.load(infile, Loader=yaml.CLoader)
+    
+yml
+a = "sdfsdf"
+type(a) is list
+a = [10, 20, 30]
+type(a) is list
+isinstance(a, list)
+import abc
+abc.ABC
+import collections
+dir(collections)
+collections.abc
+collections.abc.Sequence
+import collections.abc
+isinstance(a, collections.abc.Sequence)
+a = (10, 20, 30)
+isinstance(a, collections.abc.Sequence)
+a = "Sdfsdf"
+isinstance(a, collections.abc.Sequence)
+import pexpect
+pexpect.spawn("ftp ftp.chandrashekar.info")
+ftp = pexpect.spawn("ftp ftp.chandrashekar.info")
+ftp
+ftp.buffer
+ftp.expect("Name ")
+ftp.buffer
+ftp.before
+ftp.buffer
+ftp.after
+ftp.close()
+ftp = pexpect.spawn("ftp ftp.chandrashekar.info")
+ftp.expect(":")
+ftp.before
+ftp.after
+ftp.buffer
+print(ftp.before + ftp.after + ftp.buffer)
+ftp.close()
+ftp = pexpect.spawn("ftp ftp.chandrashekar.info", encoding="utf8")
+ftp.expect("\):")
+ftp.before
+ftp.after
+ftp.buffer
+print(ftp.before + ftp.after + ftp.buffer)
+outfile = open("mydata.out", "w")
+outfile
+print("Hello world")
+print("Hello world", file=outfile)
+print("Hello world", file=outfile)
+print("Hello world", file=outfile)
+outfile.close
+outfile.close()
+get_ipython().run_line_magic('cat', 'mydata.out')
+import sys
+sys.stdin
+sys.stdout
+sys.stderr
+get_ipython().run_line_magic('pinfo', 'pexpect.spawn')
+f
+ftp
+ftp.command
+ftp.args
+ftp.crlf
+ftp.eof()
+get_ipython().run_line_magic('pinfo', 'ftp.expect')
+get_ipython().run_line_magic('pinfo', 'ftp.send')
+ftp.sendeof()
+ftp.eof()
+get_ipython().run_line_magic('pinfo', 'ftp.sendcontrol')
+ftp.sendintr()
+ftp.eof()
+ftp.eof()
+from telnetlib import Telnet
+get_ipython().run_line_magic('pinfo', 'Telnet')
+tn = Telnet("192.168.56.105", 2023)
+get_ipython().run_line_magic('pinfo', 'tn')
+get_ipython().run_line_magic('pinfo', 'tn.expect')
+tn.expect(["login:"])
+tn.expect([b"login:"])
+tn.write(b"pythonista\r")
+tn.expect([b"Password:"])
+tn = Telnet("192.168.56.105", 2023)
+tn.read_until("login: ")
+tn.read_until(b"login: ")
+tn.write(b"pythonista\r")
+tn.read_until(b"Password: ")
+tn.write(b"welcome\r")
+tn.expect([b"$"])
+tn.write(b"ls -l /etc\r")
+tn.expect([b"$"])
+import paramiko
+from paramiko import Transport
+Transport
+tn
+tn.close()
+get_ipython().run_line_magic('pinfo', 'Transport')
+tn = Transport(("192.168.56.105", 22))
+tn
+get_ipython().run_line_magic('pinfo', 'tn.connect')
+tn.connect(username="pythonista", password="welcome")
+tn.connect(username="root", password="welcome")
+tn.close()
+tn = Transport(("192.168.56.105", 22))
+tn.connect(username="root", password="welcome")
+tn
+get_ipython().run_line_magic('pinfo', 'tn.open_channel')
+ch = tn.open_channel("session")
+ch
+stdout = ch.makefile("w")
+stdin = stdout
+stdout = ch.makefile("r")
+stderr = ch.makefile_stderr("r")
+stdin
+stdout
+stderr
+stdout.write("cat /etc/passwd")
+stdin.write("cat /etc/passwd")
+ch.close()
+tn
+ch = tn.open_channel("session")
+ch
+ch.exec_command("cat /etc/passwd")
+out = ch.makefile("r")
+out.read()
+ch.exec_command("bc")
+from paramiko import SSHClient
+client = SSHClient()
+client.load_system_host_keys()
+client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
+client.connect(username="root", password="woeiuroiweurewr")
+client.connect(hostname="192.168.56.105", username="root", password="woeiuroiweurewr")
+get_ipython().run_line_magic('pinfo', 'client.connect')
+stdin, stdout, stderr = client.exec_command("ls /etc")
+stdout.read()
+stdin, stdout, stderr = client.exec_command("sort")
+print("dsfdsf", file=stdin)
+print("tryrty", file=stdin)
+print("adasda", file=stdin)
+print("gfghgfh", file=stdin)
+stdin.close()
+print(str(stdout.read(), "utf8"))
+stdin.flush()
+stdin.close()
+stdin, stdout, stderr = client.exec_command("python")
+stdin
+stdin.write(b"for i in range(10): print('Counting', i)\n")
+stdin.flush()
+for line in stdout:
+    print(line)
+    
+tn
+tn.open_sftp_client()
+from paramiko import SFTPClient
+sftp = SFTPClient.from_transport(tn)
+sftp
+client
+client.open_sftp()
+client.exec_command("pwd")[1].read()
+client.exec_command("echo $$")[1].read()
+client.exec_command("echo $$")[1].read()
+client.exec_command("echo $$")[1].read()
+ch = client.invoke_shell()
+ch
+out = ch.makefile("r")
+err = ch.makefile_stderr("r")
+inp = ch.makefile("w")
+inp.write("echo $$\n")
+out.readline()
+out.readline()
+out.readline()
+out.readline()
+out.readline()
+inp.write("echo $$\n")
+out.readline()
+out.readline()
+inp.write("ls\n")
+out.readline()
+out.readline()
+out.readline()
+out.readline()
+out.readline()
+out.readline()
+out.readline()
+out.readline()
+inp.write("ssh -p 12276 user1@dhrona.net")
+out.readline()
+err.readline()
+ch.close()
+ch = client.invoke_shell()
+out = ch.makefile("r")
+err = ch.makefile_stderr("r")
+inp = ch.makefile("w")
+inp.write("ssh -p 12276 user1@dhrona.net\n")
+out.readline()
+out.readline()
+out.readline()
+out.readline()
+out.readline()
+inp.write("welcome\n")
+out.readline()
+out.readline()
+out.readline()
+inp.write("uname -a\n")
+out.readline()
+out.readline()
+out.readline()
+get_ipython().run_line_magic('ls', '')
+get_ipython().run_line_magic('cd', 'paramiko/')
+get_ipython().run_line_magic('ls', '')
+grep invoke_shell *py
+get_ipython().system('grep invoke_shell *py')
+client = paramiko.SSHClient()
+client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
+client.connect("192.168.56.101", username="root")
+client.connect("192.168.56.105", username="root")
+client.connect("192.168.56.105", username="root", password="welcome")
+get_ipython().run_line_magic('ls', '~/.ssh/')
+client.save_host_keys()
+client.save_host_keys("/Users/chandrashekar/.ssh/known_hosts")
+get_ipython().run_line_magic('ls', '~/.ssh/')
+get_ipython().run_line_magic('cat', '/Users/chandrashekar/.ssh/known_hosts')
+client.get_host_keys()
+dict(client.get_host_keys())

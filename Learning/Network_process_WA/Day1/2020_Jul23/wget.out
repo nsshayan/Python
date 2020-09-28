@@ -1,0 +1,12 @@
+URL transformed to HTTPS due to an HSTS policy
+--2020-06-25 10:09:56--  https://www.python.org/
+Resolving www.python.org (www.python.org)... 151.101.156.223
+Connecting to www.python.org (www.python.org)|151.101.156.223|:443... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 48815 (48K) [text/html]
+Saving to: ‘index.html.2’
+
+     0K .......... .......... .......... .......... .......   100% 5.27M=0.009s
+
+2020-06-25 10:09:56 (5.27 MB/s) - ‘index.html.2’ saved [48815/48815]
+

@@ -1,0 +1,201 @@
+Finding elements:
+-----------------
+  Finding first element matching the criteria (returns the element)
+  -------------------------------------------
+    driver.find_element_by_id(id_attribute)
+    driver.find_element_by_name(name_attribute)
+    driver.find_element_by_class_name(class_attribute)
+
+    driver.find_element_by_tag_name(tag)
+
+    driver.find_element_by_link_text(text_string_of_a_tag)
+    driver.find_element_by_partial_link_text(partial_string_a_tag)
+
+    driver.find_element_by_xpath(xpath_query)
+    driver.find_element_by_css_selector(css_selector)
+
+  Finding all elements matching the criteria (returns a list-like object)
+  -----------------------------------------------------------------------
+    driver.find_elements_by_id(id_attribute)
+    driver.find_elements_by_name(name_attribute)
+    driver.find_elements_by_class_name(class_attribute)
+
+    driver.find_elements_by_tag_name(tag)
+
+    driver.find_elements_by_link_text(text_string_of_a_tag)
+    driver.find_elements_by_partial_link_text(partial_string_a_tag)
+
+    driver.find_elements_by_xpath(xpath_query)
+    driver.find_elements_by_css_selector(css_selector)
+
+  Low-level finders
+  -----------------
+      from selenium.webdriver.common.by import By
+
+      driver.find_element(By.ID, "id_attribute_value")
+      driver.find_element(By.NAME, "name_attribute_value")
+      driver.find_element(By.CLASS_NAME, "class_attribute_value")
+      driver.find_element(By.TAG_NAME, "tag_name")
+      driver.find_element(By.LINK_TEXT, "text of <a> tag")
+      driver.find_element(By.PARTIAL_LINK_TEXT, "partial text of <a> tag")
+      driver.find_element(By.XPATH, "//xpath/query")
+      driver.find_element(By.CSS_SELECTOR, "css selector")
+
+      driver.find_elements(By.ID, "id_attribute_value")
+      driver.find_elements(By.NAME, "name_attribute_value")
+      driver.find_elements(By.CLASS_NAME, "class_attribute_value")
+      driver.find_elements(By.TAG_NAME, "tag_name")
+      driver.find_elements(By.LINK_TEXT, "text of <a> tag")
+      driver.find_elements(By.PARTIAL_LINK_TEXT, "partial text of <a> tag")
+      driver.find_elements(By.XPATH, "//xpath/query")
+      driver.find_elements(By.CSS_SELECTOR, "css selector")
+-------------------------------------------------------------------------------
+Working with elements
+---------------------
+    Text field/Text area
+    --------------------
+        from selenium.webdriver.common.keys import Keys
+        element.send_keys("some text")
+        element.send_keys(Keys.ARROW_DOWN)
+        element.clear()
+
+    Selection tags
+    --------------
+    from selenium.webdriver.support.ui import Select
+    select = Select(driver.find_element_by_name('name'))
+    select.select_by_index(index)
+    select.select_by_visible_text("text")
+    select.select_by_value(value)
+
+    select = Select(driver.find_element_by_id('id'))
+    select.deselect_all()
+
+    select = Select(driver.find_element_by_xpath("xpath"))
+    all_selected_options = select.all_selected_options
+
+    options = select.options
+
+
+    Buttons/Submit
+    --------------
+        driver.find_element_by_id("submit").click()
+        element.submit()
+
+    Drag'n'Drop
+    -----------
+        source = driver.find_element_by_name("source")
+        target = driver.find_element_by_name("target")
+
+        from selenium.webdriver import ActionChains
+        action_chains = ActionChains(driver)
+        action_chains.drag_and_drop(source, target).perform()
+
+Moving between windows/frames/alert dialogs
+-------------------------------------------
+    driver.swith_to("windowName")
+
+    for handle in driver.window_handles:
+        driver.switch_to_window(handle)
+
+    driver.switch_to_frame("    e")
+    driver.switch_to_frame("frameName.0.child")
+
+    driver.switch_to_default_content()
+
+    alert = driver.switch_to_alert()
+
+History
+-------
+    driver.forward()
+    driver.back()
+
+Cookies
+-------
+    # Go to the correct domain
+    driver.get("http://www.example.com")
+
+    # Now set the cookie. This one's valid for the entire domain
+    cookie = {‘name’ : ‘foo’, ‘value’ : ‘bar’}
+    driver.add_cookie(cookie)
+
+    # And now output all the available cookies for the current URL
+    driver.get_cookies()
+
+Explicit Waits
+--------------
+from selenium import webdriver
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+
+driver = webdriver.Firefox()
+driver.get("http://somedomain/url_that_delays_loading")
+try:
+    element = WebDriverWait(driver, 10).until(
+        EC.presence_of_element_located((By.ID, "myDynamicElement"))
+    )
+finally:
+    driver.quit()
+
+    Expected conditions
+    -------------------
+        EC.title_is("some title text")
+        EC.title_contains("partial title text")
+        EC.presence_of_element_located(By.ID, "id_attribute")
+        EC.presence_of_all_elements_located(By.ID, "id_attribute")
+        EC.visibility_of_element_located(By.ID, "id_attribute")
+        EC.visibility_of(web_element_object)
+        EC.text_to_be_present_in_element("text")
+        EC.text_to_be_present_in_element_value("text")
+        EC.frame_to_be_available_and_switch_to_it(locator)
+        EC.invisibility_of_element_located(locator)
+        EC.element_to_be_clickable(locator)
+        EC.staleness_of(web_element_object)
+        EC.element_to_be_selected(locator)
+        EC.element_located_to_be_selected(locator)
+        EC.element_selection_state_to_be(web_element_object, is_selected)
+        EC.element_located_selection_state_to_be(locator, is_selected)
+        EC.alert_is_present
+
+Implicit waits
+--------------
+from selenium import webdriver
+
+driver = webdriver.Firefox()
+driver.implicitly_wait(10) # seconds
+driver.get("http://somedomain/url_that_delays_loading")
+myDynamicElement = driver.find_element_by_id("myDynamicElement")
+
+Executing JavaScript
+--------------------
+driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
+
+
+Working with browser profiles
+-----------------------------
+    import os
+
+    from selenium import webdriver
+
+    fp = webdriver.FirefoxProfile()
+
+    fp.set_preference("browser.download.folderList",2)
+    fp.set_preference("browser.download.manager.showWhenStarting",False)
+    fp.set_preference("browser.download.dir", os.getcwd())
+    fp.set_preference("browser.helperApps.neverAsk.saveToDisk", "application/octet-stream")
+
+    browser = webdriver.Firefox(firefox_profile=fp)
+    browser.get("http://pypi.python.org/pypi/selenium")
+    browser.find_element_by_partial_link_text("selenium-2").click()
+
+Saving screenshots
+------------------
+    from selenium import webdriver
+
+    driver = webdriver.Firefox()
+    driver.get('http://www.python.org/')
+    driver.save_screenshot('screenshot.png')
+    driver.quit()
+
+
+Katalon Automation Recorder

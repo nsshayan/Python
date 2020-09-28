@@ -1,0 +1,39 @@
+/boot:
+total 658892
+lrwxrwxrwx 1 root root        21 Dec 26  2016 System.map -> System.map-4.9.0-vbox
+-rw-r--r-- 1 root root  12093663 Dec 26  2016 System.map-4.9.0-vbox
+-rw-r--r-- 1 root root   2072384 Sep  5 10:57 System.map-5.2.11-vbox
+lrwxrwxrwx 1 root root        43 Oct 10 08:51 System.map-5.3.1-vbox-debug -> /mnt/disk2/boot/System.map-5.3.1-vbox-debug
+-rw-r--r-- 1 root root   2099416 Nov  5 11:21 System.map-5.3.8-vbox
+lrwxrwxrwx 1 root root        17 Dec 26  2016 config -> config-4.9.0-vbox
+-rw-r--r-- 1 root root    117358 Dec 26  2016 config-4.9.0-vbox
+-rw-r--r-- 1 root root     69636 Sep  5 10:57 config-5.2.11-vbox
+lrwxrwxrwx 1 root root        39 Oct 10 08:51 config-5.3.1-vbox-debug -> /mnt/disk2/boot/config-5.3.1-vbox-debug
+-rw-r--r-- 1 root root     69765 Nov  5 11:21 config-5.3.8-vbox
+drwxr-xr-x 6 root root      4096 Nov  5 11:27 grub
+-rw-r--r-- 1 root root   1042773 Sep 27 12:22 initramfs-5.3.1-vbox.gz
+-rw-r--r-- 1 root root   1042806 Jan  2  2017 initrd-4.9.0-vbox.gz
+-rw-r--r-- 1 root root   1419576 Nov  5 14:32 initrd-5.3.8-vbox
+-rw-r--r-- 1 root root   1042811 Sep 24 12:37 initrd-test.cpio.gz
+lrwxrwxrwx 1 root root        26 Dec  6  2016 initrd.gz -> /boot/initrd-4.9.0-vbox.gz
+lrwxrwxrwx 1 root root        21 Oct 10 08:51 lost+found -> /mnt/disk2/lost+found
+lrwxrwxrwx 1 root root        18 Dec 26  2016 vmlinux -> vmlinux-4.9.0-vbox
+-rwxr-xr-x 3 root root 580921788 Dec 26  2016 vmlinux-4.9.0-vbox
+-rwxr-xr-x 1 root root  18273440 Sep  5 10:57 vmlinux-5.2.11-vbox
+lrwxrwxrwx 1 root root        40 Oct 10 08:51 vmlinux-5.3.1-vbox-debug -> /mnt/disk2/boot/vmlinux-5.3.1-vbox-debug
+-rwxr-xr-x 1 root root  18458996 Nov  5 11:21 vmlinux-5.3.8-vbox
+lrwxrwxrwx 1 root root        18 Dec 26  2016 vmlinuz -> vmlinuz-4.9.0-vbox
+-rw-r--r-- 1 root root  18352064 Dec 26  2016 vmlinuz-4.9.0-vbox
+-rw-r--r-- 1 root root   8756192 Sep  5 10:57 vmlinuz-5.2.11-vbox
+lrwxrwxrwx 1 root root        40 Oct 10 08:51 vmlinuz-5.3.1-vbox-debug -> /mnt/disk2/boot/vmlinuz-5.3.1-vbox-debug
+-rw-r--r-- 1 root root   8831456 Nov  5 11:21 vmlinuz-5.3.8-vbox
+
+/usr:
+total 160
+drwxr-xr-x   5 root root 53248 Sep 26 16:11 bin
+drwxr-xr-x 183 root root 20480 Apr  5  2019 include
+drwxr-xr-x 106 root root 69632 Sep 26 16:11 lib
+drwxr-xr-x  12 root root  4096 Nov 30  2016 local
+lrwxrwxrwx   1 root root     3 Feb 28  2019 sbin -> bin
+drwxr-xr-x 127 root root  4096 Apr  4  2019 share
+drwxr-xr-x   3 root root  4096 Feb 12  2019 src

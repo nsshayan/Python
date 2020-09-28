@@ -1,0 +1,6 @@
+
+import lassie
+lassie.fetch("http://www.chandrashekar.info/")
+get_ipython().run_line_magic('pinfo', 'lassie.fetch')
+lassie.fetch("http://www.chandrashekar.info/about.html")
+lassie.fetch("http://www.chandrashekar.info/about.html", open_graph=True)

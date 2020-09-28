@@ -1,0 +1,13 @@
+ftp ftp.chandrashekar.info:
+- !!python/tuple
+  - 'Name.+: '
+  - testuser
+- !!python/tuple
+  - 'Password: '
+  - w3lc0me
+- !!python/tuple
+  - 'ftp> '
+  - - cd /www/files
+    - binary
+    - get xml.zip
+    - quit

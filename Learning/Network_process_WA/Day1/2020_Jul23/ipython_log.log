@@ -1,0 +1,2286 @@
+
+import os
+get_ipython().run_line_magic('ls', '')
+os.path.getsize("testdata.py")
+get_ipython().run_line_magic('ls', '')
+os.walk(".")
+g = os.walk(".")
+next(g)
+next(g)
+next(g)
+next(g)
+next(g)
+next(g)
+next(g)
+for path, subdirs, files in os.walk("."):
+    print(path)
+    
+for path, subdirs, files in os.walk("."):
+    for f in files:
+        print(f)
+        
+    
+os.path.join("./subprocess", "a.txt")
+for path, subdirs, files in os.walk("."):
+    for f in files:
+        print(os.path.join(path, f))
+        
+        
+    
+for path, subdirs, files in os.walk("."):
+    for f in files:
+        print(os.path.getsize(os.path.join(path, f)))
+        
+from pathlib import Path
+p = Path(".")
+p.stat()
+p.stat().st_size
+p
+p.glob("*")
+[ f.stat().st_size for f in p.glob("*") ]
+list(p.glob("*"))
+list(p.glob("**/*"))
+[ f.stat().st_size for f in p.glob("**/*") ]
+sum([ f.stat().st_size for f in p.glob("**/*") ])
+p.is_file()
+sum([ f.stat().st_size for f in p.glob("**/*") if f.is_file() ])
+os.system("ls")
+os.system("whoami")
+os.system("ls -l /dfdsf")
+os.system("ls -l > ls.out")
+
+import subprocess
+from subprocess import Popen
+Popen
+a = "sdffds        ere    dfdf\n\nerere\t\t\tdsfsfdsf"
+print(a)
+a
+a.split()
+a = "mkdir \"Program Files\" 'documents and settings'"
+print(a)
+a
+a.split()
+a.split('"')
+import shlex
+a.split()
+shlex.split(a)
+os.listdir("testfolder")
+a = b"Hello world"
+type(a)
+str(a, "utf8")
+from subprocess import Popen
+Popen("/bin/bash").wait()
+Popen("/bin/bash").wait()
+Popen("/bin/bash", cwd="/opt").wait()
+Popen("/bin/bash", cwd="/opt").wait()
+Popen("/bin/bash", cwd="/opt", env={"NAME": "testprogram"}).wait()
+Popen("python", cwd="/opt").wait()
+Popen("python", cwd="/opt", env={"VALUE": "100"}).wait()
+a = {"aaa": 1000, "bbb": 2000}
+a
+b = {"ccc": 3000}
+a
+b
+a + b
+c = a, b
+c
+c = {}
+c.update(a)
+c.update(b)
+a
+b
+dict(**a, **b)
+dict(a.items() | b.items())
+a.items()
+improt os
+import os
+Popen("python", cwd="/opt", env=dict(**os.environ, **{"VALUE": "100"})).wait()
+p = Popen("/bin/python")
+import re
+regex = r"\d{1,3}(\.\d{1,3}){3}"
+pattern = re.compile(regex)
+pattern.match("10.10.56.78")
+pattern.match("10.10.56566.78")
+pattern.match("10.10.56.78")
+pattern.match("10.10.56.78").group()
+a = "mkdir 'Program Files' \"Documents and Settings\""
+a
+print(a)
+a.split()
+a.split()
+shlex.split(a)
+def testfn():
+    print("In start of testfn...")
+    return 100
+    print("Back inside testfn...")
+    
+testfn()
+def testfn():
+    print("In start of testfn...")
+    yield 100
+    print("Back inside testfn...")
+    yield "Hello world"
+    print("Back again inside testfn...")
+    yield
+    print("End of testfn...")
+    
+testfn()
+g= testfn()
+next(g)
+next(g)
+next(g)
+next(g)
+for v in testfn():
+    print("In for loop: v =", v)
+    
+import pexpect
+ftp = pexpect.spawn("ftp ftp.chandrashekar.info")
+ftp
+ftp.expect(r"220.+Name.+:")
+ftp.before
+ftp.after
+ftp.sendline("testuser")
+ftp.before
+ftp.after
+ftp.expect("Password:")
+ftp.before
+ftp.after
+ftp.sendline("w3lc0me")
+ftp.after
+ftp.expect("ftp>")
+ftp.after
+ftp.close()
+ftp
+ftp.before
+ftp = pexpect.spawn("ftp ftp.chandrashekar.info")
+ftp.expect(r"220.+Name.+:")
+ftp.sendline("testuser")
+ftp.expect("Password:")
+ftp.sendline("w3lc0me")
+ftp.expect("ftp>")
+ftp.before
+ftp.sendline("cd /www/somelocation")
+ftp.expect("ftp>")
+ftp.before
+ftp.sendline("cd /www/files")
+ftp.expect("Ftp>")
+ftp.expect("Ftp>", timeout=5)
+ftp.expect(["Ftp>", "sftp>", "ftp>"], timeout=5)
+get_ipython().run_line_magic('ls', 'download_xml.yml')
+get_ipython().run_line_magic('cat', 'download_xml.yml')
+import yaml
+with open("download_xml.yml") as infile:
+    info = yaml.load(infile, Loader=yaml.CLoader)
+    
+info
+get_ipython().system('vi download_xml.yml')
+with open("download_xml.yml") as infile:
+    info = yaml.load(infile, Loader=yaml.CLoader)
+    
+get_ipython().system('vi download_xml.yml')
+with open("download_xml.yml") as infile:
+    info = yaml.load(infile, Loader=yaml.CLoader)
+    
+info
+info = {"ftp ftp.chandrashekar.info": info}
+info
+with open("download_xml2.yml", "w") as outfile:
+    yaml.dump(info, outfile)
+    
+get_ipython().run_line_magic('cat', 'download_xml2.yml')
+with open("download_xml.yml") as infile:
+    info = yaml.load(infile, Loader=yaml.CLoader)
+    
+with open("download_xml2.yml") as infile:
+    info = yaml.load(infile, Loader=yaml.CLoader)
+    
+info
+get_ipython().system('vi download_xml2.yml')
+with open("download_xml2.yml", "w") as outfile:
+    yaml.dump(info, outfile)
+    
+get_ipython().run_line_magic('cat', 'download_xml2.yml')
+pexpect
+get_ipython().run_line_magic('pinfo', 'pexpect.run')
+get_ipython().run_line_magic('cat', 'info')
+info
+pexpect.run("ftp ftp.chandrashekar.info", events=info["ftp ftp.chandrashekar.info"])
+from ftplib import FTP
+ftp = FTP("ftp.chandrashekar.info", "testuser", "w3lc0me")
+ftp
+ftp.cwd()
+ftp.cwd("cd /www/files")
+ftp.cwd("cd /www/www/files")
+ftp.dir()
+ftp.cwd("/www/files")
+ftp.dir()
+ftp.listdir()
+ftp.nlst()
+from telnetlib import Telnet
+tn = Telnet("192.168.56.101", 2023)
+tn
+tn.read_until("login: ")
+tn.read_until(b"login: ")
+tn.write(b"pythonista\n")
+tn = Telnet("192.168.56.101", 2023)
+tn.read_until("login: ")
+tn.read_until(b"login: ")
+tn.write(b"pythonista\r")
+tn.read_until(b"Password: ")
+tn.write(b"welcome\r")
+tn.read_until(b"$ ")
+tn.write("uname -a\n")
+tn.write(b"uname -a\n")
+tn.read_until(b"$ ")
+tn.interact()
+tn = Telnet("192.168.56.101", 2023)
+tn.read_until(b"login: ")
+tn.close()
+tn.read_until(b"login: ")
+def connect_telnet():
+    tn = Telnet("192.168.56.101", 2023)
+    print(tn.read_until(b"login: "))
+    tn.write(b"pythonista\n")
+    print(tn.read_until(b"Password: "))
+    tn.write(b"welcome\n")
+    print(tn.read_until(b"$ "))
+    return tn
+    
+connect_telnet()
+connect_telnet()
+connect_telnet()
+tn = connect_telnet()
+tn = connect_telnet()
+tn
+tn.write("python\n")
+tn.write(b"python\n")
+tn.expect([">>>", "$ "])
+tn.expect([b">>>", b"$ "])
+tn.write(b"for i in range(5):\n")
+out = tn.expect([b">>>", b"...", b"$ "])
+out
+tn.write(b"    print('Counting', i)\n\n")
+tn.expect([b">>>"])
+from paramiko import Transport
+tn = Transport(("192.168.56.101", 22))
+tn
+get_ipython().run_line_magic('pinfo', 'tn.connect')
+tn.connect(username="pythonista", password="welcome")
+tn
+get_ipython().run_line_magic('pinfo', 'tn.open_channel')
+ch = tn.open_channel("session")
+ch
+tn
+ch2 = tn.open_channel("session")
+tn
+ch.exec_command("cat /etc/passwd")
+stdout = ch.makefile("r")
+stdout
+for line in stdout:
+    print(line)
+    
+tn
+ch
+ch2
+ch2.invoke_shell()
+stdout = ch2.makefile("r")
+stdin = ch2.makefile_stdin("w")
+stderr = ch2.makefile_stderr("r")
+stdout.readline()
+stdout.readline()
+stdin.write("ls /opt\n")
+stdout.readline()
+stdout.readline()
+stdout.readline()
+stdout.readline()
+stdout.readline()
+stdout.readline()
+stdout.readline()
+stdout.readline()
+stdout.readline()
+stdout.readline()
+stdout.readline()
+stdin.write("echo $$\n")
+stdout.readline()
+stdin.write("python\n")
+stdout.readline()
+stdin.write("for i in range(10): print('counting', i)\n")
+stdout.readline()
+stderr.readline()
+client = paramiko.SSHClient()
+import paramiko
+client = paramiko.SSHClient()
+client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
+client.connect("192.168.56.101", username="root", password="ewrewrwer")
+stdin, stdout, stderr = client.exec_command("uname -a")
+stdout.readline()
+client.close()
+client.connect("192.168.56.101", username="root")
+stdin, stdout, stderr = client.exec_command("uname -a")
+stdout.readline()
+client.close()
+client.connect("192.168.56.101", username="pythonista", password="ewrewr")
+client
+sftp = client.open_sftp()
+client.connect("192.168.56.101", username="pythonista", password="welcome")
+client
+sftp = client.open_sftp()
+tn
+tn.open_sftp_client()
+from paramiko import SFTPClient
+sftp = SFTPClient.from_transport(tn)
+sftp
+sftp.get("/etc/passwd", "p.txt")
+get_ipython().run_line_magic('cat', 'p.txt')
+get_ipython().run_line_magic('ls', '')
+sftp.put("testdata.py", "/tmp/a.dat")
+sftp.listdir("/opt")
+sftp.mkdir("/tmp/testfolder")
+sftp.getcwd()
+sftp.chdir(".")
+sftp.getcwd()
+sftp.chdir("/tmp/testfolder")
+sftp.getcwd()
+sftp.listdir(".")
+sftp.chdir("..")
+sftp.rmdir("testfolder")
+sftp.unlink("a.dat")
+out = sftp.open("/tmp/myfile.txt", "w")
+out
+out.write("this is a test string\n")
+out.write("this is a test string\n")
+out.write("this is a test string\n")
+out.write("this is a test string\n")
+out.close()
+with sftp.open("/tmp/myfile.txt", "a") as outfile:
+    outfile.write("this is a new message\n")
+    
+with sftp.open("/tmp/myfile.txt", "r") as infile:
+    for line in infile:
+        print(line)
+        
+from pssh import SSHClient
+from pssh.clients import SSHClient
+SSHClient
+get_ipython().run_line_magic('pinfo', 'SSHClient')
+get_ipython().set_next_input('conn = SSHClient');get_ipython().run_line_magic('pinfo', 'SSHClient')
+conn = SSHClient("192.168.56.101", "root", "welcome")
+conn
+get_ipython().run_line_magic('pinfo', 'conn.execute')
+conn.execute("uname -a")
+ch = conn.execute("uname -a")
+ch
+ch.read()
+from pssh.clients import SSHClient
+conn = SSHClient("192.168.56.101", "root", "welcome")
+from pssh.clients import ParallelSSHClient
+input("enter password: ")
+from getpass import getpass
+getpass("Enter password: ")
+get_ipython().run_line_magic('pwd', '')
+get_ipython().run_line_magic('cd', '../2019_Oct01')
+from pssh.clients import SSHClient
+get_ipython().run_line_magic('pinfo', 'SSHClient')
+conn = SSHClient("192.168.56.101", user="root", password="welcome")
+conn
+result = conn.run_command("ls /opt")
+result
+ch, host, stdout, stderr, stdin = result
+for line in stdout: 
+    print(line)
+    
+ch, host, stdout, stderr, stdin = conn.run_command("python")
+stdin.write("""for i in range(10):
+    print("Counting", i)
+    
+""")
+for line in stdout:
+    print(stdout)
+    
+stdin.write("\n")
+stdin.flush()
+for line in stdout:
+    print(stdout)
+    
+for line in stdout:
+    print(stdout)
+    
+for line in stderr:
+    print(stderr)
+    
+for line in stderr:
+    print(line)
+    
+for line in stdout:
+    print(line)
+    
+conn.
+conn.close()
+conn.disconnect()
+conn = SSHClient("192.168.56.101", user="root", password="welcome")
+get_ipython().run_line_magic('pinfo', 'conn.sftp_put')
+get_ipython().run_line_magic('ls', '')
+conn.sftp_put("testfile.py", "/tmp/a.txt")
+conn.sftp_put(conn, "testfile.py", "/tmp/a.txt")
+get_ipython().run_line_magic('pinfo', 'conn.copy_file')
+conn.copy_file(".", "/root/ssh_folder", recurse=True)
+get_ipython().run_line_magic('pinfo', 'conn.copy_file')
+get_ipython().run_line_magic('pinfo', 'conn.copy_remote_file')
+get_ipython().run_line_magic('pinfo', 'conn.scp_send')
+conn.scp_send(".", "/root/ssh_scp_folder", recurse=True)
+get_ipython().run_line_magic('pinfo', 'conn.scp_recv')
+get_ipython().run_line_magic('pinfo', 'conn.sock')
+from pssh.clients import ParallelSSHClient
+hosts = ["dhrona.net", "192.168.56.101"]
+import yaml
+with open("host_config.yml") as infile:
+    host_config = yaml.load(infile, Loader=yaml.CLoader)
+    
+host_config
+clients = ParallelSSHClient(hosts, host_config=host_config)
+clients
+output = clients.run_command("uptime")
+output
+output.items()
+output["dhrona.net"]
+output["dhrona.net"].stdout
+for line in output["dhrona.net"].stdout: print(line)
+for line in output["192.168.56.101"].stdout: print(line)
+clients.run_command("%s", host_args=("uptime", "who am i"))
+output = clients.run_command("%s", host_args=("uptime", "who am i"))
+next(output["dhrona.net"].stdout)
+next(output["192.168.56.101"].stdout)
+output = clients.run_command("%s", host_args=("uptime", "who am i"))
+output["192.168.56.101"]
+output["192.168.56.101"].stdout
+next(output["192.168.56.101"].stdout)
+output = clients.run_command("%s", host_args=("uptime", "whoami"))
+next(output["192.168.56.101"].stdout)
+next(output["dhrona.net"].stdout)
+clients.run_command("uptime; whoami")
+output = clients.run_command("uptime; whoami")
+list(output["dhrona.net"])
+list(output["dhrona.net"].stdout)
+list(output["192.168.56.101"].stdout)
+clients.run_command("mkdir /tmp/test-%s", host_args=("one", "two"))
+clients.run_command("mkdir %s %s", host_args=(("one", "two"), ("three", "four")))
+import http.client
+dir(http.client)
+import requests
+requests.get("http://www.chandrashekar.info/")
+r = requests.get("http://www.chandrashekar.info/")
+r
+r.status_code
+r.ok
+r.headers
+r.headers["content-type"]
+r.headers["CONTENT-TYPE"]
+r.text
+r.content
+type(r.content)
+type(r.text)
+r.headers["content-type"]
+r.apparent_encoding
+r.iter_lines()
+for line in r.iter_lines(): print(line)
+r.links
+r.url
+r.reason
+r = requests.get("http://www.chandrashekar.info/some-data")
+r.ok
+r.reason
+r.status_code
+urls = [
+
+    'http://www.heroku.com',
+
+    'http://tablib.org',
+
+    'http://httpbin.org',
+
+    'http://python-requests.org',
+
+    'http://kennethreitz.com'
+
+]
+import requests
+def serial_requests(urls):
+    import time
+    start = time.time()
+    rs = [ requests.get(u) for u in urls ]
+    end = time.time()
+    print("took", end - start, "seconds")
+    return rs
+    
+r1 = serial_requests(urls)
+urls
+urls[1] = "http://www.chandrashekar.info"
+urls
+r1 = serial_requests(urls)
+r1
+def parallel_requests(urls):
+    import grequests
+    import time
+    start = time.time()
+    rs = [ grequests.get(u) for u in urls ]
+    end = time.time()
+    print("took", end - start, "seconds")
+    return rs
+    
+parallel_requests(urls)
+def parallel_requests(urls):
+    import grequests
+    import time
+    start = time.time()
+    rs = [ grequests.get(u) for u in urls ]
+    end = time.time()
+    print("took", end - start, "seconds")
+    return grequests.map(rs)
+    
+r2 = parallel_requests(urls)
+def parallel_requests(urls):
+    import grequests
+    import time
+    start = time.time()
+    rs = [ grequests.get(u) for u in urls ]
+    result = grequests.map(rs)
+    end = time.time()
+    print("took", end - start, "seconds")
+    return result
+    
+r2 = parallel_requests(urls)
+r1 = serial_requests(urls)
+r2 = parallel_requests(urls)
+r1 = serial_requests(urls)
+import request
+import requests
+help(requests.Request)
+get_ipython().run_line_magic('pwd', '')
+import requests
+r = requests.get("http://pypi.org/")
+r
+r.text
+r = requests.get("http://pypi.org/search/", params={"q": "xml"})
+r
+r.text
+data = r.text
+data
+data.find("package-snippet__title")
+regex = '<a class="package-snippet".+</a>'
+import re
+re.search(regex, data)
+data
+re.search(regex, data)
+re.search(regex, data, re.MULTILINE)
+re.search("<a", data, re.MULTILINE)
+re.search("<a class=", data, re.MULTILINE)
+regex = '<a class="package-snippet"'
+re.search(regex, data, re.MULTILINE)
+regex = '<a class="package-snippet".+?</a>'
+re.search(regex, data, re.MULTILINE)
+re.search(regex, data, re.MULTILINE | re.DOTALL)
+regex = '<a class="package-snippet"(.+?)<\/a>'
+re.search(regex, data, re.MULTILINE | re.DOTALL)
+re.search(regex, data, re.DOTALL)
+get_ipython().run_line_magic('pinfo', 're.MULTILINE')
+re.search(regex, data, re.DOTALL)
+re.search(regex, data, re.DOTALL)
+regex
+with open("test.html", "w") as out: out.write(data)
+re.search('<a class="package-snippet" href="/project/ttr-xml-csv2xml/">', data)
+re.search('<a class="package-snippet".+', data)
+re.search('<a class="package-snippet"(.+?)</a>', data)
+re.search('<a class="package-snippet"(.+?)<\/a>', data)
+re.search('<a class="package-snippet"(.+?)</a>', data, re.DOTALL)
+m = re.search('<a class="package-snippet"(.+?)</a>', data, re.DOTALL)
+m.group()
+m.group(1)
+m = re.search('<a class="package-snippet" href="(.+?)".+?</a>', data, re.DOTALL)
+m
+m.group()
+m.group(1)
+m = re.search('<a class="package-snippet" href="(.+?)".+?snippet__name">(.+?)</span>.+></a>', data, re.DOTALL)
+m
+m.group(1)
+m.group(2)
+regex = r"""
+<a                   # <a class="package-snippet"
+\s+
+class\s*=\s*
+"package-snippet"\s+
+href\s*=\s*"
+  (?P<url>.+?)              # Extract URL
+"
+.+?                         # Skip noise...
+snippet__name">
+(?P<title>.+?)              # Extract title
+</span>
+.+?
+snippet__description">
+(?P<description>.+?)       # Extract description
+</p>.+?</a>
+"""
+re.search(regex, data, re.DOTALL | re.VERBOSE)
+m = re.search(regex, data, re.DOTALL | re.VERBOSE)
+m.groupdict()
+pattern = re.compile(regex, re.DOTALL | re.VERBOSE)
+pattern
+pattern.finditer(data)
+for match in pattern.finditer(data):
+    print(match.groupdict())
+    
+for i, match in enumerate(pattern.finditer(data)):
+    print(i, match.groupdict())
+    
+for i, match in zip(range(5), pattern.finditer(data)):
+    print(i, match.groupdict())
+    
+for i, match in zip(range(1, 6), pattern.finditer(data)):
+    print(i, match.groupdict())
+    
+a = """this is line 1
+this is line 2
+this is line 3
+"""
+a
+print(a)
+re.search("this.+2", a)
+re.search("this.+2", a, re.DOTALL)
+re.search("this.+\d$", a, re.DOTALL)
+re.search("this.+\d$", a, re.DOTALL | re.MULTILINE)
+re.search("this.+\d$", a, re.MULTILINE)
+re.search("this.+\d$", a)
+a
+print(a)
+re.search("this.+\d$", a)
+re.search("this.+\d$", a, re.MULTILINE)
+re.search("^this.+\d$", a)
+re.search("^this.+\d$", a, re.MULTILINE)
+get_ipython().run_line_magic('cat', 'parallel_ssh/run_ls.py')
+from requests import Session
+s = Session()
+import xml.dom.minidom
+import xml.etree.ElementTree as et
+get_ipython().run_line_magic('pinfo', 'et.parse')
+get_ipython().run_line_magic('pwd', '')
+get_ipython().run_line_magic('ls', 'xml')
+import xml.etree.ElementTree as et
+get_ipython().run_line_magic('cd', 'xml')
+xml = et.parse("books.xml")
+import xml.etree.ElementTree as et
+xml = et.parse("books.xml")
+xml
+xml.getroot()
+c = xml.getroot()
+c
+c[0]
+c[1]
+c[2]
+c[2][0]
+c[2][0][0]
+c[2][0].text
+c[0][0].text
+c[0][0].tag
+for t in c[0]:
+    print(t.tag, "=", t.text)
+    
+c
+c.text
+c[0]
+c[0].text
+xml = et.parse("books.xml")
+c = xml.getroot()
+c.text
+c.text
+c[0].text
+c[0].tag
+c[0].attrb
+c[0].attrib
+c
+len(c)
+del c[-1]
+len(c)
+c[0]
+c.makeelement("some_dummy_tag", {"name": "john"})
+e = c.makeelement("some_dummy_tag", {"name": "john"})
+e
+e.text = "this is some dummy text"
+c.tag
+e.tag
+e.text
+e.attrib
+c[0]
+c[0].append(e)
+c[0][0]
+c[0][0].text
+c[0][0].text = "Babu, Chandrashekar"
+c[0][0].text
+xml
+xml.write("new_test_book.xml")
+c[:3]
+c.find("./book/author")
+c.findall("./book/author")
+c.findall("./book/price")
+[ p.text for p in c.findall("./book/price") ]
+[ float(p.text) for p in c.findall("./book/price") ]
+sum([ float(p.text) for p in c.findall("./book/price") ])
+c.find("./book/price")
+c.findall("./book/price")
+c.iterfind("./book/price")
+sum([ float(p.text) for p in c.iterfind("./book/price") ])
+c.findall("./book[author='Corets, Eva']")
+[ b.find("./title").text for b in c.iterfind("./book[author='Corets, Eva']") ]
+[ b.find("./title").text for b in c.iterfind("./book[author='Corets, Eva']") ]
+import xml.etree.ElementTree as et
+xml = et.parse("books.xml")
+xml
+c = xml.getroot()
+c
+[ b.find("./title").text for b in c.iterfind("./book[author='Corets, Eva']") ]
+[ b.find("./title").text for b in c.iterfind("./book[price <'10']") ]
+[ b.find("./title").text for b in c.iterfind("./book[price='10']") ]
+[ b.find("./title").text for b in c.iterfind("./book[price='49.95']") ]
+c.findall("./book/price")
+[ b.find("./title").text for b in c.iterfind("./book") if float(b.find("./price").text) < 10.0 ]
+[ b.find("./title").text for b in c.iterfind("./book") if float(b.find("./price").text) > 10.0 ]
+import lxml.etree as et
+et
+xml
+xml1 = et.parse("books.xml")
+xml1
+c1 = xml1.getroot()
+c1
+c1[0]
+c1[0].tag
+c1[0].text
+c1[0].attrib
+[ b.find("./title").text for b in c1.iterfind("./book") if float(b.find("./price").text) > 10.0 ]
+c1.xpath("./book/author")
+c1.xpath("./book/author/text()")
+[ a.text for a in c.iterfind("./book/author") ]
+[ a.text for a in c.iterfind("./book/author") ]
+c1.xpath("./book/author/text()")
+[ b.find("./title").text for b in c1.iterfind("./book") if float(b.find("./price").text) > 10.0 ]
+c1.xpath("./book[price] > 10.0")
+c1.xpath("./book[price]>10.0/title")
+c1.xpath("./book[price]>'10.0'/title")
+c1.xpath("./book[price>'10.0']/title")
+c1.xpath("./book[price>'10.0']/title/text()")
+data
+doc = et.fromstring(data)
+doc = et.fromstring(data)
+et
+import lxml.html as et
+doc = et.fromstring(data)
+doc
+doc[0]
+doc[0][0]
+doc[0][0].attrib
+doc[0][0].text
+doc[0][0][0]
+doc.xpath(".//a")
+doc.xpath(".//a[@href]")
+doc.xpath(".//a[@href]/@href")
+doc.xpath(".//a[@href != '#content']/@href")
+doc.xpath(".//a[@href != '#content']/@href")
+from robobrowser import RoboBrowser
+br = RoboBrowser()
+br = RoboBrowser(parser="lxml")
+from bs4 import BeautifulSoup
+data
+soup = BeautifulSoup(data)
+soup
+type(soup)
+soup.html
+soup.html.body
+soup.html.body.dib
+soup.html.body.div
+soup.html.body.div.span
+soup.html.body.div.span.i
+soup.html.body
+soup.html.body.div
+soup.html.body.div.next
+soup.html.body.div.next.next
+soup.html.body.div.next.next.next
+soup.html.head
+soup.html.head.meta
+soup.html.head.meta.next
+soup.html.head.meta.next.next
+soup.html.head.meta.next.next.next
+soup.html.head.meta.next.next.next.next
+soup.select("a")
+for e in soup.select("a"):
+    print(e.select("@href"))
+    
+for e in soup.select("a"):
+    print(e.select("::href"))
+    
+for e in soup.select("a"):
+    print(e.select("a::href"))
+    
+for e in soup.select("a"):
+    print(e.select("a ::attrib(href)"))
+    
+for e in soup.select("a"):
+    print(e.select("::attrib(href)"))
+    
+    
+for e in soup.select("a"):
+    print(e.tag)
+    
+e
+e.attrs
+e.attrs["href"]
+for e in soup.select("a"):
+    print(e.attrs["href"])
+    
+for e in soup.select("a"):
+    print(e.attrs.get("href"))
+    
+c
+br = RoboBrowser(parser="lxml")
+br.open("http://pypi.org/")
+br.response.ok
+br.response.status_code
+br.response.headers
+br.response.text
+br
+br.get_links()
+br.get_forms()
+br.get_form()
+f = br.get_form()
+f
+f.keys()
+list(f.keys())
+f["q"]
+f["q"] = "rest"
+f
+br.submit_form(f)
+br.url
+br.response.ok
+br.select(".package-snippet__title")
+br.select(".package-snippet__title")[:5]
+[ e.text for e in br.select(".package-snippet__title")[:5] ]
+[ e.text for e in br.select(".package-snippet__name")[:5] ]
+br.url
+br.get_links()
+br.get_links()[0]
+br.get_links()[1]
+br.get_links()[2]
+br.get_links()[3]
+br.get_links()[4]
+br.get_links()[5]
+br.follow_link(br.get_links()[5])
+br.url
+br.back()
+br.url
+br.back()
+br.url
+br.forward()
+br.url
+LOGIN_URL = "http://testing.chandrashekar.info/wp-login.php"
+from robobrowser import RoboBrowser
+br = RoboBrowser(parser="lxml")
+br.open(LOGIN_URL)
+br.url
+br.get_forms()
+br.get_form()
+br.select("form")
+br.get_form()
+login_form = br.get_form()
+login_form
+login_form["log"] = "pythonista"
+login_form["pwd"] = "w3lc0me"
+login_form
+br.submit_form(login_form)
+br.url
+br.get_link
+br.get_links()
+br.get_links("logout")
+import re
+re._pattern_type = re.Pattern
+br.get_links("logout")
+br.get_links("sign out")
+br.get_link("Log Out")
+br.follow_link(br.get_link("Log Out"))
+br.url
+login_form
+login_form["pwd"] = "testing123"
+br.submit_form(login_form)
+br.response.ok
+br.url
+login_form["pwd"] = "w3lc0me"
+br.submit_form(login_form)
+br.url
+br.get_link("Add New")
+br.follow_link(br.get_link("Add New"))
+br.url
+br.get_forms()
+len(br.get_forms())
+br.get_forms()[0]
+br.get_forms()[1]
+br.get_forms()[1]
+br.get_form(action="editpost")
+post_form = br.get_forms()[1]
+post_form["post_title"] = "A new post via Robobrowser - Chandrashekar"
+post_form["content"] = "lkdsjfkljdskjds lkjlkdsjflkdsjfksdjf kjdskljdslkf"
+br.submit_form(post_form)
+post_form
+post_form.submit_fields
+post_form.submit_fields["publish"]
+post_form.submit_fields["publish"] = "Publish"
+br.submit_form(post_form, post_form.submit_fields["publish"])
+br.url
+br.get_link("Home")
+br.follow_link(br.get_link("Home"))
+br.get_link("A new post via Robobrowser - Chandrashekar")
+br.get_link("A new post via Robobrowser")
+br.get_link("A new post via Robobrowser")
+br.get("https://finance.yahoo.com/quote/CSCO?p=CSCO")
+br.open("https://finance.yahoo.com/quote/CSCO?p=CSCO")
+br.url
+br.select("html#atomic.firefox.desktop.JsEnabled.themedark.layoutEnhance(TwoColumnLayout).CollapsibleUh.onDemandFocusSupport body div#app div div div#render-target-default.render-target-active.render-target-default.Pos(a).W(100%).viewer-open_Op(0.999) div.Bgc($bg-body).Mih(100%).W(100%).Bgc($layoutBgColor)!.finance.US div#YDC-Lead.YDC-Lead div#YDC-Lead-Stack.YDC-Lead-Stack div#YDC-Lead-Stack-Composite div div#mrt-node-Lead-3-QuoteHeader div#Lead-3-QuoteHeader-Proxy div#quote-header-info.quote-header-section.Cf.Pos(r).Mb(5px).Maw($maxModuleWidth).Miw($minGridWidth).smartphone_Miw(ini).Miw(ini)!--tab768.Miw(ini)!--tab1024.Mstart(a).Mend(a).Px(20px).smartphone_Pb(0px).smartphone_Mb(0px) div.My(6px).Pos(r).smartphone_Mt(6px) div.D(ib).Va(m).Maw(65%).Maw(60%)--tab768.Ov(h) div.D(ib).Mend(20px) span.Trsdu(0.3s).Fw(b).Fz(36px).Mb(-4px).D(ib)")
+br.select("span.Trsdu(0.3s).Fw(b).Fz(36px).Mb(-4px).D(ib)")
+br.select("span.Trsdu\(0\.3s\).Fw\(b\).Fz\(36px\).Mb\(-4px\).D\(ib\)")
+br.select("span")
+from requests_html import HTMLSession
+s = HTMLSession()
+r = s.get("https://finance.yahoo.com/quote/CSCO?p=CSCO")
+r.ok
+r.status_code
+r.links
+r.html
+r.html.links
+r.html.forms
+r.html.links
+r.html.xpath
+r.html.xpath("/html/body/div[1]/div/div/div[1]/div/div[2]/div/div/div[4]/div/div/div/div[3]/div[1]/div/span[1]")
+r.html.xpath("/html/body/div[1]/div/div/div[1]/div/div[2]/div/div/div[4]/div/div/div/div[3]/div[1]/div/span[1]/text()")
+r.html.render()
+from selenium.webdriver import Firefox as driver
+driver
+br = driver()
+br.get("http://www.google.com/")
+br.find_element_by_name("q")
+el = br.find_element_by_name("q")
+el
+el.send_keys("python\n")
+el.send_keys("\r")
+el.clear()
+el.send_keys("selenium\r")
+el.clear()
+el.send_keys("selenium\r\n")
+el.find_element_by_link_text("Google Search")
+br.find_element_by_name("btnK")
+br.find_element_by_name("btnK").click()
+br.find_element_by_name("btnK").submit()
+br.find_element_by_partial_link_text("Selenium - Web Browser")
+get_ipython().run_line_magic('logstate', '')
+get_ipython().run_line_magic('cat', 'ipython_log.log')
+get_ipython().run_line_magic('cp', '../2019_Sep30/ipython_log.log .')
+get_ipython().run_line_magic('quickref', '')
+get_ipython().run_line_magic('pwd', '')
+get_ipython().run_line_magic('cd', '..')
+get_ipython().run_line_magic('ls', 'ipython_log.log')
+get_ipython().run_line_magic('ls', 'ipython_log.log -l')
+get_ipython().run_line_magic('cat', 'ipython_log.log')
+get_ipython().run_line_magic('cp', 'ipython_log.log ipython_log2.log')
+get_ipython().run_line_magic('cp', '../2019_Sep30/ipython_log.log .')
+get_ipython().run_line_magic('cat', 'ipython_log.log')
+
+from pathlib import Path
+Path(".")
+get_ipython().run_line_magic('psearch', 'Path(".").*')
+p = Path(".")
+get_ipython().run_line_magic('psearch', 'p.*')
+get_ipython().run_line_magic('pinfo', 'p.iterdir')
+get_ipython().run_line_magic('pinfo', 'p.rglob')
+get_ipython().run_line_magic('pinfo', 'p.glob')
+p.rglob("/usr/local/*")
+list(p.rglob("/usr/local/*"))
+p.rglob("*")
+list(p.rglob("*"))
+p.is_file()
+get_ipython().run_line_magic('ls', '')
+get_ipython().run_line_magic('cat', 'pexpect_send_replies.py')
+get_ipython().run_line_magic('cat', 'random_greeter.py')
+get_ipython().run_line_magic('ls', '')
+get_ipython().run_line_magic('load', 'http://tinyurl.com/dsize-py')
+# %load http://tinyurl.com/dsize-py
+"""
+Preliminary exercise:
+=====================
+Calculate and print the total size of all files
+in a directory structure, by recursively traversing
+and summing up the sizes of each file in the directory.
+
+Example usage:
+    $ python3 dirsize.py .
+    556289 bytes
+
+    $ python3 dirsize.py /usr/share
+    581829804 bytes
+
+"""
+
+def calc_size(start_path):
+    pass # TODO: Implement the logic here! 
+         # Hint: lookup os.path and os.walk functions
+
+if __name__ == '__main__':
+    from argparse import ArgumentParser
+
+    parser = ArgumentParser(description=__doc__)
+    parser.add_argument("path",
+                      help="Path to source directory")
+
+    args = parser.parse_args()
+
+    print(calc_size(args.path), "bytes")
+import os
+os.walk(".")
+g = os.walk(".")
+next(g)
+g = os.walk("/usr/local")
+next(g)
+next(g)
+next(g)
+next(g)
+for path, subdirs, files in os.walk("."):
+    print(path)
+    
+for path, subdirs, files in os.walk("."):
+    for f in files:
+        print(f)
+    
+for path, subdirs, files in os.walk("."):
+    for f in files:
+        print(os.path.join(path, f))
+    
+get_ipython().run_line_magic('pinfo', 'os.sys.getsizeof')
+for path, subdirs, files in os.walk("."):
+    for f in files:
+        print(os.path.getsize(os.path.join(path, f)))
+        
+    
+from pathlib import Path
+p = Path(".")
+p
+p.absolute()
+p.as_posix()
+p.cwd()
+p.is_dir()
+p.is_file()
+Path("./dirsize.py")
+Path("./dirsize.py").stat()
+Path("./dirsize.py").stat().st_size
+Path(".").glob("*")
+list(Path(".").glob("*"))
+list(Path(".").glob("s*"))
+list(Path(".").glob("*.sh"))
+list(Path(".").glob("**/*"))
+list(Path(".").rglob("*")
+)
+list(Path(".").rglob("*.py"))
+list(Path(".").rglob("*.txt"))
+[ p.stat().st_size for p in Path(".").rglob("*") ]
+[ p.stat().st_size for p in Path(".").rglob("*") if p.is_file() ]
+sum([ p.stat().st_size for p in Path(".").rglob("*") if p.is_file() ])
+sum(( p.stat().st_size for p in Path(".").rglob("*") if p.is_file() ))
+sum(( p.stat().st_size for p in Path(".").rglob("*") if p.is_file() ))
+sum(( p.stat().st_size for p in Path(".").rglob("*") if p.is_file() ))
+sum(( p.stat().st_size for p in Path(".").rglob("*") if p.is_file() ))
+sum(( p.stat().st_size for p in Path(".").rglob("*") if p.is_file() ))
+sum(( p.stat().st_size for p in Path(".").rglob("/usr/local/lib") if p.is_file() ))
+sum(( p.stat().st_size for p in Path("/usr/local/lib").rglob("*") if p.is_file() ))
+sum(( p.stat().st_size for p in Path("/usr/local/lib").rglob("*") if p.is_file() ))
+sum(( p.stat().st_size for p in Path("/usr/local/lib").rglob("*") if p.is_file() ))
+sum(( p.stat().st_size for p in Path("/usr/local/lib").rglob("*") if p.is_file() ))
+import os
+os.system("ls")
+os.system("ls > ls.out")
+get_ipython().run_line_magic('cat', 'ls.out')
+os.system("ls | wc -l")
+ret = os.sytem("ls /sdfdsf")
+ret = os.system("ls /sdfdsf")
+ret
+import subprocess
+subprocess.Popen
+get_ipython().run_line_magic('pinfo', 'subprocess.Popen')
+from subprocess import Popen
+p = Popen("uname")
+p
+p.args
+p.errors
+p.pid
+p.wait()
+p = Popen("./slow_script.sh")
+Popen("./slow_script.sh").wait()
+p = Popen("./slow_script.sh")
+p.kill()
+import signal
+p = Popen("./slow_script.sh")
+p.send_signal(signal.SIGSTOP)
+p = Popen("./slow_script.sh")
+p.send_signal(signal.SIGSTOP)
+p.send_signal(signal.SIGCONT)
+p = Popen("ls")
+p = Popen("ls /usr/local")
+p = Popen("ls /usr/local")
+p = Popen("ls /usr/local", shell=True)
+p = Popen("ls /usr/local", shell=True).wait()
+p = Popen(["ls", "/usr/local"])
+c = "ls      /usr/local\t\t\t\t\t     \n\n\n\n/opt"
+print(c)
+c.split()
+c
+c.split(" ")
+c = """mkdir "Program Files" 'Documents and Settings'"""
+print(c)
+c.split()
+import shlex
+c
+shlex.split(c)
+a = "Hello world"
+type(a)
+b = b"Hello world"
+type(b)
+b
+print(b)
+a
+a = "\u0905 \u0906 \u0907"
+print(a)
+a = "\u0905\u0906\u0907"
+a
+a
+b = bytes(a, "utf8")
+b
+len(b)
+a
+a[0]
+b[0]
+with open("ls.out", "w") as outfile:
+    Popen(["ls", "/usr"], stdout=outfile).wait()
+    
+with open("ls.out", "wb") as outfile:
+    Popen(["ls", "/usr"], stdout=outfile).wait()
+    
+with open("/bin/cat", "r") as infile:
+    print(infile.read(100))
+    
+with open("/bin/cat", "rb") as infile:
+    print(infile.read(100))
+    
+infile = open("ls.out", "r")
+infile
+infile.readline()
+l = infile.readline()
+type(l)
+l
+infile.close()
+infile = open("ls.out", "rb")
+infile
+infile.readline()
+infile.close()
+with open("ls.out", "wb") as outfile:
+    Popen("ls", stdout=outfile)
+    
+with open("ls.out", "wb") as outfile:
+    Popen(["ls", "/usr/local", "sdfdsf"]).wait()
+    
+    
+with open("ls.out", "wb") as outfile:
+    Popen(["ls", "/usr/local", "sdfdsf"], stdout=outfile).wait()
+    
+with open("ls.out", "wb") as outfile, open("ls.err", "wb") as errfile:
+    Popen(["ls", "/usr/local", "sdfdsf"], stdout=outfile, stderr=errfile).wait()
+    
+get_ipython().run_line_magic('cat', 'ls.out')
+get_ipython().run_line_magic('cat', 'ls.err')
+from subprocess import STDOUT
+STDOUT
+with open("ls.out", "wb") as outfile:
+    Popen(["ls", "/usr/local", "sdfdsf"], stdout=outfile, stderr=STDOUT).wait()
+    
+    
+get_ipython().run_line_magic('cat', 'ls.out')
+with open("/dev/null", "wb") as outfile:
+    Popen("ls", stdout=outfile stderr=outfile).wait()
+with open("/dev/null", "wb") as outfile:
+    Popen("ls", stdout=outfile, stderr=outfile).wait()
+    
+import subprocess
+Popen("ls", stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL).wait()
+subprocess.DEVNULL
+with open("fruits.txt", "rb") as infile:
+    Popen("sort", stdin=infile).wait()
+    
+with open("fruits.txt", "rb") as infile:
+    Popen("sort", stdin=infile).wait()
+    
+get_ipython().run_line_magic('cat', 'fruits.txt')
+with open("fruits.txt", "rb") as infile:
+    list(sorted(infile))
+    
+    
+with open("fruits.txt", "rb") as infile:
+    print(list(sorted(infile)))
+    
+    
+    
+with open("fruits.txt", "r") as infile:
+    print("\n".join((sorted(infile))))
+    
+with open("fruits.txt", "r") as infile:
+    print("".join((sorted(infile))))
+    
+from subprocess import PIPE
+PIPE
+p = Popen(["ls", "-l"], stdout=PIPE)
+p
+p.stdout.readline()
+p.stdout.readline()
+p.stdout.readline()
+p.stdout.readline()
+p.stdout.readline()
+p.stdout.readline()
+p.stdout.readline()
+p.stdout.readline()
+p.stdout.readline()
+p.stdout.read()
+p.stdout
+p.wait()
+p = Popen(["sudo", "find" "/"], stdout=PIPE)
+p = Popen(["sudo", "find", "/"], stdout=PIPE)
+p.stdout.readline()
+p.stdout.readline()
+p.stdout.readline()
+p.stdout.readline()
+p.stdout.readline()
+p.stdout.readline()
+p.stdout.readline()
+p.stdout.readline()
+for line in p.stdout:
+    print(line)
+    
+p = Popen(["sudo", "find" "/"], stdout=PIPE)
+p = Popen(["sudo", "find", "/"], stdout=PIPE)
+p.stdout.readline()
+p.stdout.readline()
+p.stdout.readline()
+str(p.stdout.readline(), "utf8")
+p.kill()
+p.close()
+p.stdout.close()
+p.wait()
+p = Popen(["sudo", "find", "/"], stdout=PIPE, universal_new_lines=True)
+p = Popen(["sudo", "find", "/"], stdout=PIPE, universal_newlines=True)
+get_ipython().run_line_magic('pinfo', 'Popen')
+p.stdout.readline()
+p.stdout.readline()
+p.stdout.readline()
+p.stdout.readline()
+p.stdout.readline()
+p.stdout.readline()
+p.stdout.readline()
+p.stdout.close()
+p.wait()
+p = Popen(["sudo", "find", "/"], stdout=PIPE, encoding="utf8")
+p.stdout.readline()
+p.stdout.readline()
+p.stdout.readline()
+p.stdout.readline()
+p.stdout.close()
+p.wait()
+with Popen("ifconfig", stdout=PIPE, encoding="utf8") as p:
+    for line in p.stdout:
+        print(line)
+        
+with Popen("ifconfig", stdout=PIPE, encoding="utf8") as p:
+    for line in p.stdout:
+        if "inet " in line:
+            print(line)
+        
+with Popen("ifconfig", stdout=PIPE, encoding="utf8") as p:
+    for line in p.stdout:
+        if "inet " in line:
+            print(line.split()[1])
+        
+import re
+re.search("\d+", "sdlkfjlkdsjfds 234324 sdflkjdsf 345435 dffd g435435")
+re.finditer("\d+", "sdfdsdsf 234324 dsfdsf 3564565 dfgfdg 456456")
+matches = re.finditer("\d+", "sdfdsdsf 234324 dsfdsf 3564565 dfgfdg 456456")
+for m in matches:
+    print(m)
+    
+m
+m.group()
+m.string
+m.span()
+m[38:44]
+m.string[38:44]
+m.start()
+m.end()
+m.pos
+data = [
+"lksdjlkjdslk jdslk jdsf324324324 ldsjf lkdsjf 32432432lk sdlkfjslkfj324324",
+"sdlkf jlks jlkfds 2432432 sdlkf jdslkjf 32432432 sdfk jdsfl jlk 234324",
+"345435 dlkfjlkgjfd kjg 34543543 lkdjf jgkfdl 435435435",
+"lksjdflkdsjklfdsj 345 43543 lfdjg fdgjklj 5k6456456 456456 dfgfdg 456456"
+]
+data
+for line in data:
+    m = re.search("\d+", line)
+    print(m)
+    
+pattern = re.compile("\d+")
+pattern
+for line in data:
+    m = pattern.search(line)
+    print(m)
+    
+line
+p.finditer(line)
+pattern.finditer(line)
+list(pattern.finditer(line))
+pattern.findall(line)
+[ m.group() for m in pattern.finditer(line) ]
+re.search("^this", "this is a test string")
+re.search("^this", "is this is a test string")
+re.match("this", "is this is a test string")
+re.match("this", "this is a test string")
+re.search("is", "this")
+re.search(" is ", "this")
+re.search(" is ", "this is a test")
+re.search(" is ", "this is")
+re.search("\bis\b", "this is")
+re.search(r"\bis\b", "this is")
+install_path = "c:\temp\network\remote\backup\assorted\temp"
+print(install_path)
+install_path = r"c:\temp\network\remote\backup\assorted\temp"
+print(install_path)
+install_path
+ipv4_regex = r"""
+    (\d{1,3})     # Match first octet
+    (\.           # Match a dot character
+    (\d{1,3})     # Match next octet
+    ){3}          # Repeat the previous group .xxx 3 times
+ """
+re.search(ipv4_regex, "dsfdsdsf 10.45.67.89 sdfdsfdsf", re.VERBOSE)
+m = re.search(ipv4_regex, "dsfdsdsf 10.45.67.89 sdfdsfdsf", re.VERBOSE)
+m.group()_
+m.group()
+m.group(1)
+m.group(2)
+m.group(3)
+m.group(4)
+re.groups()
+m.groups()
+re.findall(ipv4_regex, "dsfkjdslkdsf 45.45.55.66 lkdsflkdsfdsf")
+re.findall(ipv4_regex, "dsfkjdslkdsf 45.45.55.66 lkdsflkdsfdsf", re.VERBOSE)
+re.findall(ipv4_regex, "dsfkjdslkdsf 45.45.55.66 lkdsflkdsfdsf 23.44.55.66 11.22.33.44", re.VERBOSE)
+r = re.finditer(ipv4_regex, "dsfkjdslkdsf 45.45.55.66 lkdsflkdsfdsf 23.44.55.66 11.22.33.44", re.VERBOSE)
+r
+for match in r:
+    print(match.group())
+    
+for match in r:
+    print(match.group().split(".")[-1])
+    
+    
+r
+r = re.finditer(ipv4_regex, "dsfkjdslkdsf 45.45.55.66 lkdsflkdsfdsf 23.44.55.66 11.22.33.44", re.VERBOSE)
+for match in r:
+    print(match.group().split(".")[-1])
+    
+    
+re.findall(ipv4_regex, "dsfkjdslkdsf 45.45.55.66 lkdsflkdsfdsf", re.VERBOSE)
+re.findall(ipv4_regex, "dsfkjdslkdsf 45.45.55.66 lkdsflkdsfdsf 23.44.55.66 11.22.33.44", re.VERBOSE)
+r = re.finditer(ipv4_regex, "dsfkjdslkdsf 45.45.55.66 lkdsflkdsfdsf 23.44.55.66 11.22.33.44", re.VERBOSE)
+get_ipython().run_line_magic('pinfo', 'Popen')
+with Popen("./progress_test.sh") as proc:
+    proc.wait()
+    
+with Popen("./progress_test.sh", stdout=PIPE) as proc:
+    for line in proc.stdout:
+        print(line)
+        
+    
+with Popen("./progress_test.sh", stdout=PIPE) as proc:
+    while True:
+        b = proc.stdout.read(1)
+        if not b: 
+            break
+        print(b, end="")
+    
+with Popen("./progress_test.sh", bufsize=0, stdout=PIPE) as proc:
+    while True:
+        b = proc.stdout.read(1)
+        if not b: 
+            break
+        print(b, end="")
+    
+get_ipython().run_line_magic('pinfo', 'Popen')
+os.environ["SHELL"]
+os.environ["PATH"]
+os.environ
+Popen("./show_env.py").wait()
+Popen("./show_env.py", env={"A": "10", "NAME": "testprogram"}).wait()
+a = {"a": 10, "b": 20}
+a
+b = {"c": 30}
+a + b
+c = {}
+c.update(a)
+c.update(b)
+c
+c = dict(**a, **b)
+c
+a
+b
+b["b"] = 40
+a
+b
+c = dict(**a, **b)
+c = {}
+c.update(a)
+c.update(b)
+c
+c = dict(a.items() | b.items())
+c
+c = dict(b.items() | a.items())
+c
+import pexpect
+p = pexpect.spawn("python")
+p
+p.expect(">>>")
+p.sendline("print('Hello world')")
+p.expect(">>>")
+p.before
+p.after
+p.sendline("45 + 56")
+p.expect(">>>")
+p.before
+get_ipython().run_line_magic('pinfo', 'p.expect')
+get_ipython().run_line_magic('pinfo', 'pexpect.spawn')
+get_ipython().run_line_magic('pinfo', 'pexpect.spawn')
+get_ipython().run_line_magic('pinfo', 'pexpect.spawnu')
+get_ipython().run_line_magic('pinfo', 'pexpect.run')
+get_ipython().run_line_magic('pinfo', 'pexpect.utils.stat')
+get_ipython().run_line_magic('pinfo', 'pexpect.run')
+import yal
+import yaml
+with open("sftp_session.yml") as infile:
+    session = yaml.load(infile, Loader=yaml.CLoader)
+    
+session
+session = {
+"sftp -P 12276 user1@dhrona.net":
+    [("password:", "welcome"), ("sftp>", "get /etc/passwd"), ("sftp>", "exit")]}
+session
+with open("sftp_session.yml", "w") as outfile:
+    yaml.dump(session, outfile)
+    
+get_ipython().run_line_magic('cat', 'sftp_session.yml')
+{'sftp -P 12276 user1@dhrona.net': [('password:', 'welcome'),
+('sftp>', ['get /etc/passwd', "get /etc/issue", "exit"])]}
+session = {'sftp -P 12276 user1@dhrona.net': [('password:', 'welcome'),
+('sftp>', ['get /etc/passwd', "get /etc/issue", "exit"])]}
+with open("sftp_session2.yml", "w") as outfile:
+    yaml.dump(session, outfile)
+    
+get_ipython().run_line_magic('cat', 'sftp_session2.yml')
+with open("sftp_session.yml") as infile:
+    sftp_session = yaml.load(infile, Loader=yaml.CLoader)
+    
+sftp_session
+get_ipython().run_line_magic('rm', 'passwd')
+sftp_session
+sftp_session.values()
+list(sftp_session.values())
+list(sftp_session.values())[0]
+transcript = list(sftp_session.values())[0]
+transcript
+pexpect.run("sftp -P 12276 user1@dhrona.net", events=transcript)
+get_ipython().run_line_magic('ls', 'passwd')
+auth_prompt = "authenticity of host.+\)\?"
+passwd_prompt = "password: "
+p = pexpect.spawn("sftp -P 12276 user1@dhrona.net")
+p.expect([auth_prompt, passwd_prompt])
+p.close()
+p = pexpect.spawn("sftp -P 12276 user1@dhrona.net")
+p.expect([passwd_prompt, auth_prompt])
+sftp_session = {
+"sftp -P 12276 user1@dhrona.net":
+ {auth_prompt: "yes",
+  passwd_prompt: "welcome",
+  "sftp>": ["get /etc/passwd", "get /etc/issue", "exit"]}} 
+sftp_session
+transcript = {'authenticity of host.+\\)\\?': 'yes',
+'password: ': 'welcome',
+'sftp>': ['get /etc/passwd', 'get /etc/issue', 'exit']}
+p = pexpect.spawn('sftp -P 12276 user1@dhrona.net')
+transcript.keys()
+transcript.keys()[0]
+prompts = list(transcript.keys())
+p.expect(prompts)
+prompts[0]
+p.sendline(transcript[prompts[0]])
+p.expect(prompts)
+sftp_session = {
+"sftp -P 12276 user1@dhrona.net":
+ {auth_prompt: "yes",
+  passwd_prompt: "welcome",
+  "sftp>": ["get /etc/passwd", "get /etc/issue", "exit"]}} 
+with open("sftp_session_better.yml", "w") as outfile:
+    yaml.dump(sftp_session, outfile)
+    
+get_ipython().run_line_magic('cat', 'sftp_session_better.yml')
+
+get_ipython().run_line_magic('ls', '')
+get_ipython().run_line_magic('quickref', '')
+get_ipython().run_line_magic('logstate', '')
+get_ipython().run_line_magic('ls', '')
+sftp_session
+get_ipython().run_line_magic('pinfo', 'pexpect.spawn')
+get_ipython().run_line_magic('ls', '*log')
+get_ipython().run_line_magic('less', 'ftp_transcript.log')
+get_ipython().run_line_magic('less', 'ftpsession.log')
+p
+p.logfile_read
+p.logfile_read
+get_ipython().run_line_magic('pinfo', 'pexpect.spawn')
+get_ipython().run_line_magic('pinfo', 'p.expect')
+p.before
+get_ipython().run_line_magic('pinfo', 'p.delaybeforesend')
+from ftplib import FTP
+get_ipython().run_line_magic('pinfo', 'FTP')
+ftp = FTP("ftp.chandrashekar.info", "testuser", "w3lc0me")
+ftp
+ftp.cwd("/www/files")
+with open("myxml.zip", "wb") as outfile:
+    ftp.retrbinary("RETR xml.zip", outfile.write)
+    
+get_ipython().run_line_magic('ls', '-l myxml.zip')
+from telnetlib import Telnet
+from telnetlib import Telnet
+tn = Telnet("192.168.56.101", 2023)
+tn
+tn.read_until(b"login: ")
+tn.write(b"pythonista\n")
+tn = Telnet("192.168.56.101", 2023)
+tn.read_until(b"login: ")
+tn.write(b"pythonista\n")
+tn.read_until(b"ssword: ")
+tn.write(b"welcome\n")
+tn.read_until(b"$ ")
+tn.write("uname -a\n")
+tn.write(b"uname -a\n")
+r = tn.read_until(b"$ ")
+r
+tn.write(b"hostname\n")
+tn.expect([b"$", b">>>"]
+)
+tn.read_all()
+get_ipython().run_line_magic('pinfo', 'tn.read_eager')
+tn.read_eager()
+tn.read_eager()
+tn.read_eager()
+get_ipython().run_line_magic('pinfo', 'tn.read_lazy')
+get_ipython().run_line_magic('pinfo', 'tn.read_very_eager')
+get_ipython().run_line_magic('pinfo', 'tn.read_eager')
+tn
+tn.write(b"screen\n")
+tn.read_until(b"$")
+
+import os
+os.path.getsize("a.txt")
+get_ipython().run_line_magic('ls', '-l a.txt')
+os.walk(".")
+g = os.walk(".")
+g
+next(g)
+g = os.walk("/usr")
+next(g)
+next(g)
+next(g)
+for path, folders, files in os.walk("/usr/local"):
+    print(path)
+    
+for path, folders, files in os.walk("/usr/local"):
+    for f in files:
+        print(f)
+        
+    
+for path, folders, files in os.walk("/usr/local"):
+    for f in files:
+        print(os.path.join(path, f))
+        
+    
+for path, folders, files in os.walk("/usr/local"):
+    for f in files:
+        fpath = os.path.join(path, f)
+        size = os.path.getsize(fpath)
+        print(size)
+        
+for path, folders, files in os.walk("."):
+    for f in files:
+        fpath = os.path.join(path, f)
+        size = os.path.getsize(fpath)
+        print(size)
+        
+        
+total = 0
+for path, folders, files in os.walk("."):
+    for f in files:
+        fpath = os.path.join(path, f)
+        total += os.path.getsize(fpath)
+        
+total
+from pathlib import Path
+Path(".")
+p = Path(".")
+p.is_dir()
+p.is_file()
+Path("/etc").exists()
+Path("/etc/passwd").is_file()
+p
+get_ipython().run_line_magic('pinfo', 'p.mkdir')
+from glob import glob
+glob("*.py")
+p
+p.glob("*.py")
+list(p.glob("*.py"))
+list(p.glob("**/*.py"))
+Path("a.txt")
+Path("a.txt").stat
+Path("a.txt").stat()
+Path("a.txt").stat().st_size
+[ p.stat().st_size for p in Path(".").glob("*.py") ]
+sum([ p.stat().st_size for p in Path(".").glob("*.py") ])
+sum([ p.stat().st_size for p in Path(".").glob("**/*") ])
+sum([ p.stat().st_size for p in Path(".").glob("**/*") if p.is_file() ])
+c = '''mkdir "Program Files" 'Documents and Settings' '''
+c
+print(c)
+c.split()
+import shlex
+c.split()
+shlex.split(c)
+from subprocess import Popen
+get_ipython().run_line_magic('pinfo', 'Popen')
+get_ipython().run_line_magic('pinfo', 'subprocess.run')
+import subprocess
+get_ipython().run_line_magic('pinfo', 'subprocess.run')
+import re
+re.compile(r"\b\d+\b")
+pattern = re.compile(r"\b\d+\b")
+pattern.search("lksjflksjdfldskf 324234 sfdsfdsdsf 34543543 dfdsfds 4355")
+pattern.search("lksjflksjdfldskf fdsfsf dsf dsds fds dsfdsf")
+m = pattern.search("lksjflksjdfldskf 324234 sfdsfdsdsf 34543543 dfdsfds 4355")
+m.group()
+m.group(0)
+m.span()
+s = "lksjflksjdfldskf 324234 sfdsfdsdsf 34543543 dfdsfds 4355"
+s
+s[17:23]
+m.start()
+m.end()
+pattern.findall(s)
+p = re.compile(r'(\d{1,3})(\.\d{1,3}){3}')
+p.findall("sdfsdfdsf 10.45.23.56 dsfdsfdsfdsf 78.22.33.44 dsfdsdsf 192.168.1.10 dsfdsf")
+p.search("sdfsdfdsf 10.45.23.56 dsfdsfdsfdsf 78.22.33.44 dsfdsdsf 192.168.1.10 dsfdsf")
+p.finditer("sdfsdfdsf 10.45.23.56 dsfdsfdsfdsf 78.22.33.44 dsfdsdsf 192.168.1.10 dsfdsf")
+s = "sdfsdfdsf 10.45.23.56 dsfdsfdsfdsf 78.22.33.44 dsfdsdsf 192.168.1.10 dsfdsf"
+for m in p.finditer(s): 
+    print(m.group())
+    
+for m in p.finditer(s): 
+    print(m.group())
+    
+p = re.compile(r'(\d{1,3})(\.\d{1,3}){3}')
+for m in p.finditer(s): 
+    print(m.group())
+    
+def testfn():
+    print("Start of testfn...")
+    return
+    print("Back inside testfn...")
+    
+testfn()
+def testfn():
+    print("Start of testfn...")
+    yield 100
+    print("Back inside testfn...")
+    yield "Hello"
+    print("Back again into testfn...")
+    yield
+    print("end of testfn...")
+    
+testfn()
+g = testfn()
+next(g)
+next(g)
+next(g)
+next(g)
+def testfn():
+    print("Start of testfn...")
+    yield 100
+    print("Back inside testfn...")
+    yield "Hello"
+    print("Back again into testfn...")
+    yield
+    print("end of testfn...")
+    
+for v in testfn():
+    print("In for loop: v =", v)
+    
+def gen_nums():
+    from random import sample
+    for v in sample(range(10, 99), 10):
+        yield v
+        
+gen_nums()
+list(gen_nums())
+def square_num(fn):
+    for v in fn():
+        yield v*v
+        
+def gen_nums():
+    from random import sample
+    for v in sample(range(10, 99), 10):
+        print("gen_nums yielding", v)
+        yield v
+        
+for v in square_num(gen_nums):
+    print(v)
+    
+import subprocess
+subprocess.run("ls")
+r = subprocess.run("ls")
+r
+r.args
+r.returncode
+r.check_returncode()
+r.stdout
+r = subprocess.run("ls", check=True)
+r
+r = subprocess.run(["ls", "/sdfsf"])
+r
+r = subprocess.run(["ls", "/sdfsf"], check=True)
+r = subprocess.run(["ls"], check=True)
+Popen("ls -l")
+Popen("ls -l", shell=True)
+Popen("ls -l | wc", shell=True)
+len(Popen(["ls", "-l"], stdout=subprocess.PIPE).stdout.readlines())
+p
+p = Popen("ls")
+p.pid
+p.encoding
+get_ipython().run_line_magic('pinfo', 'p.communicate')
+import pexpect
+get_ipython().run_line_magic('pinfo', 'pexpect.spawn')
+ftp = pexpect.spawn("ftp ftp.chandrashekar.info")
+ftp
+ftp.expect("220")
+ftp.before
+ftp.after
+ftp.sendline("testuser")
+ftp.expect("word: ")
+ftp.before()
+ftp.before
+ftp.after
+ftp.sendline("dsfdsf")
+ftp.before
+ftp.close()
+ftp = pexpect.spawn("ftp ftp.chandrashekar.info", encoding="utf8")
+ftp.expect("Name")
+ftp.sendline("testuser")
+ftp.expect("Password:")
+ftp.before
+ftp.sendline("dsfdsfdsF")
+ftp.before
+ftp.before
+ftp.before
+ftp.close()
+ftp = pexpect.spawn("ftp ftp.chandrashekar.info", encoding="utf8")
+ftp.expect("Name")
+ftp.sendline("testuser")
+ftp.expect("Password: ")
+ftp.sendline("dsfsdfs")
+ftp.expect("ftp>")
+ftp.before
+from telnetlib import Telnet
+get_ipython().run_line_magic('pinfo', 'Telnet')
+tn = Telnet("192.168.56.101", 2023)
+tn
+tn.read_until("login: ")
+tn.read_until(b"login: ")
+tn.write("pythonista\n")
+tn.write(b"pythonista\n")
+tn.read_until(b"Password: ")
+tn.write(b"welcome\n")
+tn.read_until(b"$ ")
+tn.read_until(b"$ ")
+get_ipython().run_line_magic('pinfo', 'tn.expect')
+from ftplib import FTP
+get_ipython().run_line_magic('pinfo', 'FTP')
+ftp = FTP("ftp.chandrashekar.info", "testuser", "w3lc0me")
+ftp.cwd("/www/files")
+ftp.pwd()
+ftp.nlst()
+import paramiko
+client = paramiko.SSHClient()
+client
+client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
+client.load_system_host_keys()
+client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
+client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
+get_ipython().run_line_magic('pinfo', 'client.connect')
+client.connect("192.168.56.101", username="root", password="oiewuriewuriewor")
+client.close()
+client.connect("192.168.56.101", username="root")
+client
+a, b, c = client.exec_command("uptime")
+a
+b
+c
+for line in b: print(line)
+stdin, stdout, stderr = client.exec_command("uptime")
+for line in stdout: print(line)
+stdin, stdout, stderr = client.exec_command("python")
+print("45 + 66", file=stdin, flush=True)
+next(stdout)
+stdin.close()
+next(stdout)
+stdin, stdout, stderr = client.exec_command("python")
+print("45 + 66", file=stdin, flush=True)
+print("exit()", file=stdin, flush=True)
+for line in stdout:
+    print(line)
+    
+stdin, stdout, stderr = client.exec_command("python")
+print("45 + 66", file=stdin, flush=True)
+print("exit()", file=stdin, flush=True)
+stdin.close()
+for line in stdout: print(line)
+stdin, stdout, stderr = client.exec_command("sort")
+get_ipython().run_line_magic('cat', 'fruits.txt')
+fruits = """
+banana
+cherries
+berries
+guava
+oranges
+apple
+pineapple
+"""
+fruits
+stdin.write(fruits)
+stdin.close()
+for line in stdout: print(line)
+stdin, stdout, stderr = client.exec_command("echo $$")
+next(stdout)
+stdin, stdout, stderr = client.exec_command("echo $$")
+next(stdout)
+ch = client.invoke_shell()
+ch
+stdin = ch.makefile("w")
+stdout = ch.makefile("r")
+stderr = ch.makefile_stderr("r")
+stdout.readline()
+stdout.readline()
+stdout.readline()
+stdout.readline()
+stdin.write("cat /etc/passwd\n")
+stdout.readline()
+stdout.readline()
+stdout.readline()
+stdout.readline()
+stdout.readline()
+stdout.readline()
+stdout.readline()
+stdout.readline()
+stdout.readline()
+stdout.readline()
+stdout.readline()
+stdout.readline()
+stdout.readline()
+stdout.readline()
+stdout.readline()
+stdout.readline()
+stdout.readline()
+stdout.readline()
+stdin.write("cat /etc/passwd\n")
+stdin.write("cat /etc/passwd\n")
+for line in stdout: print(line)
+stdin.write("echo $$\n")
+stdout.readline()
+stdout.readline()
+stdin.write("echo $$\n")
+stdout.readline()
+stdout.readline()
+client.get_host_keys()
+k = client.get_host_keys()
+k.items()
+for k, v in k.items(): print(k, v)
+client.get_transport()
+get_ipython().run_line_magic('pinfo', 'client.save_host_keys')
+sftp = paramiko.SFTPClient()
+sftp = paramiko.SFTPClient.from_transport(client.get_transport())
+sftp = client.open_sftp()
+sftp
+sftp.listdir("/")
+sftp.listdir("/root")
+sftp.getcwd()
+sftp.chdir(".")
+sftp.getcwd()
+sftp.chdir("/tmp")
+sftp.getcwd()
+sftp.listdir(".")
+sftp.mkdir("testfolder")
+sftp.listdir(".")
+sftp.chdir("testfolder")
+sftp.put("nov26.zip", "aa.zip")
+sftp.listdir(".")
+sftp.get("/etc/passwd", "p.txt")
+get_ipython().run_line_magic('cat', 'p.txt')
+infile = sftp.open("/etc/passwd")
+for line in infile:
+    print(line)
+    
+outfile = sftp.open("/tmp/testfile.txt", "w")
+for i in range(10):
+    print(f"This is line {i+1}", file=outfile)
+    
+outfile.close()
+t = paramiko.Transport()
+t = paramiko.Transport(("192.168.56.101", 23))
+t
+t
+get_ipython().run_line_magic('pinfo', 't.connect')
+t.connect(username="root", password="welcome")
+t = paramiko.Transport(("192.168.56.101", 22))
+t.connect(username="root", password="welcome")
+t = paramiko.Transport(("192.168.56.101", 22))
+t.connect(username="root", password="welcome")
+t
+get_ipython().run_line_magic('pinfo', 't.open_channel')
+ch = t.open_channel("session")
+ch
+t
+ch2 = t.open_channel("session")
+t
+ch2.close()
+ch2
+ch
+ch.makefile_stdin("w")
+stdin = ch.makefile_stdin("w")
+stdin
+stdout = ch.makefile("r")
+stderr = ch.makefile_stderr("r")
+stdin.write("uptime\n")
+ch.close()
+ch = t.open_channel("session")
+stdin, stdout, stderr = ch.makefile("w"), ch.makefile("r"), ch.makefile_stderr("r")
+stdin.write("uptime\n")
+ch.close()
+ch = t.open_channel("session")
+ch.exec_command("uptime")
+stdin, stdout, stderr = ch.makefile("w"), ch.makefile("r"), ch.makefile_stderr("r")
+stdout.readline()
+from pssh.clients.native import SSHClient
+get_ipython().run_line_magic('pinfo', 'SSH')
+get_ipython().run_line_magic('pinfo', 'SSHClient')
+client = SSHClient("192.168.56.101", user="root", password="welcome")
+client
+get_ipython().run_line_magic('pinfo', 'client.copy_file')
+get_ipython().run_line_magic('pinfo', 'client.scp_send')
+client.scp_send(".", "/root/python_test", recurse=True)
+get_ipython().run_line_magic('pinfo', 'client.execute')
+client.execute("uptime")
+ch = client.execute("uptime")
+ch.read()
+get_ipython().run_line_magic('pinfo', 'ch.read_ex')
+
+import os
+os.listdir(".")
+os.walk(".")
+g = os.walk(".")
+g
+next(g)
+g = os.walk("/usr")
+next(g)
+next(g)
+next(g)
+next(g)
+get_ipython().run_line_magic('pwd', '')
+for path, subdirs, files in os.walk("."):
+    for f in files:
+        print(f)
+        
+for path, subdirs, files in os.walk("."):
+    for f in files:
+        print(os.path.join(path, f))
+        
+        
+get_ipython().run_line_magic('ls', '')
+os.path.getsize("test.txt")
+for path, subdirs, files in os.walk("."):
+    for f in files:
+        print(os.path.getsize(os.path.join(path, f)))
+        
+        
+total = 0
+for path, subdirs, files in os.walk("."):
+    for f in files:
+        total += os.path.getsize(os.path.join(path, f))
+        
+        
+total
+import pathlib
+from pathlib import Path
+Path(".")
+Path("/etc")
+p = Path("/etc")
+p
+p.absolute()
+Path(".").glob("*.py")
+list(Path(".").glob("*.py"))
+list(Path(".").glob("a*"))
+list(Path(".").glob("**/*"))
+Path(".")
+Path(".")
+p = Path(".")
+isinstance(p, pathlib.PosixPath)
+Path(".").glob("**/*")
+Path("./test.txt")
+Path("./test.txt").stat()
+Path("./test.txt").stat().st_size
+Path(".").glob("**/*")
+list(Path(".").glob("**/*"))
+[ p.stat().st_size for p in Path(".").glob("**/*") ]
+sum([ p.stat().st_size for p in Path(".").glob("**/*") ])
+sum(( p.stat().st_size for p in Path(".").glob("**/*") ))
+sum(( p.stat().st_size for p in Path(".").glob("**/*") ))
+sum(( p.stat().st_size for p in Path(".").glob("**/*") ))
+sum(( p.stat().st_size for p in Path(".").glob("**/*") ))
+import os
+os.system("ifconfig")
+os.system("ls | wc -l")
+from subprocess import Popen
+Popen
+a = """mkdir 'Program Files' "Documents and Settings" """
+print(a)
+a.split()
+from shlex import split
+split(a)
+import re
+pattern = re.compile("\d{1,3}(\.\d{1,3}){3}")
+pattern
+pattern.search("10.56.78.22")
+pattern.search("skd jfjdslkf jdslkfjds 10.56.78.22 sldjfldsjfds 55.66.77.88 ")
+pattern.findall("skd jfjdslkf jdslkfjds 10.56.78.22 sldjfldsjfds 55.66.77.88 ")
+pattern.finditer("skd jfjdslkf jdslkfjds 10.56.78.22 sldjfldsjfds 55.66.77.88 ")
+pattern.findall("skd jfjdslkf jdslkfjds 10.56.78.22 sldjfldsjfds 55.66.77.88 ")
+pattern.finditer("skd jfjdslkf jdslkfjds 10.56.78.22 sldjfldsjfds 55.66.77.88 ")
+list(pattern.finditer("skd jfjdslkf jdslkfjds 10.56.78.22 sldjfldsjfds 55.66.77.88 "))
+Popen
+get_ipython().run_line_magic('pinfo', 'Popen')
+get_ipython().run_line_magic('pinfo', 'Popen')
+import yaml    
+with open("ftp_session.yml") as infile:
+    config = yaml.load(infile, Loader=yaml.CLoader)
+    
+config
+import pexpect
+sp = pexpect.spawn("python")
+sp
+sp.buffer
+sp.expect(">>> ")
+sp.buffer
+sp.before
+sp.after
+sp.cwd
+sp.args
+import pexpect
+p = pexpect.spawn("python")
+p
+p.expect(">>>")
+p.before
+p.after
+p.close()
+p = pexpect.spawn("python", encoding="utf8")
+p.expect(">>>")
+p.before
+p.after
+p.sendline("for i in range(5):")
+p.expect([">>>", "..."])
+p.before
+p.sendline("   print('counting', i)")
+p.expect([">>>", "..."])
+p.sendline()
+p.expect([">>>", "..."])
+p.sendline()
+p.expect([">>>", "..."])
+p.before
+p.sendline("\n")
+p.expect([">>>", "..."])
+p.before
+get_ipython().run_line_magic('pinfo', 'p.sendcontrol')
+p.sendcontrol("c")
+p.expect([">>>", "..."])
+p.close()
+outfile = open("pexpect_log.log", "a")
+p = pexpect.spawn("python", logfile=outfile, encoding="utf8")
+p.expect(">>>")
+p.sendline("for i in range(10):")
+p.expect("...")
+p.sendline("    print('Counting',i)")
+p.expect("...")
+p.sendline("")
+p.expect(">>>")
+get_ipython().run_line_magic('cat', 'pexpect_log.log')
+p.before
+get_ipython().run_line_magic('pinfo', 'pexpect.spawn')
+get_ipython().run_line_magic('ls', '')
+get_ipython().run_line_magic('ls', '')
+get_ipython().run_line_magic('pinfo', 'pexpect.spawn')
+p
+get_ipython().run_line_magic('pinfo', 'p.expect')
+from ftplib import FTP
+get_ipython().run_line_magic('pinfo', 'FTP')
+ftp = FTP("ftp.chandrashekar.info", "testuser", "w3lc0me")
+ftp
+ftp.cwd("/www/files")
+outfile = open("myfile.zip", "w")
+ftp.retrbinary("RETR xml.zip", outfile.write)
+outfile.close()
+outfile = open("myfile.zip", "wb")
+ftp.retrbinary("RETR xml.zip", outfile.write)
+ftp = FTP("ftp.chandrashekar.info", "testuser", "w3lc0me")
+ftp.cwd("/www/files")
+ftp.mlsd()
+list(ftp.mlsd())
+from telnetlib import Telnet
+tn = Telnet("192.168.56.101", 2023)
+tn
+tn.login("pythonista", "welcome")
+tn
+tn.read_until("login: ")
+tn.read_until(b"login: ")
+tn.write(b"pythonista\n")
+from telnetlib import Telnet
+tn = Telnet("192.168.56.101", 2023)
+tn.read_until(b"login: ")
+tn.write("pythonista\n")
+tn.write(b"pythonista\n")
+tn.read_until(b"Password: ")
+tn.write(b"welcome\n")
+tn.read_until(b"$ ")
+tn.write("python\n")
+tn.write(b"python\n")
+tn.expect([b"$ ", b">>>"])
+get_ipython().run_line_magic('pinfo', 'tn.expect')
+from paramiko import SSHClient
+client = SSHClient()
+import paramiko
+client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
+client.load_system_host_keys()
+get_ipython().run_line_magic('pinfo', 'client.connect')
+client.connect("192.168.56.101", username="root", password="ldskjfldsjdsf")
+client
+stdin, stdout, stderr = client.exec_command("ls /etc")
+for line in stdout:
+    print(line)
+    
+stdin, stdout, stderr = client.exec_command("echo $$")
+stdout.readline()
+stdin, stdout, stderr = client.exec_command("echo $$")
+stdout.readline()
+client.invoke_shell()
+ch = client.invoke_shell()
+ch
+stdin = ch.makefile_stdin("w")
+stin
+stdin
+stdout = ch.makefile("r")
+stderr = ch.makefile_stderr("r")
+stdin
+stdout
+stderr
+stdin.write("echo $$\n")
+stdout.readline()
+stdout.readline()
+stdout.readline()
+stdout.readline()
+stdout.readline()
+stdin.write("echo $$\n")
+stdout.readline()
+stdout.readline()
+tn = paramiko.Transport(("192.168.56.101", 22))
+tn
+get_ipython().run_line_magic('pinfo', 'tn.connect')
+get_ipython().run_line_magic('pinfo', 'tn.connect')
+tn.connect(username="root", password="welcome")
+tn
+tn
+get_ipython().run_line_magic('pinfo', 'tn.open_channel')
+ch = tn.open_channel("session")
+ch
+ch.exec_command("cat /etc/passwd")
+stdout = ch.makefile("r")
+for line in stdout:
+    print(line)
+    
+ch.in_window_size
+get_ipython().run_line_magic('pinfo', 'ch.setblocking')
+get_ipython().run_line_magic('clear', '')
+client.close()
+tn.close()
+import paramiko
+tn = paramiko.Transport(("192.168.56.101", 22))
+tn.connect(username="root", password="welcome")
+sftp = tn.open_sftp_client()
+sftp
+client = paramiko.SSHClient()
+client.load_system_host_keys()
+client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
+client.connect("192.168.56.101", username="root")
+sftp2 = client.open_sftp()
+sftp2
+sftp.listdir("/")
+os.getcwd()
+sftp.getcwd()
+sftp.chdir(".")
+sftp.getcwd()
+sftp.chdir("/tmp")
+sftp.getcwd()
+sftp.listdir(".")
+sftp.mkdir("testfolder")
+sftp.listdir(".")
+sftp.rmdir("testfolder")
+sftp.get("/etc/passwd", "p.txt")
+get_ipython().run_line_magic('ls', '')
+get_ipython().run_line_magic('cat', 'p.txt')
+get_ipython().run_line_magic('ls', '')
+sftp.put("tqdm_example.py", "/tmp/aa.py")
+sftp.listdir("/tmp")
+sftp.unlink("/tmp/aa.py")
+infile = sftp.open("/etc/passwd")
+infile
+for line in infile:
+    print(line)
+    
+infile.close()
+outfile = sftp.open("/tmp/testprogram.py", "w")
+outfile.write("""#!/usr/bin/env python
+print("Hello world")
+print("This script was created dynamically...")
+""")
+sftp.listdir("/tmp")
+sftp.chmod("/tmp/testprogram.py", 0666)
+sftp.chmod("/tmp/testprogram.py", 0o666)
+sftp.chmod("/tmp/testprogram.py", 0o775)
+client
+client.exec_command("/tmp/testprogram.py")

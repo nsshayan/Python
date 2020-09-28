@@ -1,0 +1,393 @@
+
+import os
+os.listdir(".")
+os.listdir("/")
+import os.path
+get_ipython().run_line_magic('ls', '')
+os.path.getsize("test.txt")
+os.path.getmtime("test.txt")
+import time
+time.ctime(os.path.getmtime("test.txt"))
+time.localtime(os.path.getmtime("test.txt"))
+time.localtime(os.path.getmtime("test.txt")).tm_year
+time.localtime(os.path.getmtime("test.txt")).tm_mon
+time.localtime(os.path.getmtime("test.txt")).tm_day
+time.localtime(os.path.getmtime("test.txt")).tm_mday
+get_ipython().run_line_magic('ls', '')
+os.listdir(".")
+for f in os.listdir("."):
+    os.path.getsize(f)
+    
+for f in os.listdir("."):
+    print(os.path.getsize(f))
+    
+    
+os.walk(".")
+g = os.walk(".")
+g
+next(g)
+get_ipython().run_line_magic('cd', '/usr/local')
+get_ipython().run_line_magic('ls', '')
+get_ipython().run_line_magic('cd', 'etc')
+get_ipython().run_line_magic('ls', '')
+g = os.walk(".")
+next(g)
+g = os.walk(".")
+r = next(g)
+r
+r[0]
+r[1]
+r[2]
+r = next(g)
+r[0]
+r[1]
+r[2]
+r = next(g)
+r[0]
+for p, sd, files in os.walk("."):
+    print(p)
+    
+for p, sd, files in os.walk("."):
+    for f in files:
+        print(f)
+        
+    
+d = "/usr/local"
+f = "a.txt"
+d + "/" + f
+os.path.join(d, f)
+for p, sd, files in os.walk("."):
+    for f in files:
+        print(os.path.join(d, f))
+        
+    
+d
+for p, sd, files in os.walk("."):
+    for f in files:
+        print(os.path.join(p, f))
+        
+    
+for p, sd, files in os.walk("."):
+    for f in files:
+        file_path = os.path.join(p, f)
+        print(os.path.getsize(file_path))
+        
+    
+total = 0
+for p, sd, files in os.walk("."):
+    for f in files:
+        file_path = os.path.join(p, f)
+        total += os.path.getsize(file_path)
+        
+    
+total
+from pathlib import Path
+Path(".")
+get_ipython().run_line_magic('pwd', '')
+p = Path(".")
+p.absolute()
+p.absolute().name
+p.absolute().parent
+p.glob("*.py")
+list(p.glob("*.py"))
+list(p.glob("*.conf"))
+list(p.glob("*"))
+list(p.glob("**/*"))
+p
+p.stat
+p.stat()
+p.stat().st_size
+Path(".").glob("**/*")
+list(Path(".").glob("**/*"))
+[ p.stat().st_size for p in Path(".").glob("**/*") ]
+sum([ p.stat().st_size for p in Path(".").glob("**/*") ])
+import subprocess
+subprocess.Popen
+command = "ls -l /usr /lib"
+command
+command.split()
+c = 'mkdir "Program Files" "Documents and Settings"'
+c
+c.split()
+import shlex
+shlex.split(c)
+shlex.quote("hello world")
+shlex.quote("hello & world")
+shlex.quote("hello * world")
+get_ipython().run_line_magic('pinfo', 'shlex.quote')
+shlex.quote("this is a test string")
+a = "    \t\t\n\r\n   \t hello    \t\n\r world   \t\t\t\n\n"
+a
+a
+print(a)
+a
+a
+a.lstrip()
+a.lstrip(" ")
+a.rstrip()
+a.strip()
+a.split()
+a
+a.split()
+a.split(" ")
+rec = "john,,delhi"
+rec.split(",")
+a
+a.upper()
+a.lower()
+a.capitalize()
+a.lstrip().capitalize()
+a.title()
+line = "      inet 10.103.78.55 netmask 0xfffffe00 broadcast 10.103.79.255"
+line
+line.lstrip()
+"inet " in line
+line
+line.split()
+line.split()[1]
+install_path = "c:\network\temp\backup\remote\assorted\newfolder"
+print(install_path)
+install_path = "c:\\network\\temp\\backup\\remote\\assorted\\newfolder"
+print(install_path)
+install_path = r"c:\network\temp\backup\remote\assorted\newfolder"
+print(install_path)
+install_path
+a = "sdfsdf 334 ddfggdfg 6546456 fghghgfhf 56756765 ffgghgfh 3432432"
+a
+import re
+regex = "\d+"
+re.compile(regex)
+pattern = re.compile(regex)
+pattern.search(a)
+m = pattern.search(a)
+m.start()
+m.end()
+m.span()
+m.group()
+pattern.findall(a)
+pattern.finditer(a)
+r = pattern.finditer(a)
+r
+next(r)
+next(r)
+next(r)
+next(r)
+next(r)
+get_ipython().run_line_magic('cat', 'test.txt')
+get_ipython().run_line_magic('ls', '')
+get_ipython().run_line_magic('cd', '')
+get_ipython().run_line_magic('cd', 'Training/AdvancedPython/Samples/2019_Apr01')
+get_ipython().run_line_magic('ls', '')
+get_ipython().run_line_magic('cat', 'test.txt')
+get_ipython().run_line_magic('cat', 'test.txt')
+with open("test.txt") as infile:
+    for line in infile:
+        print(line)
+        
+with open("test.txt") as infile:
+    for n, line in enumerate(infile, 1):
+        print(n, line)
+        
+from run_and_extract import run_command
+run_command("cat /var/log/system.log", {"interface": r"\ben\d\b"})
+for n, k, m in run_command("cat /var/log/system.log", {"interface": r"\ben\d\b"}):
+    print(n, m.string)
+    
+for n, k, m in run_command("cat /var/log/system.log", {"interface": r"dhcp"}):
+    print(n, m.string)
+    
+for n, k, m in run_command("cat /var/log/system.log", {"interface": r"error"}):
+    print(n, m.string)
+    
+def foo():
+    return 100
+    
+foo()
+def foo():
+    yield 100
+    
+foo()
+next(foo)
+g = foo()
+f
+g
+next(g)
+next(g)
+def foo():
+    print("In foo...")
+    yield 100
+    print("Back in foo...")
+    yield "Hello"
+    print("Back again in foo...")
+    yield 200
+    print("End of foo...")
+    
+foo()
+g = foo()
+next(g)
+next(g)
+next(g)
+next(g)
+import pexpect
+get_ipython().run_line_magic('pinfo', 'pexpect.spawn')
+from pexpect import spawn
+get_ipython().run_line_magic('pinfo', 'spawn')
+import abc
+abc.ABC
+dir(abc)
+import collections.abc
+dir(collections.abc)
+from collections.abc import Sequence
+a = "sdfsdf"
+b = [10, 20, 30]
+c = (33, 44, 55)
+isinstance(a, Sequence)
+dir(collections.abc)
+from pexpect import spawn
+ftp = spawn("ftp ftp.chandrashekar.info")
+ftp.expect("sdfsdf", timeout=5)
+ftp.close()
+get_ipython().run_line_magic('pinfo', 'spawn')
+ftp = spawn("ftp ftp.chandrashekar.info")
+ftp.expect("Name")
+ftp.before
+ftp.after
+ftp.buffer
+ftp.sendline("testuser")
+ftp.expect("")
+ftp.buffer
+ftp.before
+ftp.after
+ftp.expect("Password: ")
+ftp.before
+ftp.after
+ftp.sendline("sdfdsdsf")
+ftp.expect(["Error", "Auth failure", "ftp> "])
+from ftplib import FTP
+ftp = FTP("ftp.chandrashekar.info", "testuser", "w3lc0me")
+ftp
+ftp.getcwd()
+ftp.cwd()
+ftp.cwd("cd /www/files")
+ftp.cwd("/www")
+ftp.cwd("cd /www/files")
+ftp.cwd("/www/files")
+ftp.dir(".")
+ftp.dir(".")
+ftp.listdir(".")
+ftp.mlsd("xml.zip")
+list(ftp.mlsd("xml.zip"))
+list(ftp.mlsd("."))
+ftp.nlst(".")
+ftp.mlsd(".")
+ftp.mlsd(".")
+list(ftp.mlsd("."))
+[ x[1]["size"] for x in ftp.mlsd(".") ]
+[ x[1] for x in ftp.mlsd(".") ]
+[ x[1]['size'] for x in ftp.mlsd(".") ]
+[ x[1]['size'] for x in ftp.mlsd(".") if x[0] = "xml.zip" ]
+[ x[1]['size'] for x in ftp.mlsd(".") if x[0] == "xml.zip" ]
+from tqdm import tqdm
+progress = tqdm(total=10)
+progress.update(1)
+progress.update(1)
+progress.update(1)
+progress.update(1)
+progress.update(1)
+progress.update(1)
+progress.update(1)
+progress.update(1)
+progress.update(1)
+from telnetlib import Telnet
+Telnet
+import telnetlib
+get_ipython().run_line_magic('pinfo', 'Telnet')
+tn = Telnet("192.168.56.101")
+tn
+get_ipython().run_line_magic('pinfo', 'tn.open')
+tn.read_until("login: ")
+tn.read_until(b"login: ")
+tn.write(b"pythonista\n")
+tn = Telnet("192.168.56.101")
+tn.expect(["login: "])
+tn.expect([b"login: "])
+from paramiko import SSHClient
+client = SSHClient()
+client
+from paramiko import WarningPolicy
+client.set_missing_host_key_policy(WarningPolicy)
+get_ipython().run_line_magic('pinfo', 'client.connect')
+client.connect("192.168.56.101", username="pythonista", password="welcome123")
+client.connect("192.168.56.101", username="root", password="woeiuriowuerioweurio")
+client
+out = client.exec_command("uname -a")
+out
+out[1]
+out[1].read()
+stdin, stdout, stderr = client.exec_command("cat /etc/passwd")
+stderr.read()
+for line in stdout: 
+    print(line)
+    
+stdin, stdout, stderr = client.exec_command("passwd ritchie")
+stdin.write("welcome\n")
+stdin.write("welcome\n")
+stdout.read()
+stderr.read()
+stdin, stdout, stderr = client.exec_command("echo $$")
+stdout.read()
+stdin, stdout, stderr = client.exec_command("echo $$")
+stdout.read()
+stdin, stdout, stderr = client.exec_command("sort")
+a, b, c = client.exec_command("ls")
+stdin.write("aaaa\ncccc\nbbbb\ndddd\n")
+b.read()
+stdout.read()
+stdin.close()
+stdout.read()
+stdin, stdout, stderr = client.exec_command("sort")
+a, b, c = client.exec_command("ls")
+stdin.write("aaaa\ncccc\nbbbb\ndddd\n")
+stdin.flush()
+stdin.close()
+b.read()
+stdout.read()
+stderr.close()
+stdout.read()
+stdout.channel
+stdout.channel.active
+stdout.channel.recv(20)
+stdin, stdout, stderr = client.exec_command("cat /etc/passwd")
+a, b, c = client.exec_command("ls")
+b.read()
+stdout.read()
+a.channel
+b.channel
+c.channel
+stdin.channel
+stdout.channel
+stderr.channel
+client.invoke_shell()
+ch = client.invoke_shell()
+ch
+stdin = ch.makefile("w")
+stdin
+stdout = ch.makefile("r")
+stdout
+stdin.write("echo $$\n")
+stdout.readline()
+stdout.readline()
+stdout.readline()
+stdout.readline()
+stdout.readline()
+stdout.readline()
+stdin.write("uname -a\n")
+stdout.readline()
+stdout.readline()
+stdin.write("pwd\n")
+stdout.readline()
+stdout.readline()
+stdin.write("ls /usr\n")
+stdout.readline()
+stdout.readline()
+stdout.readline()

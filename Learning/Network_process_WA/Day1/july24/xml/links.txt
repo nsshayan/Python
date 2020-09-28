@@ -1,0 +1,7 @@
+http://techtree.com.feedsportal.com/c/33242/f/624769/index.rss
+
+http://weather.yahooapis.com/forecastrss?w=2295420&u=c
+
+http://toi.timesofindia.indiatimes.com/rssfeedstopstories.cms
+
+https://en.wikipedia.org/wiki/Special:Random 

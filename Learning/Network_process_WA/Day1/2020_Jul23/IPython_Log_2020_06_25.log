@@ -1,0 +1,412 @@
+
+import os
+os.system("ls")
+os.system("ls | wc -l")
+import popen
+import popen2
+import commands
+import subprocess
+subprocess.Popen
+from subprocess import Popen
+p = Popen("ls")
+
+from subprocess import Popen
+Popen("uname -a")
+Popen(["uname", "-a"])
+Popen("uname -a", shell=True)
+Popen("ls -l | wc -l", shell=True)
+c = 'mkdir "Program Files" "Documents and Settings"'
+print(c)
+print(c.split())
+c
+c.split()
+import shlex
+shlex.split(c)
+Popen
+Popen("ls")
+Popen("ls")
+outfile = open("ls.out", "wb")
+outfile
+Popen("ls", stdout=outfile)
+outfile.close()
+get_ipython().run_line_magic('cat', 'outfile')
+get_ipython().run_line_magic('cat', 'ls.out')
+outfile = open("ls.out", "wb")
+Popen("ls", stdout=outfile)
+Popen("uname")
+from subprocess import DEVNULL
+DEVNULL
+Popen("ls", stdout=DEVNULL, stderr=DEVNULL)
+None
+command = "wget http://www.python.org/"
+Popen(command).wait()
+Popen(command.split()).wait()
+with open("wget.out", "wb") as outfile:
+    Popen(command.split(), stdout=outfile).wait()
+    
+with open("wget.out", "wb") as outfile:
+    Popen(command.split(), stderr=outfile).wait()
+    
+command = "links -source http://www.python.org/"
+from subprocess import STDOUT
+STDOUT
+with open("python_index_page.html", "wb") as outfile:
+    Popen(command.split(), stdout=outfile, stderr=STDOUT).wait()
+    
+get_ipython().run_line_magic('pycat', 'python_index_page.html')
+get_ipython().run_line_magic('cat', 'python_index_page.html')
+get_ipython().run_line_magic('ls', '-l')
+from subprocess import PIPE
+PIPE
+PIPE
+STDOUT
+DEVNULL
+p = Popen(["ls", "-l"], stdout=PIPE)
+p
+p.stdout
+for line in p.stdout:
+    print(line.upper())
+    
+a = "Hello world"
+a
+type(a)
+a = "\u0905\u0906\u0907"
+print(a)
+a = "\u0905  \u0906   \u0907"
+print(a
+)
+a = "\u0905\u0906\u0907"
+len(a)
+get_ipython().run_line_magic('cat', 'ls.out')
+infile = open("ls.out", "r")
+infile
+infile.readline()
+line = infile.readline()
+print(line, type(line))
+infile.close()
+infile = open("/bin/ls", "r")
+line = infile.readline()
+infile.close()
+infile = open("/bin/ls", "rb")
+line = infile.readline()
+type(line)
+print(line)
+type(infile)
+infile.close()
+p = Popen(["ls", "-l"], stdout=PIPE)
+p.stdout
+p.stdout.readline()
+p.close()
+p.terminate()
+p = Popen(["ls", "-l"], stdout=PIPE, encoding="utf8")
+p.stdout
+line = p.stdout.readline()
+type(line)
+print(line)
+import re
+pattern = re.compile("\d+")
+pattern
+pattern.search("sldkfjdslkfdslkf 23234 sdsdfds 345345")
+pattern.search("sldkfjdslkfdslkf df dfg fdg dfg dfgf")
+m = pattern.search("sldkfjdslkfdslkf df dfg fdg dfg dfgf")
+m.group()
+pattern.search("sldkfjdslkfdslkf df dfg 4343 565656 dfdfdf 1212fdg dfg dfgf")
+m = pattern.search("sldkfjdslkfdslkf df dfg 4343 565656 dfdfdf 1212fdg dfg dfgf")
+m.group()
+m.start()
+m.end()
+m.pos()
+m.pos
+m.span()
+s = "sdfsdf 5555 sdfsdf 234  dfgdfgfdg 7788 sdfsdf 111"
+s
+pattern.search(s)
+pattern.finditer(s)
+for m in pattern.finditer(s):
+    print(m.group(), m.span())
+    
+s = "testdsfsdf  a=10 sdfsdfdsf b = 56 wer sdf were c = 456 sdfsdf"
+s
+pattern = re.compile("\w+\s*=\s*\d+")
+for m in pattern.finditer(s):
+    print(m.group())
+    
+pattern = re.compile("(?P<variable>\w+)\s*=\s*(?P<value>\d+)")
+for m in pattern.finditer(s):
+    print(m.group())
+    
+for m in pattern.finditer(s):
+    print(m.group(1))
+    
+for m in pattern.finditer(s):
+    print(m.group(1), m.group(2))
+    
+for m in pattern.finditer(s):
+    print(m.groupdict())
+    
+pattern = re.compile("\d{1,3}(\.\d{1,3}){3}")
+pattern.search("sdfsdfsdf 10.15.2.25 sdfsdfsdf")
+pexpect.spawn("ftp ftp.chandrashekar.info", encoding="utf8")
+import pexpect
+s = pexpect.spawn("ftp ftp.chandrashekar.info", encoding="utf8")
+s
+s
+s.expect("Name.+:")
+s.sendline("testuser")
+s.expect("Password:")
+s.sendline("w3lc0me")
+s.before
+s.expect("ftp>")
+s.before
+s.sendline("cd /www/files")
+s.expect("ftp>")
+s.before
+s.sendline("get xml.zip")
+s.expect("ftp>")
+s.before
+s.sendline("bin")
+s.expect("telnet")
+s.expect("telnet", timeout=5)
+ftp.sendline("quit")
+s.sendline("quit")
+s.expect("ftp>")
+s.expect("ftp>")
+s.buffer
+s = pexpect.spawn("ftp ftp.chandrashekar.info")
+s.buffer
+s.expect("Name.+:")
+s.buffer
+s.before
+s.after
+s.expect(["secret:", "Password:", "role: "])
+s.sendline("testuser")
+s.expect(["secret:", "Password:", "role: "])
+s.sendline("lsdjfsdlf")
+s.expect("ftp>")
+s.before
+s.close()
+get_ipython().run_line_magic('pinfo', 'input')
+sp = pexpect.spawn("ftp ftp.chandrashekar.info")
+sp.expect("server")
+sp.before
+sp.after
+sp.buffer
+sp.close()
+sp = pexpect.spawn("ftp ftp.chandrashekar.info", encoding="utf8")
+sp.expect("220")
+sp.before
+print(sp.before)
+print(sp.buffer)
+sp.sendline("testuser")
+sp.before
+get_ipython().run_line_magic('pinfo', 'sp.write')
+get_ipython().run_line_magic('pinfo', 'sp.send')
+get_ipython().run_line_magic('pinfo', 'pexpect.spawn')
+get_ipython().run_line_magic('pinfo', 'sp.expect')
+get_ipython().run_line_magic('pinfo', 'sp.expect')
+get_ipython().run_line_magic('pinfo', 'pexpect.spawn')
+from ftplib import FTP
+get_ipython().run_line_magic('pinfo', 'FTP')
+ftp = FTP("ftp.chandrashekar.info", "testuser", "w3lc0me")
+get_ipython().run_line_magic('pinfo', 'ftp.connect')
+get_ipython().run_line_magic('pinfo', 'ftp.login')
+ftp.cwd("/www/files")
+ftp.dir(".")
+outfile = open("vim.rc", "wb")
+ftp.retrbinary("RETR vimrc", outfile.write)
+outfile.close()
+ftp.close()
+get_ipython().run_line_magic('cat', 'vim.rc')
+from tqdm import tqdm
+progress = tqdm(total=10)
+from time import sleep
+for i in range(10):
+    progress.update(i)
+    sleep(1)
+    
+ftp = FTP("ftp.chandrashekar.info", "testuser", "w3lc0me")
+ftp.cwd("/www/files")
+get_ipython().run_line_magic('pinfo', 'ftp.size')
+ftp.size("vimrc")
+get_ipython().run_line_magic('pinfo', 'ftp.ssize')
+get_ipython().run_line_magic('pinfo', 'ftp.size')
+help(FTP)
+ftp.sendcmd("binary")
+ftp.sendcmd("bin")
+ftp.nlst(".")
+ftp.list(".")
+get_ipython().run_line_magic('pinfo', 'ftp.nlst')
+ftp.mlsd(".")
+list(ftp.mlsd("."))
+list(ftp.mlsd("vimrc"))
+[ f for f in ftp.mlsd(".") if f[0] == 'vimrc']
+[ f[1] for f in ftp.mlsd(".") if f[0] == 'vimrc']
+[ f[1] for f in ftp.mlsd(".") if f[0] == 'vimrc'][0]
+[ f[1] for f in ftp.mlsd(".") if f[0] == 'vimrc'][0]["size"]
+ftp.dir(".")
+ftp
+get_ipython().run_line_magic('ls', '')
+infile = open("tqdm_example.py", "rb")
+ftp.storbinary("STOR zzz_jun26_2020.py", infile)
+ftp.dir(".")
+get_ipython().run_line_magic('pinfo', 'ftp.debug')
+from telnetlib import Telnet
+get_ipython().run_line_magic('pinfo', 'Telnet')
+tn = Telnet("192.168.56.105", 2023)
+tn
+tn.read_until("login:")
+tn.read_until(b"login:")
+tn.write(b"pythonista\n")
+tn.read_until(b"ssword:")
+tn.write(b"w3lc0me\n")
+tn.read_until(b"$ ")
+get_ipython().run_line_magic('pinfo', 'tn.read_all')
+get_ipython().run_line_magic('pinfo', 'tn.read_eager')
+tn = Telnet("192.168.56.105", 2023)
+tn.read_eager()
+tn.read_eager()
+tn.read_eager()
+tn.read_eager()
+tn.read_eager()
+get_ipython().run_line_magic('pinfo', 'tn.read_lazy')
+get_ipython().run_line_magic('pinfo', 'tn.read_very_eager')
+tn.read_very_lazy()
+from paramiko import SSHClient
+client = SSHClient()
+get_ipython().run_line_magic('pinfo', 'SSHClient')
+client
+client.load_system_host_keys()
+get_ipython().run_line_magic('pinfo', 'client.connect')
+client.connect("192.168.1.30", username="user03", password="tuxedo")
+stdin, stdout, stderr = client.exec_command("uname -r")
+stdin
+for line in stdout:
+    print(line)
+    
+client.close()
+client.connect("192.168.1.30", username="user03", password="dsfsd")
+client.connect("192.168.56.105", username="root", password="werwerhgfhg")
+client.close()
+client.connect("192.168.56.105", username="root")
+client.exec_command("uname -a")[1].read()
+client.connect("192.168.56.105", username="root", key_filename="/Users/chandrashekar/.ssh/id_rsa")
+get_ipython().run_line_magic('pinfo', 'client.connect')
+get_ipython().run_line_magic('pinfo', 'client.invoke_shell')
+ch = client.invoke_shell()
+ch
+stdin = ch.makefile("w")
+stdout = ch.makefile("r")
+stdin
+stdout
+stderr = ch.makefile_stderr("r")
+stding
+stdin
+stdout
+stderr
+stdin.write("uname -r\n")
+stdout.readline()
+stdout.readline()
+stdout.readline()
+stdout.readline()
+stdout.readline()
+stdout.readline()
+stdout.readline()
+stdout.readline()
+stdout.readline()
+stdout.readline()
+stdout.readline()
+stdout.readline()
+stdout.readline()
+stdout.readline()
+stdout.readline()
+stdout.readline()
+stdout.readline()
+stdout.readline()
+stdin.write("ls /usr\n")
+stdout.readline()
+stdout.readline()
+stdout.readline()
+stdin.write("echo $$\n")
+stdout.readline()
+stdout.readline()
+stdin.write("echo $$\n")
+stdout.readline()
+stdout.readline()
+client.close()
+client = SSHClient()
+client.connect("192.168.56.101", username="root")
+client.connect("192.168.56.105", username="root")
+import paramiko
+client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
+client.close()
+client = SSHClient()
+client.connect("192.168.56.105", username="root")
+client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
+client.connect("192.168.56.105", username="root")
+client
+sftp = client.open_sftp()
+sftp
+sftp.listdir("/")
+import os
+os.listdir("/etc")
+sftp.listdir("/tmp")
+sftp.put("vim.rc", "/tmp/a.txt")
+sftp.listdir("/tmp")
+sftp.get("/etc/passwd", "p.txt")
+get_ipython().run_line_magic('ls', 'p.txt')
+get_ipython().run_line_magic('cat', 'p.txt')
+sftp.getcwd()
+sftp.chdir(".")
+sftp.getcwd()
+sftp.chdir("/usr/local")
+sftp.getcwd()
+sftp.listdir(".")
+sftp.stat("/etc")
+sftp.stat("/etc").st_size
+sftp.stat("/etc").st_uid
+sftp.stat("/etc").st_mode
+sftp.listdir("/tmp")
+sftp.rename("/tmp/a.txt", "/tmp/b.txt")
+sftp.listdir("/tmp")
+sftp.rename("/tmp/b.txt", "/root/b1.txt")
+sftp.move("/tmp/b.txt", "/root/b1.txt")
+get_ipython().run_line_magic('pinfo', 'sftp.rename')
+sftp.posix_rename("/tmp/b.txt", "/root/b1.txt")
+sftp.listdir("/tmp")
+sftp.unlink("/tmp/b.txt")
+sftp.listdir("/tmp")
+sftp.mkdir("/tmp/testfolder")
+sftp.listdir("/tmp")
+sftp.chdir("/tmp/testfolder")
+sftp.getcwd()
+sftp.chdir("/root")
+sftp.rmdir("/tmp/testfolder")
+infile = sftp.open("/boot/config-4.9.0-vbox", "r")
+infile
+for line in infile:
+    if "CONFIG_SMP" in line:
+        print(line)
+        
+infile.close()
+with sftp.open("/etc/passwd", "r") as infile:
+    for line in infile:
+        print(line)
+        
+script = """
+#!/usr/bin/env python
+for i in range(10):
+    print("Counting", i)
+"""
+print(script)
+with sftp.open("/tmp/simple_script.py", "w") as outfile:
+    outfile.write(script)
+    
+sftp.listdir("/tmp")
+sftp.chmod("/tmp/simple_script.py", 0o755)
+_, stdout, stderr = client.exec_command("/tmp/simple_script.py")
+for line in stdout:
+    print(line)
+    
+for line in stderr:
+    print(line)
+    

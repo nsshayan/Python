@@ -1,0 +1,378 @@
+
+
+from pathlib import Path
+Path(".")
+p = Path(".")
+get_ipython().run_line_magic('pinfo', 'p.with_name')
+import os
+for p, s, f in os.walk("."):
+    print(p)
+    
+for p, s, f in os.walk("."):
+    print(s)
+    
+for p, s, f in os.walk("."):
+    print(f)
+    
+get_ipython().run_line_magic('ls', '')
+os.stat("test.py")
+os.stat("test.py").st_size
+os.path.getsize("test.py")
+for path, subdir, files in os.walk("."):
+    for f in files:
+        print(os.stat(f).st_size)
+        
+for path, subdir, files in os.walk("."):
+    for f in files:
+        print(f)
+        
+        
+d = "/usr/local"
+d
+f = "a.txt"
+os.path.join(d, f)
+for path, subdir, files in os.walk("."):
+    for f in files:
+        print(os.stat(os.path.join(path, f)).st_size)
+        
+        
+import pathlib
+from pathlib import Path
+Path(".")
+p = Path(".")
+p.name
+p.glob("*")
+list(p.glob("*"))
+p.stat
+p.stat()
+p.stat().st_size
+list(p.glob("*")
+)
+list(p.glob("**/*"))
+[ f.stat().st_size for f in p.glob("**/*") ]
+sum([ f.stat().st_size for f in p.glob("**/*") ])
+os.system("ls -lR")
+a = "ls -l"
+a
+list(a)
+a.split()
+a = "ls    -l\t\ta.txt\nb.txt"
+a
+a.split()
+a.split(" ")
+from prompt_toolkit import prompt
+prompt("Enter your name: ")
+prompt("Enter your name: ")
+get_ipython().run_line_magic('pinfo', 'prompt')
+c = 'mkdir "Program Files"'
+print(c)
+c.split()
+import shlex
+c.split()
+shlex.split(c)
+import subprocess
+subprocess.PIPE
+subprocess.STDOUT
+subprocess.DEVNULL
+import re
+pattern = re.compile(r'(\d{1,3})(\.\d{1,3}){3}')
+pattern
+type(patter)
+type(pattern)
+s = "dsfsdfsdf 10.5.6.7 oiuwerwerew dfkgdfklgjfdgl jdfg 56.78.23.12 sdfsdsdfsdf 54.33.22.33 sdfdsfs"
+s
+pattern.search(s)
+pattern.findall(s)
+pattern.finditer(s)
+list(pattern.finditer(s))
+[ m.group for m in pattern.finditer(s) ]
+[ m.group() for m in pattern.finditer(s) ]
+from pexpect import spawn
+get_ipython().run_line_magic('pinfo', 'spawn')
+get_ipython().run_line_magic('pinfo', 'spawn')
+import yaml
+data = yaml.load(open("ftp_commands.yml"))
+data
+data = yaml.load(open("ftp_commands.yml"))
+data
+data["commands"]
+data["program"]
+data["commands"]
+data["commands"][0]
+data["commands"][1]
+data["commands"][2]
+with open("telnet_session2.yml") as infile: d = yaml.load(infile)
+telnet_session = {
+ "command": "telnet 192.168.56.101 23",
+ "session": [
+     ('archvm login: ', 'pythonista'),
+     ('Password: ', 'welcome'),
+     ('\[pythonista@archvm ~\]\$', ["whoami", "uname -a", "ls /etc", "exit"])
+ ]
+}
+telnet_session
+import yaml
+telnet_session
+with open("telnet_session2.yml", "w") as out: yaml.dump(telnet_session, out)
+
+from tqdm import tqdm
+help(tqdm)
+t = tqdm()
+t.update()
+t.update()
+t.update()
+t.update()
+t.update()
+t = tqdm()
+help(tqdm)
+from ftplib import FTP
+ftp = FTP("ftp.chandrashekar.info", "testuser", "w3lc0me")
+get_ipython().run_line_magic('pinfo', 'ftp.size')
+ftp.cwd("/www/files")
+ftp.size("xml.zip")
+get_ipython().run_line_magic('pinfo', 'ftp.encoding')
+ftp.size("xml.zip")
+ftp.dir("xml.zip")
+ftp.dir("xml.zip").split()[4]
+ftp.dir("xml.zip")
+get_ipython().run_line_magic('pinfo', 'ftp.dir')
+ftp.dir("xml.zip", lambda x: x.split()[4])
+get_ipython().run_line_magic('pinfo', 'ftp.size')
+help(ftp.size)
+get_ipython().run_line_magic('pinfo', 'ftp.af')
+ftp.welcome
+ftp.nlst()
+ftp.list()
+get_ipython().run_line_magic('pinfo', 'ftp.mlsd')
+ftp.mlsd("xml.zip", facts=["size"])
+next(ftp.mlsd("xml.zip", facts=["size"]))
+next(ftp.mlsd(".", facts=["size"]))
+list(ftp.mlsd("."))
+list( int(f[1]["size"]) for f in ftp.mlsd(".")))
+list( int(f[1]["size"]) for f in ftp.mlsd("."))
+list( f[1] for f in ftp.mlsd("."))
+list( f[1] for f in ftp.mlsd(".") if f[0] == "xml.zip")
+list( f[1]["size"] for f in ftp.mlsd(".") if f[0] == "xml.zip")
+list( int(f[1]["size"]) for f in ftp.mlsd(".") if f[0] == "xml.zip")
+next( int(f[1]["size"]) for f in ftp.mlsd(".") if f[0] == "xml.zip")
+from ftplib import FTP
+FTP
+get_ipython().run_line_magic('pinfo', 'FTP')
+site = FTP("ftp.chandrashekar.info", "testuser", "w3lc0me")
+site
+site.welcome
+site.pwd()
+site.cwd("/www/files")
+site.dir()
+site.nlst()
+site.mlsd()
+list(site.mlsd())
+outfile = open("myfile.zip", "w")
+site.retrbinary("xml.zip", outfile.write)
+site.retrbinary("RETR xml.zip", outfile.write)
+outfile.close()
+outfile = open("myfile.zip", "wb")
+site.retrbinary("RETR xml.zip", outfile.write)
+site
+site.mlsd(".")
+list(site.mlsd("."))
+site.close()
+site = FTP("ftp.chandrashekar.info", "testuser", "w3lc0me")
+site.cwd("/www/files")
+list(site.mlsd("."))
+list((f for f in site.mlsd(".") if f[0] == "xml.zip"))
+list((f[1]["size"] for f in site.mlsd(".") if f[0] == "xml.zip"))
+list((int(f[1]["size"]) for f in site.mlsd(".") if f[0] == "xml.zip"))
+next((int(f[1]["size"]) for f in site.mlsd(".") if f[0] == "xml.zip"))
+from tqdm import tqdm
+from time import sleep
+for i in tqdm(range(10)):
+    sleep(1)
+    
+def get_size_of(site, filename, path="."):
+    return next((int(f[1]["size"])                  for f in site.mlsd(path)                  if f[0] == filename))
+get_size_of(site, "xml.zip")
+t = tqdm(total=41696)
+t.update(1000)
+t.update(4400)
+from telnetlib import Telnet
+get_ipython().run_line_magic('pinfo', 'Telnet')
+tn = Telnet("192.168.56.101")
+tn
+tn.read_until("login:")
+tn.read_until(b"login:")
+tn.write(b"pythonista\r")
+tn.read_until(b"Password:")
+tn.write("w3lc0me\r")
+tn.write(b"w3lc0me\r")
+tn = Telnet("192.168.56.101")
+tn.read_until(b"login:")
+tn.write(b"pythonista\r")
+tn.read_until(b"Password:")
+tn.write(b"w3lc0me\r")
+tn.read_until(b"$ ")
+get_ipython().run_line_magic('pinfo', 'tn.read_until')
+tn.expect([r"bash: \$", r"\[pythonista\@"]) 
+tn.expect([br"bash: \$", br"\[pythonista\@"]) 
+tn.close()
+tn = Telnet("192.168.56.101")
+tn.expect([br"login:"])
+get_ipython().run_line_magic('pinfo', 'tn.interact')
+help(tn.interact)
+from poplib import POP3
+get_ipython().run_line_magic('pinfo', 'POP3')
+mail = POP3("mail.chandrashekar.info")
+mail
+mail.user("testuser")
+mail.pass_("w3lc0me")
+mail.list()
+mail.list()[0]
+mail.retr(1)
+mail.dele(!)
+mail.dele(1)
+mail = POP3("mail.chandrashekar.info")
+mail.user("joe")
+mail.pass_("w3lc0me")
+mail.pass_("welcome")
+mail.user("joe")
+mail.pass_("welcome")
+mail.user("joe")
+mail.pass_("joe123")
+import paramiko
+client = paramiko.SSHClient()
+client
+get_ipython().run_line_magic('pinfo', 'paramiko.SSHClient')
+get_ipython().run_line_magic('pinfo', 'client.load_host_keys')
+get_ipython().run_line_magic('pinfo', 'client.load_system_host_keys')
+client.load_system_host_keys()
+client.set_missing_host_key_policy(paramiko.AutoAddPolicy)
+get_ipython().run_line_magic('pinfo', 'client.connect')
+client.connect("192.168.56.101", username="root")
+stdin, stdout, stderr = client.exec_command("ls")
+for line in stdout:
+    print(line)
+    
+stderr.read()
+client.exec_command("bc")
+stdin, stdout, stderr = client.exec_command("bc")
+stdin.write("scale=1000\n")
+stdin.write("sqrt(2)\n")
+stdin.flush()
+stdin.close()
+for line in stdout:
+    print(line)
+    
+client.close()
+client = paramiko.SSHClient()
+client.set_missing_host_key_policy(paramiko.AutoAddPolicy)
+client.connect("192.168.56.101", username="root")
+get_ipython().run_line_magic('pinfo', 'client.invoke_shell')
+client.invoke_shell()
+ch = client.invoke_shell()
+ch
+output = ch.makefile("r")
+instream = ch.makefile("w")
+error = ch.makefile_stderr("r")
+instream.write("whoami\n")
+output.readline()
+output.readline()
+output.readline()
+output.readline()
+output.readline()
+output.readline()
+instream.write("ls -l")
+instream.write("\n")
+output.readline()
+output.readline()
+output.readline()
+output.readline()
+output.readline()
+output.readline()
+output.readline()
+output.readline()
+output.readline()
+output.readline()
+output.readline()
+output.readline()
+output.readline()
+client
+sftp = client.open_sftp()
+sftp
+sftp.listdir(".")
+sftp.getcwd()
+sftp.chdir(".")
+sftp.getcwd()
+sftp.listdir("/etc")
+sftp.mkdir("/tmp/testfolder")
+sftp.listdir("/tmp")
+sftp.chdir("/tmp/testfolder")
+sftp.getcwd()
+sftp.listdir(".")
+sftp.chdir("..")
+sftp.listdir(".")
+sftp.rmdir("testfolder")
+sftp.chdir("/root")
+sftp.listdir(".")
+sftp.rename("test_file.c", "zzzz_testfile.c")
+sftp.listdir(".")
+sftp.unlink("zzzz_testfile.c")
+sftp.listdir(".")
+sftp.stat("hog_mem.py")
+sftp.stat("hog_mem.py").size
+sftp.stat("hog_mem.py").st_size
+sftp.stat("hog_mem.py").st_mode
+oct(sftp.stat("hog_mem.py").st_mode)
+sftp.chmod("hog_mem.py", 0o644)
+oct(sftp.stat("hog_mem.py").st_mode)
+sftp.get("hog_mem.py", "testdata.py")
+get_ipython().run_line_magic('cat', 'testdata.py')
+sftp.put("testdata.py", "/tmp/aabbcc.py")
+sftp.listdir("/tmp")
+with sftp.open("/tmp/aabbcc.py", "r") as infile:
+    for line in infile:
+        print(line)
+        
+sftp.open("/etc/passwd").read()
+outfile = sftp.open("/tmp/testfile.out", "w")
+outfile.write("this is line 1\n")
+outfile.write("this is line 2\n")
+outfile.write("this is line 2\n")
+pd
+get_ipython().run_line_magic('pwd', '')
+get_ipython().run_line_magic('cd', 'paramiko/')
+with SSHConnection("192.168.56.101", "root", "welcome") as conn:
+    conn.mkdir("/tmp/testfolder")
+    conn.put("hello_world.py" "/tmp/testfolder")
+    conn.chmod("/tmp/testfolder/hello_world.py", 0o755)
+    _, output, _ = conn.exec_command("/tmp/testfolder/hello_world.py")
+    print(output.read())
+    
+from ssh_connection import SSHConnection
+with SSHConnection("192.168.56.101", "root", "welcome") as conn:
+    conn.mkdir("/tmp/testfolder")
+    conn.put("hello_world.py" "/tmp/testfolder")
+    conn.chmod("/tmp/testfolder/hello_world.py", 0o755)
+    _, output, _ = conn.exec_command("/tmp/testfolder/hello_world.py")
+    print(output.read())
+    
+with SSHConnection("192.168.56.101", "root", "welcome") as conn:
+    conn.mkdir("/tmp/testfolder")
+    conn.put("hello_world.py", "/tmp/testfolder")
+    conn.chmod("/tmp/testfolder/hello_world.py", 0o755)
+    _, output, _ = conn.exec_command("/tmp/testfolder/hello_world.py")
+    print(output.read())
+    
+with SSHConnection("192.168.56.101", "root", "welcome") as conn:
+    conn.mkdir("/tmp/testfolder")
+    conn.put("hello_world.py", "/tmp/testfolder")
+    conn.chmod("/tmp/testfolder/hello_world.py", 0o755)
+    _, output, _ = conn.exec_command("/tmp/testfolder/hello_world.py")
+    print(output.read())
+    
+with SSHConnection("192.168.56.101", "root", "welcome") as conn:
+    conn.mkdir("/tmp/testfolder")
+    conn.put("hello_world.py", "/tmp/testfolder/hello_world.py")
+    conn.chmod("/tmp/testfolder/hello_world.py", 0o755)
+    _, output, _ = conn.exec_command("/tmp/testfolder/hello_world.py")
+    print(output.read())
+    

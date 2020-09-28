@@ -1,0 +1,361 @@
+
+get_ipython().run_line_magic('ls', '')
+import os.path
+os.path.getsize("slow_script.sh")
+from pathlib import Path
+Path("./slow_script.sh")
+Path("./slow_script.sh").stat()
+Path("./slow_script.sh").stat().st_size
+os.walk
+os.walk(".")
+g = os.walk(".")
+g
+next(g)
+for p, dirs, files in os.walk("."):
+    print(p)
+    
+for p, dirs, files in os.walk("."):
+    for f in files:
+        print(f)
+        
+    
+os.path.join("/usr/local", "ls")
+for p, dirs, files in os.walk("."):
+    for f in files:
+        print(os.path.join(p, f))
+        
+    
+Path(".")
+Path(".").glob("*")
+list(Path(".").glob("*"))
+list(Path(".").glob("**/*"))
+[ p in Path(".").glob("**/*")) ]
+[ p for p in  Path(".").glob("**/*")) ]
+[ p for p in  Path(".").glob("**/*") ]
+[ p.name for p in  Path(".").glob("**/*") ]
+[ p.stat().st_size for p in  Path(".").glob("**/*") ]
+sum([ p.stat().st_size for p in  Path(".").glob("**/*") ])
+
+command = "ls -l"
+get_ipython().run_line_magic('ls', '')
+command
+command.split()
+command = "ls    -l /usr/local\t\t\t/usr\n\n/bin"
+command
+print(command)
+command.split()
+command.split(" ")
+command.split()
+print(command)
+command.split()
+c = '''mkdir "Program Files" 'Documents and Settings' '''
+c
+print(c)
+c.split()
+import shlex
+shlex.split(c)
+c
+"dir" in c
+c.find("dir")
+c = "ls -l > ls.out"
+shlex.split(c)
+args = shlex.split(c)
+args
+">" in args
+args.index(">")
+args.index(">") + 1
+args[args.index(">") + 1]
+import re
+ipaddr_regex = r"\d{1-3}(\.\d{1-3]})[3]"
+line = "inet 10.103.68.59 netmask 0xfffffc00 broadcast 10.103.71.255"
+re.search(line)
+re.search(ipaddr_regex, line)
+line
+ipaddr_regex
+ipaddr_regex = r"\d{1-3}(\.\d{1-3})[3]"
+re.search(ipaddr_regex, line)
+ipaddr_regex = r"\d{1-3}"
+re.search(ipaddr_regex, line)
+ipaddr_regex = r"\d{1,3}(\.\d{1,3})[3]"
+re.search(ipaddr_regex, line)
+re.search(ipaddr_regex, line).group()
+re.search(ipaddr_regex, line).group(0)
+ipaddr_regex = r"\d{1,3}"
+re.search(ipaddr_regex, line).group(0)
+ipaddr_regex = r"\d{1,3}(\.\d)"
+re.search(ipaddr_regex, line).group(0)
+ipaddr_regex = r"\d{1,3}(\.\d{1-3})"
+re.search(ipaddr_regex, line).group(0)
+ipaddr_regex = r"\d{1,3}(\.\d{1,3})"
+re.search(ipaddr_regex, line).group(0)
+ipaddr_regex = r"\d{1,3}(\.\d{1,3}){3}"
+re.search(ipaddr_regex, line).group(0)
+ipaddr_regex = r"\d{1,3}(\.\d{1,3}){3}"
+re.findall(ipaddr_regex, line)
+re.finditer(ipaddr_regex, line)
+for m in re.finditer(ipaddr_regex, line):
+    print(m.group())
+    
+pattern = re.compile(ipaddr_regex)
+pattern.finditer(line)
+pattern = re.compile(ipaddr_regex, re.VERBOSE | re.MULTILINE | re.DOTALL)
+from extract_output import extract_output
+[ m.group() for m in extract_output("cat /var/log/system.log", ipaddr_regex) ]
+[ m.group() for m in extract_output("cat /var/log/system.log", "error") ]
+[ m.string() for m in extract_output("cat /var/log/system.log", ipaddr_regex) ]
+[ m.string for m in extract_output("cat /var/log/system.log", ipaddr_regex) ]
+import pexpect
+pexpect.spawn
+get_ipython().run_line_magic('pinfo', 'pexpect.spawn')
+ftp = pexpect.spawn("ftp ftp.chandrashekar.info")
+ftp.expect("Name")
+ftp.before
+ftp.after
+ftp.expect("Password")
+ftp = pexpect.spawn("ftp ftp.chandrashekar.info", timeout=5)
+ftp.expect("dsfds")
+ftp.expect("Name")
+ftp = pexpect.spawn("ftp ftp.chandrashekar.info", timeout=5)
+ftp.expect(["ftp>", "Name", "Redirecting"], timeout=10)
+ftp.sendline("testuser")
+ftp.expect("Password: ")
+ftp.sendline("w3lc0me")
+ftp.expect("ftp> ")
+print(ftp.before)
+ftp.sendline("cd /www/werwer")
+ftp.expect("ftp> ")
+ftp.before
+str(ftp.before, "utf8")
+ftp.interact()
+download_xml_file = [
+        ("Name.+: ", "testuser"),
+        ("Password: ", "w3lc0me"),
+        ("ftp> ", ["cd /www/files", "binary", "get xml.zip", "quit"])
+    ]
+    
+import yaml
+download_xml_file
+with open("download_xml.yml", "w") as out:
+    yaml.dump(download_xml_file, out)
+    
+get_ipython().run_line_magic('cat', 'download_xml.yml')
+with open("download_xml.yml") as infile: d = yaml.load(infile)
+d
+import telnetlib
+import ftplib
+import ftplib
+get_ipython().run_line_magic('pinfo', 'ftplib.FTP')
+from ftplib import FTP
+ftp = FTP("ftp.chandrashekar.info", "testuser", "w3lc0me")
+ftp
+ftp.cwd("/www/files")
+ftp.dir()
+ftp.listdir(".")
+ftp.nlst()
+outfile = open("testfile.zip", "wb")
+ftp.retrbinary("RETR may31.zip", outfile.write)
+outfile.close()
+ftp.dir()
+ftp.cwd("python")
+ftp.dir()
+from telnetlib import Telnet
+get_ipython().run_line_magic('pinfo', 'Telnet')
+tn = Telnet("192.168.56.101")
+tn
+tn.read_until(b"login: ")
+tn.write(b"root\n")
+tn.read_until("Password: ")
+tn.read_until(b"Password: ")
+tn.write("welcome\n")
+tn.write(b"welcome\n")
+tn.read_until(b"[root@archvm")
+tn = Telnet("192.168.56.101")
+tn.expect([b"login:"])
+from paramiko import SSHClient
+client = SSHClient()
+get_ipython().run_line_magic('pinfo', 'SSHClient')
+client
+from paramiko import AutoAddPolicy
+from paramiko import SSHClient
+client = SSHClient()
+client.set_missing_host_key_policy(AutoAddPolicy)
+get_ipython().run_line_magic('pinfo', 'client.connect')
+client.connect("192.168.56.101", username="root", password="werwerewr")
+client.connect("192.168.56.101", username="root", password="welcome")
+stdin, stdout, stderr = client.exec_command("uname -a")
+stdout.readline()
+stdout.readline()
+stdout.readline()
+stdin, stdout, stderr = client.exec_command("cat /proc/cpuinfo")
+stdout.readline()
+stdout.readline()
+stdout.readline()
+stdout.readline()
+stdout.readline()
+output = stdout.read()
+output
+print(output)
+stdin, stdout, stderr = client.exec_command("sort")
+stdin.write("ffff\nrrrrr\naaaa\n\bbbb\n\cccc\ndsfsdfd\n")
+stdin.close()
+stdout.readlines()
+stdin.flush()
+stdout.close()
+stdin.close()
+stdout.read()
+stderr.close()
+stdin, stdout, stderr = client.exec_command("sort")
+stdin.write("ffff\nrrrrr\naaaa\n\bbbb\n\cccc\ndsfsdfd\n")
+stdin.flush()
+stdin.close()
+stdout.readline()
+client.exec_command("echo $$")[1].readline()
+client.exec_command("echo $$")[1].readline()
+client.exec_command("echo $$")[1].readline()
+client.exec_command("echo $$")[1].readline()
+get_ipython().run_line_magic('pinfo', 'client.invoke_shell')
+sh = client.invoke_shell()
+sh
+sh.exec_command("echo $$")
+sh.exec_command()
+sh = client.invoke_shell()
+sh.exec_command("echo $$")
+client.invoke_shell()
+get_ipython().run_line_magic('pinfo', 'client.invoke_shell')
+ch = client.invoke_shell()
+ch.makefile("r")
+ch.makefile("r")
+out = ch.makefile("r")
+stdin = ch.makefile("w")
+stdin.write("echo $$\n")
+stdout.readline()
+stdin.flush()
+stdout.readline()
+client.close()
+client.connect("192.168.56.101", username="root", password="werwerewr")
+client.connect("192.168.56.101", username="root", password="welcome")
+shell = client.invoke_shell()
+stdout = shell.makefile("r")
+stdin = shell.makefile("w")
+stdin.write("echo $$\n")
+stdin.flush()
+stdout.readline()
+stdout.readline()
+stdout.readline()
+stdout.readline()
+stdout.readline()
+stdout.readline()
+stdout.readline()
+stdout.readline()
+stdout.readline()
+stdout.readline()
+stdout.readline()
+stdout.readline()
+stdout.readline()
+stdout.readline()
+stdout.readline()
+stdout.readline()
+stdout.readline()
+stdin.write("echo $$\n")
+stdout.readline()
+stdout.readline()
+stdin.write("echo $$\n")
+stdout.readline()
+stdout.readline()
+from paramiko import Transport
+get_ipython().run_line_magic('pinfo', 'Transport')
+t = Transport(("192.168.56.101", 22))
+t
+get_ipython().run_line_magic('pinfo', 't.connect')
+t.connect(username="root", password="welcome")
+t
+get_ipython().run_line_magic('pinfo', 't.open_channel')
+ch = t.open_channel("session")
+ch
+ch.exec_command("cat > /tmp/new_file_oct09.txt")
+ch
+out = ch.makefile("w")
+out.write("this is a test file\n")
+out.write("this is a test file sdklfj klsd fjlsdkfj\n")
+ch.close()
+get_ipython().run_line_magic('pinfo', 't.open_channel')
+get_ipython().run_line_magic('pinfo', 'Transport')
+t
+t.open_sftp_client()
+from paramiko import SFTPClient
+SFTPClient.from_transport(t)
+client
+client.open_sftp()
+sftp = client.open_sftp()
+sftp
+sftp.chdir(".")
+sftp.getcwd()
+sftp.close()
+sftp = client.open_sftp()
+sftp.getcwd()
+sftp.chdir(".")
+sftp.getcwd()
+sftp.listdir()
+sftp.listdir("/usr/local")
+sftp.mkdir("/tmp/a_new_test_folder")
+sftp.listdir("/tmp")
+sftp.chdir("/tmp/a_new_test_folder")
+sftp.getcwd()
+sftp.chdir("..")
+sftp.rmdir("a_new_test_folder")
+sftp.stat("/tmp/test.txt")
+sftp.stat("/tmp/test.txt").size
+sftp.stat("/tmp/test.txt").st_size
+sftp.stat("/tmp/test.txt").st_uid
+sftp.stat("/tmp/test.txt").st_mode
+v = sftp.stat("/tmp/test.txt").st_mode
+v
+type(v)
+oct(v)
+str(v)
+oct(v)
+f"{v:x}
+f"{v:x}"
+f"{v:o}"
+sftp.listdir(".")
+"test.txt" in sftp.listdir(".") and sftp.stat("test.txt").st_size
+sftp.stat("sdsdfsdf")
+sftp.get("/tmp/test.txt", "a.txt")
+get_ipython().run_line_magic('ls', '')
+sftp.put("watch_audit.py", "/tmp/aabbcc.py")
+outfile = sftp.open("/tmp/newfile.txt", "w")
+outfile
+outfile.write("this is a test string\n")
+outfile.write("this is a test string\n")
+outfile.write("this is a test string\n")
+outfile.write("this is a test string\n")
+outfile.write("this is a test string\n")
+outfile.close()
+infile = sftp.open("/tmp/newfile.txt", "r")
+infile.readline()
+infile.readline()
+infile.readlines()
+infile.close()
+sftp.rename("newfile.txt", "newfile2.txt")
+sftp.remove("aabbcc.py")
+sftp.remove("aabbcc.py")
+from ssh_connection import SSHConnection
+get_ipython().run_line_magic('cd', 'paramiko')
+from ssh_connection import SSHConnection
+ssh = SSHConnection("192.168.56.101", "root", "welcome")
+ssh
+ssh.exec_command("ls")
+ssh = SSHConnection("192.168.56.101", "root", "welcome")
+with ssh:
+    ssh.exec_command("ls")[1].read()
+    
+with SSHConnection("192.168.56.101", "root", "welcome") as ssh:
+    print(ssh.exec_command("ls"))
+    
+with SSHConnection("192.168.56.101", "root", "welcome") as ssh:
+    print(ssh.get("/tmp/newfile2.txt", "b.txt"))
+    
+    
+get_ipython().run_line_magic('ls', 'b.txt')
+get_ipython().run_line_magic('ls', '')
+get_ipython().run_line_magic('cat', 'sftp_upload_exercise.txt')

@@ -1,0 +1,6 @@
+telnet 192.168.56.104 2023:
+- !!python/tuple ['login:', pythonista]
+- !!python/tuple ['Password:', welcome]
+- !!python/tuple
+  - \[pythonista@archvm ~\]\$
+  - [uptime, ls -lR /etc, find /usr/local/build, exit]

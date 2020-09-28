@@ -1,0 +1,287 @@
+
+import paramiko
+get_ipython().run_line_magic('pinfo', 'paramiko.Channel')
+from pssh.clients import SSHClient
+get_ipython().run_line_magic('pinfo', 'SSHClient')
+from paramiko import SSHClient
+from paramiko import SSHClient
+client = SSHClient()
+client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
+client.load_system_host_keys()
+client.connect("192.168.56.104", username="root")
+stdin, stdout, stderr = client.exec_command("echo $$")
+stdout.read()
+stdin, stdout, stderr = client.exec_command("echo $$")
+stdout.read()
+get_ipython().run_line_magic('pinfo', 'client.invoke_shell')
+channel = client.invoke_shell()
+channel
+stdout = channel.makefile("r")
+stdin = channel.makefile("w")
+stdout
+stdin
+stderr = channel.makefile_stderr("r")
+stdin.write("ls /usr\n")
+stdout.readline()
+stdout.readline()
+stdout.readline()
+stdout.readline()
+stdout.readline()
+client
+get_ipython().run_line_magic('cat', '/Users/chandrashekar/.ssh/known_hosts')
+client.get_host_keys()
+hk client.get_host_keys()
+hk = client.get_host_keys()
+hk.keys()
+hk.items()
+list(hk.items())
+cl = SSHClient()
+cl.load_system_host_keys()
+cl.get_host_keys().keys()
+cl.get_transport()
+cl.get_transport()
+cl = SSHClient()
+cl.connect("192.168.56.104", username="root")
+cl.get_host_keys().keys()
+cl.load_system_host_keys()
+cl.connect("192.168.56.104", username="root")
+cl.get_host_keys().keys()
+get_ipython().run_line_magic('pinfo', 'cl.get_host_keys')
+get_ipython().run_line_magic('pinfo', 'cl.load_host_keys')
+cl.load_host_keys("/Users/chandrashekar/.ssh/known_hosts")
+cl.get_host_keys().keys()
+cl.load_host_keys("/Users/chandrashekar/.ssh/known_hosts")
+cl.get_host_keys().keys()
+cl.get_host_keys().items()
+cl.close()
+client.close()
+client = SSHClient()
+client.connect("192.168.56.104", username="pythonista", password="welcome")
+client.load_host_keys("/Users/chandrashekar/.ssh/known_hosts")
+client.connect("192.168.56.104", username="pythonista", password="welcome")
+client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
+client.connect("192.168.56.104", username="pythonista", password="welcome")
+client.get_host_keys().keys()
+client.save_host_keys("./known_hosts.new")
+client.close()
+client = SSHClient()
+client.load_host_keys("/Users/chandrashekar/.ssh/known_hosts")
+client.get_host_keys().keys()
+"192.168.56.104" in client.get_host_keys()
+client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
+client.connect("192.168.56.104", username="pythonista", password="welcome")
+client.get_host_keys().keys()
+client.close()
+client.connect("192.168.56.104", username="pythonista")
+client.connect("192.168.56.104", username="root")
+client.connect("192.168.56.104", username="root")
+get_ipython().run_line_magic('pinfo', 'client.connect')
+client.connect("192.168.56.104", username="root", key_filename="my_private_key")
+get_ipython().run_line_magic('pinfo', 'client.connect')
+get_ipython().run_line_magic('pinfo', 'paramiko.Keys')
+get_ipython().run_line_magic('pinfo', 'paramiko.Key')
+dir(paramiko)
+paramiko.pkey
+get_ipython().run_line_magic('pinfo', 'paramiko.pkey.PKey')
+paramiko.pkey.Key
+paramiko.key.
+get_ipython().run_line_magic('pinfo', 'paramiko.RSAKey')
+client
+ch = client.invoke_shell()
+ch.makefile("r")
+stdout = ch.makefile("r")
+stderr = ch.makefile_stderr("r")
+stdin = ch.makefile("w")
+stdin.write("echo $$\n")
+stdout.readline()
+stdout.readline()
+stdout.readline()
+stdout.readline()
+stdout.readline()
+stdout.readline()
+stdout.readline()
+stdout.readline()
+stdout.readline()
+stdout.readline()
+stdout.readline()
+stdout.readline()
+stdout.readline()
+stdout.readline()
+stdout.readline()
+stdout.readline()
+stdout.readline()
+stdout.readline()
+stdin.write("echo $$\n")
+stdout.readline()
+stdout.readline()
+client
+sftp = client.open_sftp()
+sftp
+sftp.listdir("/")
+sftp.getcwd()
+sftp.chdir(".")
+sftp.getcwd()
+sftp.chdir("/opt")
+sftp.listdir(".")
+sftp.chdir("/tmp")
+sftp.listdir(".")
+sftp.mkdir("new_folder")
+sftp.listdir(".")
+sftp.rmdir("new_folder")
+get_ipython().run_line_magic('ls', '')
+sftp.put("db.json", "/tmp/test.json")
+sftp.listdir(".")
+sftp.get("/etc/passwd", "p.txt")
+sftp.listdir(".")
+sftp.unlink("test.json")
+get_ipython().run_line_magic('pinfo', 'sftp.chmod')
+get_ipython().run_line_magic('pinfo', 'sftp.chown')
+infile = sftp.open("/etc/passwd")
+infile
+infile.readline()
+infile.readline()
+infile.readline()
+infile.readline()
+infile.readline()
+infile.seek(0)
+infile.readline()
+infile.tell()
+infile.seek(64)
+infile.tell()
+infile.readline()
+infile.close()
+infile = sftp.open("/root/somelog.txt")
+for line in infile:
+    print(line)
+    
+for n, line in enumerate(infile):
+    
+    print(n, line)
+    
+infile.seek(0)
+for n, line in enumerate(infile):
+    print(n, line)
+    
+for n, line in enumerate(infile, 1):
+    print(n, line)
+    
+infile.seek(0)
+for n, line in enumerate(infile, 1):
+    print(n, line)
+    
+for n, line in enumerate(infile, 1):
+    if n < 1000: continue
+    if n > 1005: break
+    print(n, line)
+    
+infile.seek(0)
+for n, line in enumerate(infile, 1):
+    if n < 1000: continue
+    if n > 1005: break
+    print(n, line)
+    
+infile.seek(0)
+for i in range(10):
+    print(infile.readline())
+    
+infile.seek(0)
+for n, line in zip(range(1, 11), infile):
+    print(n, line)
+    
+infile.seek(0)
+for line in infile:
+    if "error" in line:
+        print(line)
+        
+from paramiko import Transport
+tn = Transport(("192.168.56.104", 22))
+get_ipython().run_line_magic('pinfo', 'tn.connect')
+tn.connect(username="root", password="welcome")
+tn
+sftp = tn.open_sftp_client()
+sftp.listdir("/")
+get_ipython().run_line_magic('pinfo', 'tn.open_channel')
+ch = tn.open_channel("session")
+ch
+stdout = ch.makefile("r")
+stdin = ch.makefile("w")
+get_ipython().run_line_magic('pinfo', 'ch.exec_command')
+ch.exec_command("ls /")
+stdout.readline()
+stdout.readline()
+stdout.readline()
+stdout.readline()
+stdout.readline()
+stdout.readline()
+stdout.readline()
+stdout.readline()
+stdout.readline()
+stdout.readline()
+stdout.readline()
+stdout.readline()
+stdout.readline()
+stdout.readline()
+stdout.readline()
+stdout.readline()
+stdout.readline()
+stdout.readline()
+stdout.readline()
+stdout.readline()
+stdout.readline()
+stdout.readline()
+stdout.readline()
+from pssh.clients import SSHClient
+get_ipython().run_line_magic('pinfo', 'SSHClient')
+client = SSHClient("192.168.56.104", username="root", password="welcome")
+get_ipython().run_line_magic('pinfo', 'SSHClient')
+client = SSHClient("192.168.56.104", user="root", password="welcome")
+client
+get_ipython().run_line_magic('pinfo', 'client.execute')
+ch = client.execute("uptime")
+ch
+ch.read()
+ch = client.execute("ls /usr/local/src")
+ch.read()
+ch = client.execute("ls /usr/local/src")
+bytes, output = ch.read()
+del bytes
+ch = client.execute("ls /usr/local/src")
+size, output = ch.read()
+print(str(output, "utf8"))
+from pssh.clients import ParallelSSHClient
+get_ipython().run_line_magic('pinfo', 'ParallelSSHClient')
+client = ParallelSSHClient(["192.168.56.104"], user="root", password="welcome")
+client
+client.run_command("uptime")
+out = client.run_command("uptime")
+out
+out["192.168.56.104"]
+out["192.168.56.104"].stdout
+out["192.168.56.104"].stdout.read()
+for line in out["192.168.56.104"].stdout:
+    print(line)
+    
+out = client.run_command("echo Hello %s", ["server1"])
+next(out["192.168.56.104"].stdout)
+get_ipython().run_line_magic('pinfo', 'client.run_command')
+client
+get_ipython().run_line_magic('pinfo', 'client.copy_file')
+get_ipython().run_line_magic('pinfo', 'client.scp_send')
+get_ipython().run_line_magic('pinfo', 'client.copy_remote_file')
+get_ipython().run_line_magic('pinfo', 'client.scp_send')
+get_ipython().run_line_magic('pwd', '')
+client.scp_send(".", "/root/test_samples", recurse=True)
+import gevent
+out = client.scp_send(".", "/root/test_samples", recurse=True)
+out
+gevent.joinall(out)
+client.close()
+get_ipython().run_line_magic('pinfo', 'client.finished')
+get_ipython().run_line_magic('pinfo', 'client.join')
+get_ipython().run_line_magic('pinfo', 'client.pool')
+client.pool
+get_ipython().run_line_magic('hist', '')
+get_ipython().run_line_magic('hist', '-n')
+get_ipython().run_line_magic('load', '235')
+# %load 235
+out = client.run_command("echo Hello %s", ["server1"])

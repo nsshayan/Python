@@ -1,0 +1,4 @@
+scale=300
+sqrt(2)
+quit
+

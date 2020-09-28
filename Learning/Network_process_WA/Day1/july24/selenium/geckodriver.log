@@ -1,0 +1,13 @@
+1579859514297	mozrunner::runner	INFO	Running command: "/bin/firefox" "-marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile.pHtmYCUliyp3"
+1579859514568	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: mozillaAddons
+1579859514568	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: telemetry
+1579859514568	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: resource://pdf.js/
+1579859514568	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: about:reader*
+1579859515615	Marionette	INFO	Listening on port 44291
+1579859515702	Marionette	WARN	TLS certificate errors will be ignored for this session
+1579859544317	Marionette	INFO	Stopped listening on port 44291
+1595586256339	mozrunner::runner	INFO	Running command: "/Applications/Firefox.app/Contents/MacOS/firefox-bin" "-marionette" "-foreground" "-no-remote" "-profile" "/var/folders/1t/v3nxpjr11b5gkk_rd_bsvk_40000gn/T/rust_mozprofileMqD7eS"
+1595586260606	Marionette	INFO	Listening on port 62614
+1595586260623	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript error: chrome://marionette/content/proxy.js, line 287: NS_ERROR_NOT_INITIALIZED
+1595586271295	Marionette	INFO	Stopped listening on port 62614

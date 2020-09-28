@@ -1,0 +1,25 @@
+Trying 192.168.56.101...
+Connected to 192.168.56.101.
+Escape character is '^]'.
+
+archvm login: pythonista
+pythonista
+Password: welcome
+
+[1;34mWelcome to customized Linux VM[0m
+[1;34m==============================[0m
+
+Please refer to [1;33m/root/README[0m file for more details
+on using this VM.
+ 
+Get in touch with me for any further clarifications. 
+Good luck!
+
+[1;35mChandrashekar Babu[0m [1;36m<training@chandrashekar.info>[0m
+[1;35mWebsite: [1;36mhttp://www.chandrashekar.info/[0m
+         
+Profile scripts loaded. Shell is ready!
+[pythonista@archvm ~]$ uname -a
+uname -a
+Linux archvm 4.9.0-vbox #1 SMP PREEMPT Mon Dec 26 13:35:15 IST 2016 i686 GNU/Linux
+[pythonista@archvm ~]$ 

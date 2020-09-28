@@ -1,0 +1,15 @@
+<?xml version="1.0" ?>
+<staff>
+    <emp name="John Doe">
+        <dept>IT</dept>
+    </emp>
+
+    <emp name="Sam Jones">
+        <dept>Support</dept>
+        <door>sdfsdfsdf</door>
+    </emp>
+</staff>
+
+
+
+

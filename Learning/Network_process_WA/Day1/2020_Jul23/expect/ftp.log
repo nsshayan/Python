@@ -1,0 +1,19 @@
+Connected to ftp.chandrashekar.info.
+220 192.252.149.39 FTP server ready
+Name (ftp.chandrashekar.info:chandrashekar): testusertestuser
+331 Password required for testuser
+Password: w3lc0me
+230 User testuser logged in
+Remote system type is UNIX.
+Using binary mode to transfer files.
+ftp> cd /www/filescd /www/files
+250 CWD command successful
+ftp> get test.txtget test.txt
+local: test.txt remote: test.txt
+229 Entering Extended Passive Mode (|||27009|)
+150 Opening BINARY mode data connection for test.txt (73 bytes)
+  0% |                                   |     0        0.00 KiB/s    --:-- ETA100% |***********************************|    73      102.57 KiB/s    00:00 ETA
+226 Transfer complete
+73 bytes received in 00:00 (0.22 KiB/s)
+ftp> quitquit
+221 Goodbye.

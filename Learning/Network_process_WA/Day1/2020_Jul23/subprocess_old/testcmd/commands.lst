@@ -1,0 +1,3 @@
+ls -l
+uname -r
+ps -aeo pid

@@ -1,0 +1,15 @@
+EXERCISE
+========
+
+Download the exercise file from the following URL:
+    
+    https://tinyurl.com/ssh-remote-exec
+
+[Also available on the shared clipboard - 
+  http://dhrona.net/p/apnpw ]
+
+
+Implement the ssh_remote_exec() function which should parse 
+a dictionary passed as argument and execute commands on each 
+host as per the configuration dictionary - ssh_config
+

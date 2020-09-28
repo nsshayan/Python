@@ -1,0 +1,90 @@
+
+import requests
+requests.get("http://localhost:3000/")
+requests.get("http://localhost:3000/posts")
+r = requests.get("http://localhost:3000/posts")
+r.ok
+r.header["content-type"]
+r.headers["content-type"]
+r.json()
+requests.put("http://localhost:3000/posts/2", json={"title": "sdfdsf"})
+requests.get("http://localhost:3000/posts").json()
+requests.post("http://localhost:3000/posts", json={"title": "this is a new post", "autor": "Chandrashekar"})
+requests.get("http://localhost:3000/posts").json()
+API_KEY = "932c152d6ff8d185bfdd9d2a5f8e33e4"
+URL = "http://api.openweathermap.org/data/2.5/weather?q={city}&units=metric&APPID={key}"
+URL
+r = requests.get(URL.format(city="Delhi", key=API_KEY))
+r.status_code
+r.headers["content-type"]
+r.json()
+requests.get(URL.format(city="Bengaluru", key=API_KEY))
+requests.get(URL.format(city="Bengaluru", key=API_KEY)).json()
+URL.format(city="Bengaluru", key=API_KEY)
+query_data = {"q": "Bengaluru", "units": "metric", "APPID": API_KEY}
+query_data
+requests.get("http://api.openweathermap.org/data/2.5/weather", data=query_data).json()
+import requests
+get_ipython().run_line_magic('pinfo', 'requests.Request')
+requests.get("http://api.openweathermap.org/data/2.5/weather", params=query_data).json()
+get_ipython().run_line_magic('pinfo', 'requests.Request')
+requests.get("http://localhost:3000/posts/1")
+requests.get("http://localhost:3000/posts/1").json()
+requests.patch("http://localhost:3000/posts/1", json={"title": "new title")
+)
+requests.patch("http://localhost:3000/posts/1", json={"title": "new title"})
+requests.get("http://localhost:3000/posts/1").json()
+requests.put("http://localhost:3000/posts/1", json={"title": "new title 2"})
+requests.get("http://localhost:3000/posts/1").json()
+requests.put("http://localhost:3000/posts/1", json={"id": "1", "title": "another title"})
+requests.get("http://localhost:3000/posts/1").json()
+requests.get("http://localhost:3000/posts").json()
+requests.put("http://localhost:3000/posts/2", json=dict(id="2", testdata=100)) 
+requests.get("http://localhost:3000/posts").json()
+requests.get("http://localhost:3000/posts/2").json()
+requests.delete("http://localhost:3000/posts/2")
+requests.get("http://localhost:3000/posts").json()
+import re
+a = "this is a test string"
+r = "t.+s"
+re.search(r, a)
+r = "t.+?s"
+re.search(r, a)
+r = "t.*?s"
+re.search(r, a)
+a = "ts"
+re.search(r, a)
+r = "t.+?s"
+re.search(r, a)
+a = "temperature = 40
+a = "temperature = 40"
+a = "temperature=40"
+a = "temperature=     40"
+r = "\w+ *= *\d+"
+re.search(r, "a = 100")
+re.search(r, "a      =    100")
+re.search(r, "a=    100")
+re.search(r, "a b =    100")
+r = "^\w+ *= *\d+$"
+re.search(r, "a b =    100")
+re.search(r, "ab =    100")
+re.search(r, "=    100")
+r = "^\w* *= *\d+$"
+re.search(r, "=    100")
+re.search(r, "%=    100")
+re.search(r, "5=    100")
+regex = '<a class="package-snippet".+</a>'
+re.search(regex, data)
+data
+re.search('<a class="package-snippet" href="/project/ttr-xml-csv2xml/">', data)
+
+import requests
+from requests_html import HTMLSession
+s = HTMLSession()
+r = s.get("https://finance.yahoo.com/quote/CSCO?p=CSCO")
+r.html
+r.html.html
+r.html.find("translate")
+r.html.find("span")
+r.html.render()
+exit()

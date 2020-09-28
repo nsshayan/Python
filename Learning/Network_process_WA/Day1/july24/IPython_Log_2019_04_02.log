@@ -1,0 +1,483 @@
+
+from paramiko import SSHClient, AutoAddPolicy
+client = SSHClient()
+client.set_missing_host_key_policy(AutoAddPolicy())
+client.connect("dhrona.net", username="user1", password="welcome", port=12276)
+stdin, stdout, stderr = client.exec_command("uptime")
+stdout
+stdout.read()
+channel = client.invoke_shell()
+channel
+get_ipython().run_line_magic('pinfo', 'channel.recv')
+stdin = channel.makefile("w")
+stdout = channel.makefile("r")
+stderr = channel.makefile_stderr("r")
+print("uptime", file=stdin)
+stdout.readline()
+stdout.readline()
+stdout.readline()
+print("uname -a", file=stdin)
+print(stdout.readline())
+print(stdout.readline())
+print(stdout.readline())
+client.close()
+get_ipython().run_line_magic('pinfo', 'client.connect')
+from threading import Thread
+t = Thread()
+get_ipython().run_line_magic('pinfo', 't.join')
+from paramiko import Transport
+get_ipython().run_line_magic('pinfo', 'Transport')
+t = Transport(("dhrona.net", 12276))
+t
+get_ipython().run_line_magic('pinfo', 't.connect')
+t.connect(username="user10", password="welcome")
+t
+get_ipython().run_line_magic('pinfo', 't.open_channel')
+ch = t.open_channel("session")
+ch
+ch.exec_command("cat /etc/passwd")
+out = ch.makefile("r")
+out.read()
+t
+sftp = t.open_sftp()
+sftp = t.open_sftp_client()
+sftp
+sftp.put("transport_layer_test.py", "/tmp/a.txt")
+get_ipython().run_line_magic('pwd', '')
+get_ipython().run_line_magic('ls', '')
+sftp.put("db.json", "/tmp/a.txt")
+sftp.listdir("/tmp")
+sftp.get("/etc/passwd", "p.txt")
+get_ipython().run_line_magic('ls', '')
+sftp.mkdir("/tmp/testfolder")
+sftp.listdir("/tmp")
+sftp.chdir("/tmp/testfolder")
+sftp.getcwd()
+sftp.listdir(".")
+sftp.chdir("..")
+sftp.listdir(".")
+sftp.rmdir("testfolder")
+sftp.unlink("a.txt")
+sftp.stat("/etc/passwd")
+sftp.stat("/etc/passwd").size
+sftp.stat("/etc/passwd").st_size
+sftp.stat("/etc/passwd").st_uid
+sftp.stat("/etc/passwd").st_mtime
+import os
+os.path.exists("p.txt")
+os.path.exists("p1.txt")
+os.path.is_file("p1.txt")
+os.path.isfile("p1.txt")
+os.path.isfile("p.txt")
+os.path.exists("paramiko")
+os.path.isfile("paramiko")
+os.path.isdir("paramiko")
+sftp.stat("paramiko")
+sftp.close()
+sftp = t.open_sftp_client()
+sftp.getcwd()
+sftp.chdir(".")
+sftp.getcwd()
+sftp.put("p.txt", "~/a.txt")
+home_dir = sftp.getcwd()
+home_dir
+sftp.put("p.txt", "~/a.txt".replace("~", home_dir))
+f = sftp.open("/etc/passwd", "r")
+f
+for line in f:
+    print(line)
+    
+f.close()
+with sftp.open("/etc/passwd", "r") as infile:
+    for line in infile:
+        print(line)
+        
+client.connect("dhrona.net", username="user10", password="welcome", port=12276)
+for line in client.exec_command("cat /etc/passwd")[1]:
+    print(line)
+    
+f = sftp.open("/tmp/a.txt", "w")
+f.write("this is line 1\n")
+print("this is a test message", file=f)
+lines = ["this is line 3\n", "this is line 4\n", "this is line 5\n"]
+f.writelines(lines)
+f.close()
+sftp.listdir("/tmp")
+sftp.open("/tmp/a.txt", "r").read()
+from pssh.clients import SSHClient
+get_ipython().run_line_magic('pinfo', 'SSHClient')
+from pssh.clients import SSHClient
+client.close()
+sftp.close()
+client = SSHClient("dhrona.net", username="user1", password="welcome", port=12276)
+client = SSHClient("dhrona.net", user="user1", password="welcome", port=12276)
+client = SSHClient("dhrona.net", user="user1", password="welcome", port=12276)
+client
+result = client.run_command("uptime")
+result
+result[2].read()
+for line in result[2]:
+    print(line)
+    
+hosts = ["192.168.56.101", "dhrona.net"]
+hosts
+from pssh.clients import ParallelSSHClient
+host_config = {'192.168.56.101' : {'user': 'root', 'password': 'welcome',
+                          'port': 22,
+                          #'private_key': load_private_key(
+                          #  'my_key.pem')
+                              },
+               'dhrona.net' : {'user': 'user1', 'password': 'welcome',
+                          'port': 12276,
+                          #'private_key': load_private_key(
+                          #    open('my_other_key.pem'))
+                              },
+              }
+import yaml
+from yaml import CLoader
+with open("host_config.yml", "w") as outfile:
+    yaml.dump(host_config, outfile)
+    
+get_ipython().run_line_magic('cat', 'host_config.yml')
+get_ipython().run_line_magic('pinfo', 'yaml.dump')
+with open("host_config.yml") as infile: hc = yaml.load(infile, loader=CLoader)
+get_ipython().run_line_magic('pinfo', 'yaml.load')
+with open("host_config.yml") as infile: hc = yaml.load(infile, Loader=CLoader)
+hc
+hc.keys()
+from pssh.clients import ParallelSSHClient
+client = ParallelSSHClient(hc.keys(), host_config=hc)
+output = client.run_command("uptime")
+output
+output.keys()
+output["192.168.56.101"]
+for host, host_output in output.items():
+    for line in host_output.stdout:
+        print(host, line)
+        
+client.run_command("%s", host_args=("uptime", "uname -a"))
+output = client.run_command("%s", host_args=("uptime", "uname -a"))
+for host, host_output in output.items():
+    for line in host_output.stdout:
+        print(host, line)
+        
+output = client.run_command("cat %s", host_args=("/etc/passwd", "hosts"))
+for host, host_output in output.items():
+    for line in host_output.stdout:
+        print(host, line)
+        
+output = client.run_command("cat %s", host_args=("/etc/passwd", "/etc/hosts"))
+for host, host_output in output.items():
+    for line in host_output.stdout:
+        print(host, line)
+        
+get_ipython().run_line_magic('hist', '-nb')
+get_ipython().run_line_magic('hist', '-n')
+get_ipython().run_line_magic('save', '"pssh_session.py" 123-139')
+client
+client.copy_file("p.txt", "/tmp/p.txt")
+client.copy_file("p.txt", "/tmp/p.txt")
+get_ipython().run_line_magic('pinfo', 'client.copy_remote_file')
+client.copy_remote_file("/etc/passwd", "password")
+get_ipython().run_line_magic('ls', '')
+get_ipython().run_line_magic('ls', '')
+get_ipython().run_line_magic('ls', '')
+tasks = client.copy_remote_file("/etc/passwd", "password")
+tasks
+import gevent
+gevent.joinall(tasks)
+cl = SSHClient("192.168.56.101", user="root", password="welcome")
+get_ipython().run_line_magic('pinfo', 'cl.open_session')
+cl.open_session()
+ch = cl.open_session()
+ch
+a = "Name: %s"
+a
+print a % ("John)
+print a % ("John")
+print(a % ("John"))
+import yaml
+c = yaml.load(open("host_config_commands.yml"))
+c
+c["commands"]
+c["commands"].values()
+c["commands"].values()
+list(c["commands"].values())
+c["commands"].values()
+zip(c["commands"].values())
+list(zip(c["commands"].values()))
+list(zip(*c["commands"].values()))
+import requests
+requests.get("http://www.chandrashekar.info/")
+res = requests.get("http://www.chandrashekar.info/")
+res.ok
+res = requests.get("http://www.chandrashekar.info/sdfsdfsdf")
+res.ok
+res.status_code
+res.headers
+res.headers["Content-Type"]
+res.headers["content-type"]
+res.text
+res = requests.get("http://www.chandrashekar.info/")
+res.ok
+res.headers["Content-Type"]
+res.txt
+res.text
+res.content
+res = requests.get("https://www.chandrashekar.info/")
+res = requests.get("https://www.chandrashekar.info/", ssl_verify=False)
+res = requests.get("https://www.chandrashekar.info/", verify=False)
+type(res.content)
+type(res.text)
+res.text
+import xml.etree.ElementTree as et
+import lxml.etree as et
+import lxml.html as et
+import lxml.etree as et
+import lxml.html as html
+et
+html
+html.parse("http://www.chandrashekar.info/")
+html.parse("https://www.chandrashekar.info/")
+res.text
+doc = html.fromstring(res.text)
+doc
+doc
+len(doc)
+doc[0]
+doc[1]
+doc[2]
+doc[2][0]
+doc[1][0]
+doc[1][1]
+doc[1][2]
+doc[1][3]
+doc[1][4]
+doc[1][5]
+doc[1][6]
+for e in doc[1]: print(e)
+doc[2]
+doc.xpath("./head")
+doc.xpath("./body")
+doc.xpath("./body/div")
+doc.xpath("./body/div/a/")
+doc.xpath("./body/div/a")
+doc.xpath("./body/div/a/text()")
+doc.xpath("./body/div/a/@href")
+doc.xpath(".//a")
+doc.xpath(".//a/@href")
+doc.xpath(".//img")
+doc.xpath(".//img/@src")
+res = requests.get("http://weather.yahoo.com/")
+res.ok
+res.status_code
+res.text
+doc = html.fromstring(res.text)
+doc
+doc.xpath(".//span[@class='Va(t)']")
+doc.xpath(".//span[@class='Va(t)']/text()")
+url = "api.openweathermap.org/data/2.5/weather?q=Bengaluru,units=metric&APPID=932c152d6ff8d185bfdd9d2a5f8e33e4"
+url = "http://api.openweathermap.org/data/2.5/weather?q=Bengaluru,units=metric&APPID=932c152d6ff8d185bfdd9d2a5f8e33e4"
+url
+r = requests.get(url)
+r.ok
+r.status_code
+r.headers
+r.json()
+r.json()["main"]["temp"]
+r = requests.get("http://localhost:3000/posts")
+r.ok
+r.json()
+requests.post("http://localhost:3000/posts", json={"title": "sdfsdkfjsdlk fjskdlfj ", "author": "weiruweiruweiorw"})
+requests.get("http://localhost:3000/posts").json()
+r = requests.post("http://localhost:3000/posts", json={"title": "sdfsdkfjsdlk fjskdlfj ", "author": "weiruweiruweiorw"})
+r.status_code
+r.json()
+requests.get("http://localhost:3000/posts").json()
+requests.get("http://localhost:3000/posts/7").json()
+requests.get("http://localhost:3000/posts/3").json()
+requests.get("http://localhost:3000/posts/3").json()
+requests.delete("http://localhost:3000/posts/3")
+requests.get("http://localhost:3000/posts/3").json()
+requests.get("http://localhost:3000/posts").json()
+r.headers["content-type"]
+requests.get("http://localhost:3000/posts", headers={"Accept": "application/json"})
+requests.Request
+help(requests.Request)
+from requests import Session
+s = Session()
+s.get("http://www.chandrashekar.info/")
+url = "http://pypi.org"
+url = "https://pypi.org"
+r = requests.get(url)
+r.cookies
+r1 = requests.get("http://www.google.com/")
+r1.status_code
+r1.cookies
+r1.cookies
+r1.cookies["1P_JAR"]
+r1.cookies["1P_JAR"]
+help(requests.Request)
+help(requests.Request)
+r = requests.get("https://pypi.org/search/", params={"q": "xml"})
+r.headers["content-type"]
+doc = html.parse(r.text)
+doc = html.fromstring(r.text)
+doc.xpath(".//a[@class='package-snippet']")
+doc.xpath(".//a[@class='package-snippet']/@href")
+doc.xpath(".//a[@class='package-snippet']/text()")
+doc.xpath(".//a[@class='package-snippet']/p/text()")
+import re
+re._pattern_type = re.Pattern
+from robobrowser import RoboBrowser
+b = RoboBrowser(parser="lxml")
+b
+b.open("http://pypi.org/")
+b.response.ok
+b.response.status_code
+b.response.text
+b.response.ok
+b.url
+b.get_links()
+b.follow_link("browse projects")
+get_ipython().run_line_magic('pinfo', 'b.follow_link')
+b.get_link("browse projects")
+l = b.get_link("browse projects")
+b.follow_link(l)
+b.url
+b.get_links()
+b.get_forms()
+b.get_form()
+b.get_form()
+f = b.get_form()
+f["q"] = "xml"
+b.submit_form(f)
+b.url
+b.get_links()
+get_ipython().run_line_magic('pinfo', 'b.get_links')
+b.get_links(_class="package-snippet")
+b.get_links(class="package-snippet")
+b.get_links(class_="package-snippet")
+b.get_links(class_="package-snippet")
+for link in b.get_links(class_="package-snippet"):
+    print(link.h3)
+    
+for link in b.get_links(class_="package-snippet"):
+    print(link.h3.span)
+    
+b.url
+b.back()
+b.url
+b.back()
+b.url
+b.open("http://www.chandrashekar.info/")
+b.url
+r = requests.get("http://testing.chandrashekar.info/wp-login.php")
+r
+r.text
+r = requests.post("http://testing.chandrashekar.info/wp-login.php", params={"log": "pythonista", "pwd": "w3lc0me"})
+r
+r.url
+b.open("http://testing.chandrashekar.info/wp-login.php")
+b.url
+b.get_forms()
+b.get_form()
+login_form = b.get_form()
+from robobrowser import RoboBrowser
+b = RoboBrowser(parser="lxml")
+b.open("http://testing.chandrashekar.info/wp-login.php")
+b.url
+login_form = b.get_form()
+login_form
+login_form["log"] = "pythonista"
+login_form["pwd"] = "w3lc0me"
+login_form
+b
+b.submit_form(login_form)
+b.url
+get_ipython().run_line_magic('save', 'rb_session.py 348-360')
+from robobrowser import RoboBrowser
+browser = RoboBrowser(parser="lxml")
+from post_new_wp_blog import *
+LOGIN_URL
+USERNAME
+browser.open(LOGIN_URL)
+browser.url
+browser.select("h1")
+browser.select("label")
+browser.select("label")[0]
+browser.select("label")[0].text
+"Username or Email Address" in browser.select("label")[0].text
+browser.get_forms()
+browser.get_form()
+login_form = browser.get_form()
+login_form["log"] = ADMIN_USERNAME
+login_form["pwd"] = ADMIN_PASSWORD
+browser.submit_form(login_form)
+browser.url
+browser.select("div.welcome-panel-content h2")
+browser.select("div.welcome-panel-content h2")
+browser.select("div.welcome-panel-content h2 ::text")
+browser.select("div.welcome-panel-content h2")[0].text
+"Welcome to WordPress!" in browser.select("div.welcome-panel-content h2")[0].text
+browser.select("div.welcome-panel-column-container div.welcome-panel-column h3") 
+browser.get_link("Add New")
+import re
+re._pattern_type = re.Pattern
+browser.get_link("Add New")
+new_link = browser.get_link("Add New")
+browser.follow_link(new_link)
+browser.url
+browser.select("h1.wp-heading-inline")
+browser.select("h1.wp-heading-inline")[0]
+browser.select("h1.wp-heading-inline")[0].text
+browser.get_forms()
+len(browser.get_forms())
+browsers.get_forms()[0]
+browser.get_forms()[0]
+browser.get_forms()[1]
+browser.get_forms()[1]
+browser.get_form(name="post")
+browser.get_forms(name="post")
+browser.get_forms(id="post")
+browser.get_form(id="post")
+post_form = browser.get_form(id="post")
+post_form["post_title"]
+post_form["content"]
+post_form["post_title"] = "New blog (Chandrashekar Babu) April 2nd 2019"
+post_form["content"] = "ldsj fljsflkjsdlkfjsdkljfsdklfjsdlkjsdlkfjsdkljfdsklfjsdlfjsdlkjfsdlkf"
+browser.submit_form(post_form)
+post_form.submit_fields("publish")
+post_form.submit_fields["publish"]
+publish = post_form.submit_fields["publish"]
+browser.submit_form(post_form, publish)
+browser.url
+browser.open("http://testing.chandrashekar.info/")
+browser.url
+browser.select("h3.entry-title a")
+[ l.text for l in browser.select("h3.entry-title a") ]
+"New blog (Chandrashekar Babu) April 2nd 2019" in [ l.text for l in browser.select("h3.entry-title a") ]
+[ l.text for l in browser.select("h3.entry-title a") if "Chandrashekar" in l ]
+[ l.text for l in browser.select("h3.entry-title a") if "Chandrashekar" in l.text ]
+import requests_html
+from requests_html import Session
+from selenium.webdriver import Firefox as driver
+import selenium.webdriver
+dir(selenium.webdriver)
+from selenium.webdriver import Firefox as driver
+browser = driver()
+browser.get("www.google.com")
+browser.get("http://www.google.com")
+browser.find_element_by_name("q")
+search_field = browser.find_element_by_name("q")
+search_field.send_keys("Python\r")
+search_field.send_keys("Python\n")
+search_field.clear()
+search_field.send_keys("Python")
+from selenium.webdriver.common.keys import Keys
+Keys.ENTER
+search_field.send_keys(Keys.ENTER)
+browser.find_element_by_partial_link_text("Welcome to Python")
+link = browser.find_element_by_partial_link_text("Welcome to Python")
+link.click()
+browser.save_screenshot("/Users/chandrashekar/python_home.png")

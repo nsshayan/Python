@@ -1,0 +1,19 @@
+Connected to ftp.chandrashekar.info.
+220 192.252.149.39 FTP server ready
+Name (ftp.chandrashekar.info:chandrashekar): testuser
+testuser
+331 Password required for testuser
+Password: w3lcome
+
+530 Login incorrect.
+ftp: Login failed
+ftp> cd /www/files/python
+cd /www/files/python
+530 Please login with USER and PASS
+ftp> get may27.zip
+get may27.zip
+local: may27.zip remote: may27.zip
+530 Please login with USER and PASS
+530 Please login with USER and PASS
+530 Please login with USER and PASS
+ftp> quit

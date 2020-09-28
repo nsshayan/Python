@@ -1,0 +1,11 @@
+[33mExercise
+========[0m
+Download the code from the following URL:
+     
+     [34mhttps://tinyurl.com/sftp-upload[0m
+
+Review the program and implement the [32mupload()[0m function
+that should allow uploading a complete directory tree
+from a local machine to a remote host using SFTP protocol
+using [35mparamiko.SFTPClient[0m features.
+

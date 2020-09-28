@@ -1,0 +1,7 @@
+command: telnet 192.168.56.101 23
+session:
+- !!python/tuple ['archvm login: ', pythonista]
+- !!python/tuple ['Password: ', welcome]
+- !!python/tuple
+  - \[pythonista@archvm ~\]\$
+  - [whoami, uname -a, ls /etc, exit]

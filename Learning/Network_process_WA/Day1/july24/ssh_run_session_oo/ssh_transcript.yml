@@ -1,0 +1,14 @@
+host: dhrona.duckdns.org
+port: 22
+user: user10
+password: tuxedo
+session:
+  - MKDIR /tmp/scripts
+  - CHDIR /tmp/scripts
+  - PUT testprogram.py /tmp/scripts/testprogram.py
+  - MAKE_EXECUTABLE /tmp/scripts/testprogram.py
+  - EXEC /tmp/scripts/testprogram.py
+  - UNLINK /tmp/scripts/testprogram.py
+  - CHDIR /tmp
+  - RMDIR /tmp/scripts
+  - EXIT

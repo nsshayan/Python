@@ -1,0 +1,7 @@
+http://www.chandrashekar.info/files/telnet_simple.py
+
+
+
+http://public.etherpad-mozilla.org/
+
+https://public.etherpad-mozilla.org/p/python_samples

@@ -1,0 +1,4 @@
+ftp ftp.chandrashekar.info:
+  - ["Name .*:", testuser]
+  - ["Password: ", w3lc0me]
+  - ["ftp> ", [cd /www/files, get xml.zip, quit]]

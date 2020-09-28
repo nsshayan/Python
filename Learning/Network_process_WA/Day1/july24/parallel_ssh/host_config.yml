@@ -1,0 +1,17 @@
+192.168.56.101:
+  password: welcome
+  port: 22
+  user: root
+  commands:
+    - uptime
+    - hostname
+    - id
+
+dhrona.net:
+  password: welcome
+  port: 12276
+  user: user1
+  commands:
+     - cat /etc/passwd
+     - cat /etc/hosts
+     - cat /proc/loadavg

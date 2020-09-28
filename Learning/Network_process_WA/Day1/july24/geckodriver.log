@@ -1,0 +1,185 @@
+1554200217445	mozrunner::runner	INFO	Running command: "/Applications/Firefox.app/Contents/MacOS/firefox-bin" "-marionette" "-foreground" "-no-remote" "-profile" "/var/folders/1t/v3nxpjr11b5gkk_rd_bsvk_40000gn/T/rust_mozprofile.G3ZyeWbmhEgz"
+1554200218455	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: mozillaAddons
+1554200218456	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: resource://pdf.js/
+1554200218456	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: about:reader*
+1554200220836	Marionette	INFO	Listening on port 56113
+1554200220891	Marionette	WARN	TLS certificate errors will be ignored for this session
+console.error: BroadcastService: 
+  receivedBroadcastMessage: handler for
+  remote-settings/monitor_changes
+  threw error:
+  Message: Error: Polling for changes failed: NetworkError when attempting to fetch resource..
+  Stack:
+    remoteSettingsFunction/remoteSettings.pollChanges@resource://services-settings/remote-settings.js:190:13
+
+1554260128678	Marionette	INFO	Stopped listening on port 56113
+1559902806379	mozrunner::runner	INFO	Running command: "/Applications/Firefox.app/Contents/MacOS/firefox-bin" "-marionette" "-foreground" "-no-remote" "-profile" "/var/folders/1t/v3nxpjr11b5gkk_rd_bsvk_40000gn/T/rust_mozprofile.blmrzErnOLiV"
+1559902807317	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: mozillaAddons
+1559902807318	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: resource://pdf.js/
+1559902807318	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: about:reader*
+1559902809587	Marionette	INFO	Listening on port 59861
+1559902809639	Marionette	WARN	TLS certificate errors will be ignored for this session
+console.error: BroadcastService: 
+  receivedBroadcastMessage: handler for
+  remote-settings/monitor_changes
+  threw error:
+  Message: Error: Polling for changes failed: http://%(server)s/dummy/blocklist//buckets/monitor/collections/changes/records?_expected=%221559849104725%22 is not a valid URL..
+  Stack:
+    remoteSettingsFunction/remoteSettings.pollChanges@resource://services-settings/remote-settings.js:203:13
+
+1559903111707	Marionette	INFO	Stopped listening on port 59861
+1559903473927	mozrunner::runner	INFO	Running command: "/Applications/Firefox.app/Contents/MacOS/firefox-bin" "-marionette" "-foreground" "-no-remote" "-profile" "/var/folders/1t/v3nxpjr11b5gkk_rd_bsvk_40000gn/T/rust_mozprofile.xecV4JvEW798"
+1559903474729	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: mozillaAddons
+1559903474729	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: resource://pdf.js/
+1559903474730	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: about:reader*
+1559903476933	Marionette	INFO	Listening on port 60030
+1559903476961	Marionette	WARN	TLS certificate errors will be ignored for this session
+1559903487484	Marionette	INFO	Stopped listening on port 60030
+1569915987044	mozrunner::runner	INFO	Running command: "/bin/firefox" "-marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile.Oa39r1ZsXQH3"
+Gtk-Message: 13:16:27.098: Failed to load module "appmenu-gtk-module"
+1569915987356	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: mozillaAddons
+1569915987356	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: telemetry
+1569915987356	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: resource://pdf.js/
+1569915987356	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: about:reader*
+Gtk-Message: 13:16:27.772: Failed to load module "appmenu-gtk-module"
+Gtk-Message: 13:16:27.914: Failed to load module "appmenu-gtk-module"
+1569915988400	Marionette	INFO	Listening on port 37719
+1569915988447	Marionette	WARN	TLS certificate errors will be ignored for this session
+Gtk-Message: 13:16:28.805: Failed to load module "appmenu-gtk-module"
+1569916061462	Marionette	INFO	Stopped listening on port 37719
+[Parent 14896, Gecko_IOThread] WARNING: pipe error (80): Connection reset by peer: file /build/src/firefox-69.0/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 358
+[Parent 14896, Gecko_IOThread] WARNING: pipe error (77): Connection reset by peer: file /build/src/firefox-69.0/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 358
+1571393772258	mozrunner::runner	INFO	Running command: "/bin/firefox" "-marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile.H9h9Kk7ZBV3M"
+Gtk-Message: 15:46:12.316: Failed to load module "appmenu-gtk-module"
+1571393772576	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: mozillaAddons
+1571393772576	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: telemetry
+1571393772576	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: resource://pdf.js/
+1571393772576	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: about:reader*
+Gtk-Message: 15:46:12.964: Failed to load module "appmenu-gtk-module"
+Gtk-Message: 15:46:13.078: Failed to load module "appmenu-gtk-module"
+1571393773624	Marionette	INFO	Listening on port 33361
+1571393773667	Marionette	WARN	TLS certificate errors will be ignored for this session
+Gtk-Message: 15:46:14.044: Failed to load module "appmenu-gtk-module"
+[Parent 12859, Gecko_IOThread] WARNING: pipe error (78): Connection reset by peer: file /build/src/firefox-69.0/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 358
+[Parent 12859, Gecko_IOThread] WARNING: pipe error (77): Connection reset by peer: file /build/src/firefox-69.0/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 358
+1571395621612	Marionette	INFO	Stopped listening on port 33361
+1574932602608	mozrunner::runner	INFO	Running command: "/bin/firefox" "-marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile.lUCnQEinmneq"
+1574932602904	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: mozillaAddons
+1574932602904	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: telemetry
+1574932602904	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: resource://pdf.js/
+1574932602904	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: about:reader*
+1574932603863	Marionette	INFO	Listening on port 45553
+1574932603911	Marionette	WARN	TLS certificate errors will be ignored for this session
+[Parent 8090, Gecko_IOThread] WARNING: pipe error (66): Connection reset by peer: file /build/firefox/src/firefox-70.0.1/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 358
+[Parent 8090, Gecko_IOThread] WARNING: pipe error (67): Connection reset by peer: file /build/firefox/src/firefox-70.0.1/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 358
+1574995780579	Marionette	INFO	Stopped listening on port 45553
+1579857428049	mozrunner::runner	INFO	Running command: "/bin/firefox" "-marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile.laWM5qN6Ljbj"
+1579857428335	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: mozillaAddons
+1579857428336	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: telemetry
+1579857428336	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: resource://pdf.js/
+1579857428336	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: about:reader*
+1579857429416	Marionette	INFO	Listening on port 37391
+1579857429452	Marionette	WARN	TLS certificate errors will be ignored for this session
+[Parent 18001, Gecko_IOThread] WARNING: pipe error (67): Connection reset by peer: file /build/firefox/src/firefox-71.0/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 358
+[Parent 18001, Gecko_IOThread] WARNING: pipe error (90): Connection reset by peer: file /build/firefox/src/firefox-71.0/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 358
+1579859822847	Marionette	INFO	Stopped listening on port 37391
+1586257942358	mozrunner::runner	INFO	Running command: "/Applications/Firefox.app/Contents/MacOS/firefox-bin" "-marionette" "-foreground" "-no-remote" "-profile" "/var/folders/1t/v3nxpjr11b5gkk_rd_bsvk_40000gn/T/rust_mozprofileLPZiH5"
+1586257943473	addons.webextension.doh-rollout@mozilla.org	WARN	Loading extension 'doh-rollout@mozilla.org': Reading manifest: Invalid extension permission: networkStatus
+1586257943917	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: mozillaAddons
+1586257943917	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: telemetry
+1586257943917	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: resource://pdf.js/
+1586257943917	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: about:reader*
+1586257946975	Marionette	INFO	Listening on port 61639
+1586257947069	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript error: resource://gre/actors/AutoCompleteChild.jsm, line 196: Error: Invalid autocomplete selectedIndex
+JavaScript error: resource://gre/actors/AutoCompleteChild.jsm, line 196: Error: Invalid autocomplete selectedIndex
+JavaScript error: resource://gre/modules/LoginManagerChild.jsm, line 179: NS_ERROR_XPC_JAVASCRIPT_ERROR_WITH_DETAILS: [JavaScript Error: "Invalid autocomplete selectedIndex" {file: "resource://gre/actors/AutoCompleteChild.jsm" line: 196}]'[JavaScript Error: "Invalid autocomplete selectedIndex" {file: "resource://gre/actors/AutoCompleteChild.jsm" line: 196}]' when calling method: [nsIAutoCompletePopup::selectedIndex]
+1586257957348	Marionette	INFO	Stopped listening on port 61639
+1593166020836	mozrunner::runner	INFO	Running command: "/Applications/Firefox.app/Contents/MacOS/firefox-bin" "-marionette" "-foreground" "-no-remote" "-profile" "/var/folders/1t/v3nxpjr11b5gkk_rd_bsvk_40000gn/T/rust_mozprofileLSO1IZ"
+1593166024512	Marionette	INFO	Listening on port 61513
+1593166024619	Marionette	WARN	TLS certificate errors will be ignored for this session
+1593167156607	Marionette	INFO	Stopped listening on port 61513
+1593167624315	mozrunner::runner	INFO	Running command: "/Applications/Firefox.app/Contents/MacOS/firefox-bin" "-marionette" "-foreground" "-no-remote" "-profile" "/var/folders/1t/v3nxpjr11b5gkk_rd_bsvk_40000gn/T/rust_mozprofilehSxv7N"
+1593167627926	Marionette	INFO	Listening on port 61869
+1593167627968	Marionette	WARN	TLS certificate errors will be ignored for this session
+1593167640573	Marionette	INFO	Stopped listening on port 61869
+1593168011143	mozrunner::runner	INFO	Running command: "/Applications/Firefox.app/Contents/MacOS/firefox-bin" "-marionette" "-foreground" "-no-remote" "-profile" "/var/folders/1t/v3nxpjr11b5gkk_rd_bsvk_40000gn/T/rust_mozprofileeMIqIc"
+1593168011143	mozrunner::runner	INFO	Running command: "/Applications/Firefox.app/Contents/MacOS/firefox-bin" "-marionette" "-foreground" "-no-remote" "-profile" "/var/folders/1t/v3nxpjr11b5gkk_rd_bsvk_40000gn/T/rust_mozprofileymMEQ9"
+1593168011143	mozrunner::runner	INFO	Running command: "/Applications/Firefox.app/Contents/MacOS/firefox-bin" "-marionette" "-foreground" "-no-remote" "-profile" "/var/folders/1t/v3nxpjr11b5gkk_rd_bsvk_40000gn/T/rust_mozprofile2pCfnX"
+1593168015943	Marionette	INFO	Listening on port 62032
+1593168015949	Marionette	INFO	Listening on port 62030
+1593168016046	Marionette	WARN	TLS certificate errors will be ignored for this session
+1593168016054	Marionette	WARN	TLS certificate errors will be ignored for this session
+1593168016087	Marionette	INFO	Listening on port 62031
+1593168016174	Marionette	WARN	TLS certificate errors will be ignored for this session
+1593168033823	Marionette	INFO	Stopped listening on port 62032
+1593168177028	Marionette	INFO	Stopped listening on port 62031
+1593168179651	Marionette	INFO	Stopped listening on port 62030
+1593168198610	mozrunner::runner	INFO	Running command: "/Applications/Firefox.app/Contents/MacOS/firefox-bin" "-marionette" "-foreground" "-no-remote" "-profile" "/var/folders/1t/v3nxpjr11b5gkk_rd_bsvk_40000gn/T/rust_mozprofile0ZmBUq"
+1593168198610	mozrunner::runner	INFO	Running command: "/Applications/Firefox.app/Contents/MacOS/firefox-bin" "-marionette" "-foreground" "-no-remote" "-profile" "/var/folders/1t/v3nxpjr11b5gkk_rd_bsvk_40000gn/T/rust_mozprofileNfkX1k"
+1593168198610	mozrunner::runner	INFO	Running command: "/Applications/Firefox.app/Contents/MacOS/firefox-bin" "-marionette" "-foreground" "-no-remote" "-profile" "/var/folders/1t/v3nxpjr11b5gkk_rd_bsvk_40000gn/T/rust_mozprofile464YxW"
+1593168202816	Marionette	INFO	Listening on port 62350
+1593168202892	Marionette	WARN	TLS certificate errors will be ignored for this session
+1593168203144	Marionette	INFO	Listening on port 62349
+1593168203200	Marionette	WARN	TLS certificate errors will be ignored for this session
+1593168203212	Marionette	INFO	Listening on port 62348
+1593168203301	Marionette	WARN	TLS certificate errors will be ignored for this session
+1593168235753	Marionette	INFO	Stopped listening on port 62350
+1593168300108	mozrunner::runner	INFO	Running command: "/Applications/Firefox.app/Contents/MacOS/firefox-bin" "-marionette" "-foreground" "-no-remote" "-profile" "/var/folders/1t/v3nxpjr11b5gkk_rd_bsvk_40000gn/T/rust_mozprofile0wC19v"
+1593168303660	Marionette	INFO	Listening on port 62625
+1593168303766	Marionette	WARN	TLS certificate errors will be ignored for this session
+1593168321918	Marionette	INFO	Stopped listening on port 62625
+1593168325468	Marionette	INFO	Stopped listening on port 62349
+1593168327616	Marionette	INFO	Stopped listening on port 62348
+1593168707758	mozrunner::runner	INFO	Running command: "/Applications/Firefox.app/Contents/MacOS/firefox-bin" "-marionette" "-foreground" "-no-remote" "-profile" "/var/folders/1t/v3nxpjr11b5gkk_rd_bsvk_40000gn/T/rust_mozprofilecrq2J0"
+1593168711588	Marionette	INFO	Listening on port 62949
+1593168711601	Marionette	WARN	TLS certificate errors will be ignored for this session
+1593168758884	mozrunner::runner	INFO	Running command: "/Applications/Firefox.app/Contents/MacOS/firefox-bin" "-marionette" "-foreground" "-no-remote" "-profile" "/var/folders/1t/v3nxpjr11b5gkk_rd_bsvk_40000gn/T/rust_mozprofileXY1kP5"
+1593168764142	Marionette	INFO	Listening on port 63056
+1593168764177	Marionette	WARN	TLS certificate errors will be ignored for this session
+1593168840947	Marionette	INFO	Stopped listening on port 62949
+1593168846544	Marionette	INFO	Stopped listening on port 63056
+1593169282586	mozrunner::runner	INFO	Running command: "/Applications/Firefox.app/Contents/MacOS/firefox-bin" "-marionette" "-foreground" "-no-remote" "-profile" "/var/folders/1t/v3nxpjr11b5gkk_rd_bsvk_40000gn/T/rust_mozprofileg206Ii"
+1593169286092	Marionette	INFO	Listening on port 63330
+1593169286135	Marionette	WARN	TLS certificate errors will be ignored for this session
+1593169452418	Marionette	WARN	TimedPromise timed out after 0 ms: stacktrace:
+TimedPromise/<@chrome://marionette/content/sync.js:245:13
+TimedPromise@chrome://marionette/content/sync.js:230:10
+Sleep@chrome://marionette/content/sync.js:283:10
+dispatchPause@chrome://marionette/content/action.js:1482:10
+toEvents/<@chrome://marionette/content/action.js:1156:16
+action.dispatchTickActions@chrome://marionette/content/action.js:1060:35
+action.dispatch/chainEvents<@chrome://marionette/content/action.js:1028:20
+action.dispatch@chrome://marionette/content/action.js:1034:5
+performActions@chrome://marionette/content/listener.js:853:16
+dispatch/</req<@chrome://marionette/content/listener.js:527:14
+dispatch/<@chrome://marionette/content/listener.js:520:15
+1593169452685	Marionette	WARN	TimedPromise timed out after 0 ms: stacktrace:
+TimedPromise/<@chrome://marionette/content/sync.js:245:13
+TimedPromise@chrome://marionette/content/sync.js:230:10
+Sleep@chrome://marionette/content/sync.js:283:10
+dispatchPause@chrome://marionette/content/action.js:1482:10
+toEvents/<@chrome://marionette/content/action.js:1156:16
+action.dispatchTickActions@chrome://marionette/content/action.js:1060:35
+action.dispatch/chainEvents<@chrome://marionette/content/action.js:1028:20
+1593169452686	Marionette	WARN	TimedPromise timed out after 0 ms: stacktrace:
+TimedPromise/<@chrome://marionette/content/sync.js:245:13
+TimedPromise@chrome://marionette/content/sync.js:230:10
+Sleep@chrome://marionette/content/sync.js:283:10
+dispatchPause@chrome://marionette/content/action.js:1482:10
+toEvents/<@chrome://marionette/content/action.js:1156:16
+action.dispatchTickActions@chrome://marionette/content/action.js:1060:35
+action.dispatch/chainEvents<@chrome://marionette/content/action.js:1028:20
+1593169452950	Marionette	WARN	TimedPromise timed out after 0 ms: stacktrace:
+TimedPromise/<@chrome://marionette/content/sync.js:245:13
+TimedPromise@chrome://marionette/content/sync.js:230:10
+Sleep@chrome://marionette/content/sync.js:283:10
+dispatchPause@chrome://marionette/content/action.js:1482:10
+toEvents/<@chrome://marionette/content/action.js:1156:16
+action.dispatchTickActions@chrome://marionette/content/action.js:1060:35
+action.dispatch/chainEvents<@chrome://marionette/content/action.js:1028:20
+1593170663062	Marionette	INFO	Stopped listening on port 63330
+1595586320471	mozrunner::runner	INFO	Running command: "/Applications/Firefox.app/Contents/MacOS/firefox-bin" "-marionette" "-foreground" "-no-remote" "-profile" "/var/folders/1t/v3nxpjr11b5gkk_rd_bsvk_40000gn/T/rust_mozprofilepaOQ3X"
+1595586324043	Marionette	INFO	Listening on port 62703
+1595586324134	Marionette	WARN	TLS certificate errors will be ignored for this session
+1595586330000	Marionette	INFO	Stopped listening on port 62703

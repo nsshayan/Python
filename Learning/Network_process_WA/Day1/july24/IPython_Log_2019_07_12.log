@@ -1,0 +1,620 @@
+
+a = {"a": 10, "b": 20, "c": 30}
+a
+a.items()
+a.items() - dict("c": None).items()
+a.items() - dict(c=None).items()
+a.items() - dict(c=a['c']).items()
+dict(a.items() - dict(c=a['c']).items())
+dict(a=a['a'], b=b['b'])
+dict(a=a['a'], b=a['b'])
+a
+from copy import deepcopy
+b = deepcopy(a)
+b
+del b["c"]
+b
+info =   {   "hostname": "192.168.56.101",
+        "port": 22,
+        "username": "root",
+        "password": "welcome",
+        "commands": [
+            "uptime",
+            "uname -a",
+            "date" ]
+    }
+info
+ssh_args = dict(info.items() - dict(commands=info["commands"]).items())
+info
+ssh_args = dict(info.items() - dict(commands=info["commands"]).items())
+info.items() - dict(commands=info["commands"]).items()
+a = [(10, 100), (20, 200), (30, 300)]
+a
+for r in a:
+    print(r)
+    
+for x, y in a:
+    print(r)
+    
+from paramiko import SSHClient
+client = SSHClient()
+from paramiko import SSHClient, AutoAddPolicy
+client = SSHClient()
+client.set_missing_host_key_policy(AutoAddPolicy())
+client.connect("192.168.56.105", username="root")
+client.hostname
+client
+sftp = client.open_sftp()
+sftp
+sftp.listdir("/usr/local")
+sftp.mkdir("/tmp/test")
+sftp.listdir("/tmp")
+sftp.stat("/tmp/test")
+sftp.stat("/tmp/test").size
+sftp.stat("/tmp/test").st_size
+sftp.stat("/tmp/test").st_uid
+sftp.stat("/tmp/test").st_gid
+sftp.getcwd()
+sftp.chdir(".")
+sftp.getcwd()
+sftp.chdir("/usr/local")
+sftp.getcwd()
+sftp.listdir(".")
+infile = sftp.open("/etc/passwd")
+for line in infile:
+    print(line)
+    
+infile.close()
+out = sftp.open("/tmp/a.py", "w")
+out.write("""
+for i in range(10):
+    print(i)
+"""
+)
+out.close()
+sftp.listdir("/tmp")
+_, out, _ = client.exec_command("python /tmp/a.py")
+out.read()
+sftp.get("/tmp/a.py", "testfile.py")
+get_ipython().run_line_magic('cat', 'testfile.py')
+sftp.put("run_ls.py", "/tmp/run_ls.py")
+get_ipython().run_line_magic('pwd', '')
+get_ipython().run_line_magic('ls', '')
+sftp.put("ssh_upload.py", "/tmp/testfile.py")
+sftp.listdir("/tmp")
+from pssh.clients import SSHClient
+get_ipython().run_line_magic('pinfo', 'SSHClient')
+client = SSHClient("192.168.56.105", user="root", password="welcome")
+client
+get_ipython().run_line_magic('pinfo', 'client.execute')
+out = client.execute("ls /etc")
+out
+out.read()
+out.read_stderr()
+"hello %s %s" % ("aaa",)
+get_ipython().run_line_magic('pwd', '')
+get_ipython().run_line_magic('cd', 'parallel_ssh/')
+import yaml
+host_config = {'192.168.56.105' : {'user': 'root', 'password': 'welcome',
+                          'port': 22,
+                          #'private_key': load_private_key(
+                          #  'my_key.pem')
+                              },
+               'dhrona.net' : {'user': 'user1', 'password': 'welcome',
+                          'port': 12276,
+                          #'private_key': load_private_key(
+                          #    open('my_other_key.pem'))
+                              },
+              }
+host_config
+with open("host_config.yml", "w") as out:
+    yaml.dump(host_config, out)
+    
+get_ipython().run_line_magic('cat', 'host_config.yml')
+get_ipython().run_line_magic('run', 'run_with_host_config_yaml2')
+clients = [(<ssh2.channel.Channel object at 0x105d5c908>, '192.168.56.105', <generator object SSHClient.read_output_buffer at 0x105c59660>, <generator object SSHClient.read_output_buffer at 0x105c59a20>, <ssh2.channel.Channel object at 0x105d5c908>), (<ssh2.channel.Channel object at 0x105d5c7b8>, '192.168.56.105', <generator object SSHClient.read_output_buffer at 0x105c59cf0>, <generator object SSHClient.read_output_buffer at 0x105c59b88>, <ssh2.channel.Channel object at 0x105d5c7b8>), (<ssh2.channel.Channel object at 0x105d5c278>, '192.168.56.105', <generator object SSHClient.read_output_buffer at 0x105c59d68>, <generator object SSHClient.read_output_buffer at 0x105c59c00>, <ssh2.channel.Channel object at 0x105d5c278>), (<ssh2.channel.Channel object at 0x105c12668>, 'dhrona.net', <generator object SSHClient.read_output_buffer at 0x105c59048>, <generator object SSHClient.read_output_buffer at 0x105c597c8>, <ssh2.channel.Channel object at 0x105c12668>), (<ssh2.channel.Channel object at 0x105c12a58>, 'dhrona.net', <generator object SSHClient.read_output_buffer at 0x105c01930>, <generator object SSHClient.read_output_buffer at 0x105c01c78>, <ssh2.channel.Channel object at 0x105c12a58>), (<ssh2.channel.Channel object at 0x105d5c240>, 'dhrona.net', <generator object SSHClient.read_output_buffer at 0x105c010c0>, <generator object SSHClient.read_output_buffer at 0x105c016d8>, <ssh2.channel.Channel object at 0x105d5c240>)]
+clients
+clients[0]
+get_ipython().run_line_magic('run', 'run_with_host_config_yaml2')
+clients[0]
+clients
+get_ipython().run_line_magic('run', 'run_with_host_config_yaml2')
+from pssh.clients import SSHClient
+client = SSHClient("192.168.56.105", port=22, user="root", password="welcome")
+get_ipython().run_line_magic('pinfo', 'client.run_command')
+client
+client.run_command("useradd -m testuser")
+ch, host, out, err, inp = client.run_command("passwd testuser")
+out.read()
+list(out)
+get_ipython().run_line_magic('pinfo', 'inp.write')
+inp.write("hello_world")
+inp.write("hello_world")
+for line in out: print(line)
+for line in err: print(line)
+ch, host, out, err, inp = client.run_command("passwd testuser")
+inp.write("test123")
+inp.write("test123")
+inp.write("test123")
+ch, host, out, err, inp = client.run_command("passwd testuser")
+inp.write("hello_world\n")
+inp.write("hello_world\n")
+inp.flush()
+list(out)
+get_ipython().run_line_magic('pinfo', 'client.scp_send')
+get_ipython().run_line_magic('pinfo', 'client.scp_recv')
+get_ipython().run_line_magic('pwd', '')
+client.scp_send("/Users/chandrashekar/Training/AdvancedPython/Samples/2019_Jul12/", "/tmp", recurse=True)
+import yaml
+import jso
+import json
+with open("host_config.yml") as infile: data = yaml.load(infile, Loader=yaml.CLoader)
+data
+with open("testdata.json", "w") as outfile:
+    json.dump(data, outfile)
+    
+get_ipython().run_line_magic('cat', 'testdata.json')
+json.dumps(data)
+js = json.dumps(data)
+js
+json.loads(js)
+with open("testdata.json") as infile: d = json.load(infile)
+d
+get_ipython().run_line_magic('pinfo', 'json.dumps')
+json.dumps(d)
+json.dumps(d, indent=4)
+print(json.dumps(d, indent=4))
+print(json.dumps(d))
+get_ipython().run_line_magic('pinfo', 'json.dumps')
+json.dumps(d, separators=(" ", "-"))
+import xml.etree.ElementTree as et
+et
+et
+get_ipython().run_line_magic('pwd', '')
+get_ipython().run_line_magic('cd', '../xml')
+doc = et.parse("books.xml")
+tree = doc
+tree
+tree.getroot()
+c = tree.getroot()
+c[0]
+c[1]
+c[2]
+len(c)
+for b in c:
+    print(b)
+    
+c[:3]
+len(c)
+c.pop()
+del c[0]
+len(c)
+get_ipython().run_line_magic('pinfo', 'c.makeelement')
+t = c.makeelement("testdata", {"val": "100"})
+t
+t.tag
+c.tag
+t.text
+t.text = "some test data"
+t.text
+t.attrib
+c.attrib
+c[0].attrib
+c[0][0]
+c[0][0][0]
+c[0][0][0].text
+c[0][0].text
+c[1][0].text
+c[2][0].text
+t
+t.text
+c.append(t)
+c.insert(2, t)
+for e in c: print(e)
+c[0][0]
+c[0][0].text
+c[0][0].text = "Doe, John"
+tree.write("books2.xml")
+c[0][0]
+c.find("./book/author")
+c.find("./book/author").text
+c.find("./book/price").text
+c.findall("./book/price")
+[ p.text for p in c.findall("./book/price") ]
+c.find("./book/@id")
+c.find("./book[@id]")
+c.find("./book[@id]").attrib["id"]
+c.findall("./book")
+[ b.attrib["id"] for b in c.findall("./book") ]
+get_ipython().run_line_magic('logstate', '')
+get_ipython().run_line_magic('cat', 'IPython_Log_2019_06_07.log')
+get_ipython().run_line_magic('cat', '../IPython_Log_2019_07_12.log')
+[ b.attrib["id"] for b in c.findall("./book") ]
+c.find(".//author")
+c.find("./book[author='Knorr, Stefan']")
+c.find("./book[author='Knorr, Stefan']/price")
+c.find("./book[author='Knorr, Stefan']/price").text
+c.find("./book[author='Eva, Corets']")
+c.find("./book[author='Corets, Eva']")
+c.findall("./book[author='Corets, Eva']")
+[ p.text for p in c.findall("./book[author='Corets, Eva']/price") ]
+c.findall("./book/price")
+[ b.find("./title").text for b in c.findall("./book") ]
+[ b.find("./title").text for b in c.findall("./book") \]
+[ b.find("./title").text for b in c.findall("./book") \
+            if float(b.find("./price").text) < 6.0 ]
+[ b.find("./title").text for b in c.findall("./book") \
+            if float(b.find("./price").text) > 6.0 ]
+[ b.find("./title").text for b in c.iterfind("./book") \
+            if float(b.find("./price").text) > 6.0 ]
+c.findall("./book")
+c.iterfind("./book")
+import lxml.etree as et1
+et
+et1
+c1 = et1.parse("books.xml")
+c
+c1
+b1 = et1.parse("books.xml")
+tree1 = et1.parse("books.xml")
+tree
+tree1
+tree1.getroot()
+c1 = tree1.getroot()
+c1[0]
+c1[0][0]
+c1[0][0].text
+c1[0][0].attrib
+c1[0][0].tag
+c1.find("./book/author")
+c1.findall("./book/author")
+c1.xpath("./book/author")
+c1.xpath("./book/author/text()")
+c1.xpath("./book/@id")
+[ b.find("./title").text for b in c.iterfind("./book") \
+            if float(b.find("./price").text) > 6.0 ]
+c1.xpath("./book[price > 6.0]/title/text()")
+c1.xpath(".//author[contains(text(), 'Eva')]")
+import lxml.html as html_parser
+doc = html_parser("http://www.chandrashekar.info/")
+doc = html_parser.parse("http://www.chandrashekar.info/")
+doc = html_parser.parse("https://www.chandrashekar.info/")
+doc = html_parser.parse("index.html")
+doc
+doc.xpath(".//a[@href]")
+doc.xpath(".//a[@href]/@href")
+doc.xpath(".//a/@href")
+doc.xpath(".//a[@href]/text()")
+doc.xpath(".//form")
+from bs4 import BeautifulSoup
+with open("index.html") as infile: soup = Beautiful(infile, parser="lxml")
+with open("index.html") as infile: soup = BeautifulSoup(infile, parser="lxml")
+with open("index.html") as infile: soup = BeautifulSoup(infile, "lxml")
+soup
+soup
+type(soup)
+soup.head
+soup.head.script
+soup.head.script.text
+soup.head.script["src"]
+soup.head.script["type"]
+soup.head.script
+s = soup.head.script
+s["src"]
+s = s.next_element
+s
+s = s.next_element
+s
+s = s.next_element
+s
+s = s.next_element
+s
+s["src"]
+s
+s.next
+s.next
+s.descendants
+list(s.descendants)
+soup.select
+soup.select("a")
+[ a["href"] for a in soup.select("a") ]
+[ a["href"] for a in soup.select("a #href") ]
+[ a for a in soup.select("a") ]
+[ a.text for a in soup.select("a") ]
+soup.select("head script")
+a = list(range(1000000))
+get_ipython().run_line_magic('timeit', '99999 in a')
+import cProfile
+get_ipython().run_line_magic('pinfo', 'yaml.load')
+get_ipython().run_line_magic('pinfo', 'json.load')
+import urllib.request
+from urllib.request import urlopen
+r = urlopen("http://www.chandrashekar.info/")
+r
+r.code
+r.header
+r.headers
+r.headers.items()
+r.read()
+data = urlopen("http://www.chandrashekar.info/files/xml.zip").read()
+data
+from http.client import HTTPClient
+import requests
+url = "api.openweathermap.org/data/2.5/weather?q={city}&APPID={key}&units=metric"
+url
+api_key = "932c152d6ff8d185bfdd9d2a5f8e33e4"
+r = requests.get(url.format(city="Bengaluru", key=api_key))
+url = "http://api.openweathermap.org/data/2.5/weather?q={city}&APPID={key}&units=metric"
+r = requests.get(url.format(city="Bengaluru", key=api_key))
+r
+r
+r.status_code
+r.ok
+r.headers
+r.headers["content-type"]
+r.headers.items()
+r.json()
+r = requests.get(url.format(city="Chennai", key=api_key))
+r.json()
+r.json()["main"]["temp_min"]
+requests.get(url.format(city="Chennai", key=api_key)).json()["main"]["temp_min"]
+requests.get(url.format(city="Mumbai", key=api_key)).json()["main"]["temp_min"]
+url.format(city="Mumbai", key=api_key)
+url
+a = "Hello {name}"
+a
+print(a)
+a.format(name="Smith")
+posts = "http://localhost:3000/posts"
+requests.get(posts)
+requests.get("http://localhost:3000/authors")
+requests.put("http://localhost:3000/posts", json={"dsf": "werewr"})
+request.get(posts)
+requests.get(posts)
+requests.get(posts).json()
+requests.post(posts, json={"title": "test message", "author": "Chandrashekar"})
+requests.get(posts).json()
+requests.post(posts, json={"title": "new message", "author": "Chandrashekar"})
+requests.get(posts).json()
+requests.get(posts).json()
+requests.get("http://localhost:3000/posts/2")
+requests.get("http://localhost:3000/posts/2").json()
+requests.patch("http://localhost:3000/posts/2", json={"title": "hello world"})
+requests.get("http://localhost:3000/posts/2").json()
+requests.put("http://localhost:3000/posts/2", json={"title": "hello world"})
+requests.get("http://localhost:3000/posts/2").json()
+requests.delete("http://localhost:3000/posts/2")
+requests.post(posts, json={"title": "new message", "author": "Chandrashekar"}).status_code
+requests.get("https://www.chandrashekar.info/")
+requests.get("https://www.chandrashekar.info/", verify=False)
+get_ipython().run_line_magic('pinfo', 'requests.get')
+get_ipython().run_line_magic('pinfo', 'requests.Request')
+url
+url = "http://api.openweathermap.org/data/2.5/weather"
+url
+info = dict(city="Bengaluru", APPID=api_key, units="metric")
+info
+requests.get(url, params=info).json()
+info["q"] = info["city"]
+del info["city"]
+info
+requests.get(url, params=info).json()
+get_ipython().run_line_magic('pinfo', 'requests.Request')
+r = requests.get("http://www.google.com/")
+r.url
+r.status_code
+r.cookies
+r.cookies.keys()
+r.cookies["NID"]
+r.cookies["1P_JAR"]
+c = r.cookies
+session = request.Session()
+session = requests.Session()
+session
+session.get("http://www.google.com/")
+import re
+re._pattern_type = re.Pattern
+from robobrowser import RoboBrowser
+br = RoboBrowser(parser="lxml")
+br
+br.open("http://www.python.org/")
+br.url
+br.response
+br.response.ok
+br.get_links()
+br.get_forms()
+br.get_link("Event")
+e = br.get_link("Event")
+e
+type(e)
+br.follow_link(e)
+br.url
+br.get_links()
+br.get_forms()
+br.get_form()
+f = br.get_form()
+f
+f["q"]
+f["q"] = "Guido Van Rossum"
+f
+br.submit_form(f)
+br.url
+br.get_links()
+br.response.text
+br.select("table")
+br.select("div")
+br.select("div span")
+br.select("div span a")
+br.select("div span a::text()")
+br.select("div span a")
+br.select("div span a")[-2]
+br.follow_link(br.select("div span a")[-2])
+br.response.content
+br.open("http://www.chandrashekar.info/files/xml.zip")
+br.response
+br.response.headers["content-type"]
+br.get_links()
+br.response.headers["content-type"]
+br.response.content
+br.open("http://testing.chandrashekar.info/wp-login.php")
+br.get_form()
+f = br.get_form()
+f["log"] = "testuser"
+f["pwd"] = "welcome123"
+br.submit_form(f)
+br.response.ok
+br.response.text
+if "Invalid username" in br.response.text
+"Invalid username" in br.response.text
+br.get_form()
+f = br.get_form()
+f["log"] = "testuser"
+f["pwd"] = "w3lc0me"
+f["rememberme"]
+c = f["rememberme"]
+c
+c.value
+c.value = True
+c.value = "checked"
+c.name
+c.disabled
+c.options
+c.value = "forever"
+c
+f
+c.value = ''
+get_ipython().run_line_magic('pinfo', 'c.remove')
+c.remove("forever")
+c
+f
+br.submit_form(f)
+"Invalid username" in br.response.text
+f = br.get_form()
+f
+f["log"] = "pythonista"
+f["pwd"] = "w3lc0me"
+br.submit_form(f)
+"Invalid username" in br.response.text
+br.response.text
+br.url
+br.back()
+br
+br.back()
+br.url
+br.back()
+br.back()
+br.back()
+br
+br.forward()
+br
+br
+br.open("http://pypi.org/")
+br.get_form()
+f = br.get_form()
+f["q"] = "rest"
+br.submit_form(f)
+br.response.ok
+br.response.text
+br.select("span.package-snippet__name")
+br.select("span.package-snippet__name ::text")
+br.select("span.package-snippet__name ::value")
+br.select("span.package-snippet__name")
+br.select("span.package-snippet__name")[:5]
+br.select("a.package-snippet")[:5]
+result = br.select("a.package-snippet")[:5]
+result[0]
+result[0]["href"]
+result[0]["href"]
+result[0].span
+result[0].span.text
+result[0].p.text
+f
+f.fields
+get_ipython().run_line_magic('pinfo', 'br.open')
+LOGIN_URL = "http://testing.chandrashekar.info/wp-login"
+ADMIN_USERNAME = "pythonista"
+ADMIN_PASSWORD = "w3lc0me"
+
+ADMIN_URL = "http://testing.chandrashekar.info/wp-admin/"
+NEW_POST_URL = "http://testing.chandrashekar.info/wp-admin/post-new.php"
+
+POST_SUCCESS_URL = "http://testing.chandrashekar.info/wp-admin/post.php?post=9&action=edit&message=6"
+br.open(LOGIN_URL)
+br.get_form()
+login_form = br.get_form()
+login_form["log"] = "pythonista"
+login_form["pwd"] = "w3lc0me"
+br.submit_form(login_form)
+br.url
+br.get_link("Add New")
+br.follow_link("Add New")
+get_ipython().run_line_magic('pinfo', 'br.follow_link')
+br.get_link("Add New")
+br.follow_link(br.get_link("Add New"))
+br.url
+br.get_forms()
+forms = br.get_forms()
+len(forms)
+forms[0]
+forms[1]
+forms[1].fiels
+forms[1].fields
+[ k for k, v in forms[1].fields ]
+forms[1].fields
+forms[1].fields[0]
+(forms[1].fields)[0]
+forms[1].fields
+forms[1]
+forms[1]["publish"]
+forms[1]["publish"].value
+br.get_form(action="editpost")
+br.get_form(name="post")
+br.get_form(id="post")
+br.get_form(action="post.php")
+post_form = br.get_form(action="post.php")
+post_form["post_title"] = "A new blog post using RoboBrowser - Chandrashekar"
+post_form["content"] = "sdflj lsdjldsjflsjdfklsdjfklsjdklfsdjf"
+s = post_form["publish"]
+s
+s.value
+br.submit_form(post_form, s)
+br.reponse.ok
+br.response.ok
+"A new blog post using RoboBrowser - Chandrashekar" in br.parsed
+"A new blog post using RoboBrowser - Chandrashekar" in br.response.text
+from selenium.webdriver import Safari as driver
+driver
+import selenium.webdriver
+dir(selenium.webdriver)
+driver
+browser = driver()
+browser.close()
+browser = driver()
+browser.get("http://www.google.com/")
+browser.find_element_id("q")
+browser.find_element_by_id("q")
+browser.find_element_by_name("q")
+search = browser.find_element_by_name("q")
+search
+search.send_keys("python\n")
+browser.find_element_by_link_text("Welcome to Python.org")
+browser.find_element_by_partial_link_text("Welcome to Python.org")
+link = browser.find_element_by_partial_link_text("Welcome to Python.org")
+link.click()
+link
+link.click()
+browser.find_element_by_tag_name("a")
+browser.find_element_by_tag_name("a").click()
+browser.get("http://testing.chandrashekar.info/")
+browser.get("http://testing.chandrashekar.info/wp-login.php")
+browser.find_element_by_name("log")
+browser.find_element_by_name("log").send_keys("pythonista")
+browser.find_element_by_name("pwd").send_keys("w3lc0me")
+browser.find_element_by_name("wp_submit").send_keys("w3lc0me")
+browser.find_element_by_name("wp_submit")
+browser.find_element_by_name("wp-submit")
+browser.find_element_by_name("wp-submit").click()
+browser.save_screenshot("mypage.png")
+get_ipython().run_line_magic('pwd', '')
+browser.set_window_size(1280, 1024)
+browser.set_window_size(640, 480)

@@ -1,0 +1,13 @@
+EXERCISE
+========
+
+Download the exercise file from the following URL:
+    
+    https://tinyurl.com/pypi-search
+
+[Also available on the shared clipboard - 
+  http://public.etherpad-mozilla.org/p/advanced_python]
+
+Follow the instructions provided in the module docstring
+and implement the pypi_search() function accordingly.
+

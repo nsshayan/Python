@@ -1,0 +1,53 @@
+
+def testfn():
+    print("Start of function...")
+    return 100
+    print("Back into function...")
+    
+testfn()
+def testfn():
+    print("Start of function...")
+    yield 100
+    print("Back into function...")
+    
+testfn()
+g = testfn()
+next(g)
+next(g)
+def fib(n):
+    a, b = 0, 1
+    for i in range(n):
+        print(a, end=" ")
+        a, b = b, a + b
+        
+fib(10)
+def fib_list(n):
+    series = [0, 1]
+    for i in range(n-2):
+        series.append(series[-1] + series[-2])
+    return series
+    
+        
+fib_list(10)
+from time import sleep
+def fib_list(n):
+    series = [0, 1]
+    for i in range(n-2):
+        sleep(1)
+        series.append(series[-1] + series[-2])
+    return series
+    
+        
+for i in fib_list(10):
+    print(i, i*i)
+    
+def fib_gen(n):
+    a, b = 0, 1
+    for i in range(n):
+        sleep(1)
+        yield a
+        a, b = b, a + b
+        
+for i in fib_gen(10):
+    print(i, i*i)
+    

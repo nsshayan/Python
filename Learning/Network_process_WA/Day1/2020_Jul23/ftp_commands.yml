@@ -1,0 +1,7 @@
+commands:
+  - !!python/tuple ['Name .*: ', testuser]
+  - !!python/tuple ['Password: ', w3lc0me]
+  - !!python/tuple
+    - 'ftp> '
+    - [cd /www/files, get test.txt, quit]
+program: ftp ftp.chandrashekar.info

@@ -1,0 +1,20 @@
+Python 3.7.3 (default, Mar 27 2019, 22:11:17) 
+[GCC 7.3.0] :: Anaconda, Inc. on linux
+Type "help", "copyright", "credits" or "license" for more information.
+>>> for i in range(10):
+for i in range(10):
+...     print('Counting',i)
+
+    print('Counting',i)
+... 
+Counting 0
+Counting 1
+Counting 2
+Counting 3
+Counting 4
+Counting 5
+Counting 6
+Counting 7
+Counting 8
+Counting 9
+>>> 

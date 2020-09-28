@@ -1,0 +1,9 @@
+host: dhrona.duckdns.org
+port: 22
+user: user10
+password: tuxedo
+session:
+  - EXEC uptime 
+  - EXEC w 
+  - EXEC free
+  - EXIT

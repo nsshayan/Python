@@ -1,0 +1,11 @@
+#host: 192.168.56.101
+#port: 2023
+command: telnet 192.168.56.101 2023
+session:
+    "archvm login: ": pythonista
+    "Password: ": welcome
+    '\[pythonista@archvm ~\]\$ ':
+        - whoami
+        - uname -a
+        - cat /proc/loadavg
+        - exit

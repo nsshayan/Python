@@ -1,0 +1,32 @@
+from telnetlib import Telnet
+
+HOST = "192.168.56.101"
+user = b"testuser"
+password = b"welcome" 
+
+tn = Telnet(HOST)
+#tn.set_debuglevel(7)
+
+tn.read_until(b"login: ")
+tn.write(user + "\r")
+
+tn.read_until("Password:", timeout=5)
+tn.write(password + "\r")
+
+#tn.read_until("?", timeout=5)
+#tn.write("vt100\r")
+
+tn.read_until(r"[testuser@archvm ~]$ ")
+#tn.write("cat /proc/cpuinfo\r")
+
+tn.write("uname -a\r")
+
+output = tn.read_until(r"[testuser@archvm ~]$ ")
+
+tn.interact()
+print "Back to python script..."
+tn.write("exit\r")
+
+print "-" * 40
+print output
+print "-" * 40

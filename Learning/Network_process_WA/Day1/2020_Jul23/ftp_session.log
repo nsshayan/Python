@@ -1,0 +1,21 @@
+Connected to ftp.chandrashekar.info.
+220 192.252.149.39 FTP server ready
+Name (ftp.chandrashekar.info:chandrashekar): testuser
+testuser
+331 Password required for testuser
+Password: w3lc0me
+
+230 User testuser logged in
+ftp> cd /www/files
+cd /www/files
+250 CWD command successful
+ftp> bin
+bin
+200 Type set to I
+ftp> get xml.zip
+get xml.zip
+200 PORT command successful
+150 Opening BINARY mode data connection for xml.zip (41696 bytes)
+226 Transfer complete
+41696 bytes received in 0.389 seconds (105 kbytes/s)
+ftp> quit

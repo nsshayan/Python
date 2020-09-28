@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+		<rss version="2.0" xmlns:yweather="http://xml.weather.yahoo.com/ns/rss/1.0" xmlns:geo="http://www.w3.org/2003/01/geo/wgs84_pos#">
+			<channel>
+		
+<title>Yahoo! Weather - Bangalore, IN</title>
+<link>http://us.rd.yahoo.com/dailynews/rss/weather/Bangalore__IN/*http://weather.yahoo.com/forecast/INXX0012_f.html</link>
+<description>Yahoo! Weather for Bangalore, IN</description>
+<language>en-us</language>
+<lastBuildDate>Thu, 17 May 2012 8:00 pm IST</lastBuildDate>
+<ttl>60</ttl>
+<yweather:location city="Bangalore" region="KRN"   country="India"/>
+<yweather:units temperature="F" distance="mi" pressure="in" speed="mph"/>
+<yweather:wind chill="84"   direction="0"   speed="2" />
+<yweather:atmosphere humidity="58"  visibility="6.21"  pressure="29.85"  rising="0" />
+<yweather:astronomy sunrise="5:53 am"   sunset="6:38 pm"/>
+<image>
+<title>Yahoo! Weather</title>
+<width>142</width>
+<height>18</height>
+<link>http://weather.yahoo.com</link>
+<url>http://l.yimg.com/a/i/brand/purplelogo//uh/us/news-wea.gif</url>
+</image>
+<item>
+<title>Conditions for Bangalore, IN at 8:00 pm IST</title>
+<geo:lat>12.96</geo:lat>
+<geo:long>77.62</geo:long>
+<link>http://us.rd.yahoo.com/dailynews/rss/weather/Bangalore__IN/*http://weather.yahoo.com/forecast/INXX0012_f.html</link>
+<pubDate>Thu, 17 May 2012 8:00 pm IST</pubDate>
+<yweather:condition  text="Partly Cloudy"  code="29"  temp="84"  date="Thu, 17 May 2012 8:00 pm IST" />
+<description><![CDATA[
+<img src="http://l.yimg.com/a/i/us/we/52/29.gif"/><br />
+<b>Current Conditions:</b><br />
+Partly Cloudy, 84 F<BR />
+<BR /><b>Forecast:</b><BR />
+Thu - Partly Cloudy. High: 92 Low: 71<br />
+Fri - Partly Cloudy. High: 95 Low: 71<br />
+<br />
+<a href="http://us.rd.yahoo.com/dailynews/rss/weather/Bangalore__IN/*http://weather.yahoo.com/forecast/INXX0012_f.html">Full Forecast at Yahoo! Weather</a><BR/><BR/>
+(provided by <a href="http://www.weather.com" >The Weather Channel</a>)<br/>
+]]></description>
+<yweather:forecast day="Thu" date="17 May 2012" low="71" high="92" text="Partly Cloudy" code="29" />
+<yweather:forecast day="Fri" date="18 May 2012" low="71" high="95" text="Partly Cloudy" code="30" />
+<guid isPermaLink="false">INXX0012_2012_05_18_7_00_IST</guid>
+</item>
+</channel>
+</rss>
+<!-- api2.weather.sp2.yahoo.com uncompressed/chunked Thu May 17 08:01:44 PDT 2012 -->

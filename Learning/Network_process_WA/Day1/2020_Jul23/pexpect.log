@@ -1,0 +1,71 @@
+Trying 192.168.56.105...
+Connected to 192.168.56.105.
+Escape character is '^]'.
+archvm login: pythonista
+pythonista
+Password: welcome
+
+[1;34mWelcome to customized Linux VM[0m
+[1;34m==============================[0m
+
+Please refer to [1;33m/root/README[0m file for more details
+on using this VM.
+ 
+Get in touch with me for any further clarifications. 
+Good luck!
+
+[1;35mChandrashekar Babu[0m [1;36m<training@chandrashekar.info>[0m
+[1;35mWebsite: [1;36mhttp://www.chandrashekar.info/[0m
+         
+Last login: Thu Jul 11 14:22:18 on pts/1
+
+]0;pythonista@archvm:~[pythonista@archvm ~]$ whoami
+whoami
+pythonista
+]0;pythonista@archvm:~[pythonista@archvm ~]$ uname -a
+uname -a
+Linux archvm 4.9.0-vbox #1 SMP PREEMPT Mon Dec 26 13:35:15 IST 2016 i686 GNU/Linux
+]0;pythonista@archvm:~[pythonista@archvm ~]$ ls /etc
+ls /etc
+adjtime                 fuse.conf          login.defs       request-key.conf
+[0m[01;34malsa[0m                    gai.conf           logrotate.conf   [01;34mrequest-key.d[0m
+anacrontab              [01;34mgconf[0m              [01;34mlogrotate.d[0m      resolv.conf
+arch-release            [01;34mgdb[0m                ltrace.conf      resolv.conf.bak
+arptables.conf          group              machine-id       resolvconf.conf
+[01;34maudisp[0m                  group-             mail.rc          resolv.conf.pacnew
+[01;34maudit[0m                   group.pacnew       makepkg.conf     rpc
+[01;34mavahi[0m                   [01;34mgrub.d[0m             man_db.conf      screenrc
+bash.bash_logout        gshadow            [01;34mmc[0m               securetty
+bash.bashrc             gshadow-           mke2fs.conf      [01;34msecurity[0m
+bash.bashrc.pacnew      gshadow.pacnew     mkinitcpio.conf  sensors3.conf
+bindresvport.blacklist  [01;34mgtk-3.0[0m            [01;34mmkinitcpio.d[0m     [01;34msensors.d[0m
+[01;34mbinfmt.d[0m                healthd.conf       [01;34mmodprobe.d[0m       services
+[01;34mca-certificates[0m         host.conf          [01;34mmodules-load.d[0m   shadow
+[01;34mconf.d[0m                  hostname           motd             shadow-
+[01;34mcron.d[0m                  hosts              [01;36mmtab[0m             shadow.pacnew
+[01;34mcron.daily[0m              hosts.pacnew       mtools.conf      shells
+cron.deny               [01;34mhotplug[0m            netconfig        [01;34mskel[0m
+[01;34mcron.hourly[0m             [01;34mifplugd[0m            [01;34mnetctl[0m           slsh.rc
+[01;34mcron.monthly[0m            [01;34mImageMagick-6[0m      nftables.conf    [01;34mssh[0m
+[01;34mcron.weekly[0m             [01;34minitcpio[0m           nscd.conf        [01;34mssl[0m
+crypttab                inputrc            nsswitch.conf    sudoers
+csh.cshrc               [01;34miproute2[0m           ntp.conf         [01;34msudoers.d[0m
+csh.login               [01;34miptables[0m           [01;34mopenldap[0m         [01;34msysctl.d[0m
+csh.old_cshrc           irqbalance.env     [01;36mos-release[0m       [01;34msystemd[0m
+csh.old_login           issue              pacman.conf      [01;34mtmpfiles.d[0m
+[01;34mdbus-1[0m                  [01;34mkernel[0m             [01;34mpacman.d[0m         trusted-key.key
+[01;34mdefault[0m                 krb5.conf          [01;34mpam.d[0m            [01;34mudev[0m
+[01;34mdepmod.d[0m                ld.so.cache        passwd           vimrc
+dhcpcd.conf             ld.so.conf         passwd-          wgetrc
+dhcpcd.duid             [01;34mld.so.conf.d[0m       passwd.OLD       [01;34mX11[0m
+[01;34mdkms[0m                    lftp.conf          passwd.pacnew    xattr.conf
+environment             libaudit.conf      [01;34mpkcs11[0m           [01;34mxdg[0m
+ethertypes              [01;34mlibnl[0m              [01;34mpolkit-1[0m         [01;34mxinetd.d[0m
+[01;34mfish[0m                    locale.conf        profile          [01;34mzsh[0m
+[01;34mfonts[0m                   locale.gen         [01;34mprofile.d[0m
+fstab                   locale.gen.pacnew  profile.pacnew
+fstab.pacnew            [01;36mlocaltime[0m          protocols
+]0;pythonista@archvm:~[pythonista@archvm ~]$ exit
+exit
+logout
+Connection closed by foreign host.

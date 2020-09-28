@@ -1,0 +1,9 @@
+
+  <h3 \s+ class = "package-snippet__title" > \s* 
+      <a \s+ href="(?P<url>.+?)">            \s*   # <a href='url'>
+      (?P<name>.+?)                          \s*   # name
+   </a>                                      \s*
+   .+?
+   <p \s+ class="package-snippet__description"> \s*
+   (?P<description>.+?)                      \s*
+   </p> 

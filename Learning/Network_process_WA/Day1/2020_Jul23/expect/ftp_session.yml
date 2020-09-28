@@ -1,0 +1,7 @@
+- commands:
+  - ['Name .*: ', testuser]
+  - ['Password: ', w3lc0me]
+  - 
+    - 'ftp> '
+    - [cd /www/files, get test.txt, quit]
+  program: ftp ftp.chandrashekar.info

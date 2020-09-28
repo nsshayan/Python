@@ -1,0 +1,384 @@
+
+parser = ArgumentParser(description=__doc__)
+
+print("Hello world")
+for i in range(10):
+    print(f"{n} x {i} = {n*i}")
+n = int(input("Enter a number: "))
+for i in range(10):
+    print(f"{n} x {i} = {n*i}")
+"""
+Preliminary exercise:
+=====================
+Calculate and print the total size of all files
+in a directory structure, by recursively traversing
+and summing up the sizes of each file in the directory.
+
+Example usage:
+    $ python3 dirsize.py .
+    556289 bytes
+
+    $ python3 dirsize.py /usr/share
+    581829804 bytes
+
+"""
+
+def calc_size(start_path):
+    pass # TODO
+    
+if __name__ == '__main__':
+    from argparse import ArgumentParser
+
+    parser = ArgumentParser(description=__doc__)
+    parser.add_argument("path",
+                      help="Path to source directory")
+
+    args = parser.parse_args()
+
+    print(calc_size(args.path), "bytes")
+
+from pathlib import Path
+p = Path(".")
+p
+p = Path("./dirsize.py")
+p.is_file()
+p.is_dir()
+p.stat()
+p.stat().st_size
+p = Path(".")
+p.is_dir()
+p.glob("*.py")
+list(p.glob("*.py"))
+[ f.stat().st_size for f in p.glob("*.py") ]
+sum([ f.stat().st_size for f in p.glob("*.py") ])
+list(p.glob("*.py"))
+list(p.glob("**/*"))
+[ f.stat().st_size for f in p.glob("**/*")) ]
+[ f.stat().st_size for f in p.glob("**/*") ]
+sum([ f.stat().st_size for f in p.glob("**/*") ])
+import os
+os.system("ls")
+os.system("ls -l /sdfdsf")
+ret = os.system("ls -l /sdfdsf")
+import subprocess
+from subproces import Popen
+from subprocess import Popen
+p = Popen("ls")
+p
+get_ipython().run_line_magic('pinfo', 'p.poll')
+import subprocess
+get_ipython().run_line_magic('pinfo', 'subprocess.run')
+c = 'mkdir "Program Files"'
+print(c)
+c.split()
+c = 'mkdir "Program Files" "Documents and Settings"'
+print(c)
+c.split(maxsplit=1)
+from shlex import split
+split(c)
+name = input("Enter username: ")
+name
+password = input("Enter password: ")
+from getpass import getpass
+password = getpass("Enter password: ")
+password
+subprocess
+subprocess.PIPE
+subprocess.DEVNULL
+subprocess.STDOUT
+from ftplib import FTP
+ftp = FTP("ftp.chandrashekar.info", "testuser", "w3lc0me")
+ftp
+ftp.cwd("/www/files")
+ftp.listdir()
+ftp.dir()
+outfile = open("xml2.zip", "wb")
+outfile
+get_ipython().run_line_magic('pinfo', 'ftp.retrbinary')
+ftp.retrbinary("RETR xml.zip", outfile.write)
+outfile.close()
+def store(data):
+    print(".", flush=True)
+    outfile.write(data)
+    
+get_ipython().run_line_magic('hist', '')
+get_ipython().run_line_magic('hist', '-n')
+get_ipython().run_line_magic('load', '56')
+# %load 56
+outfile = open("xml2.zip", "wb")
+def store(data):
+    print(".", flush=True)
+    outfile.write(data)
+    
+ftp.retrbinary("RETR xml.zip", store)
+get_ipython().run_line_magic('ls', '')
+outfile.close()
+infile = open("watch_audit.py", "rb")
+ftp.storbinary("STOR zzzz_Sep27.py", infile)
+ftp.dir()
+ftp.close()
+from telnetlib import Telnet
+get_ipython().run_line_magic('pinfo', 'Telnet')
+tn = Telnet("192.168.56.101")
+tn
+tn.read_until("login: ")
+tn.read_until(b"login: ")
+tn.write(b"pythonista\n")
+tn.read_until(b"Password: ")
+tn.write(b"welcome\n")
+tn.read_until(b"$ ")
+tn.write(b"uname -a\n")
+tn.read_until("$ ")
+tn.read_until(b"$ ")
+tn.write(b"ls /usr/local\n")
+get_ipython().run_line_magic('pinfo', 'tn.expect')
+tn.expect([r"\$ ", r"# "])
+tn.expect([br"\$ ", br"# "])
+tn.close()
+import paramiko
+client = paramiko.SSHClient()
+get_ipython().run_line_magic('pinfo', 'paramiko.SSHClient')
+client.load_system_host_keys()
+client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
+get_ipython().run_line_magic('pinfo', 'client.connect')
+client.connect("192.168.56.101", username="root")
+client
+stdin, stdout, stderr = client.exec_command("ls /usr/local")
+print(stdout.read())
+stdin, stdout, stderr = client.exec_command("bc -l")
+stdin.write("scale=2000\n")
+stdin.write("4*a(1)\n")
+stdin.flush()
+stdout.read()
+stdin.close()
+stdout.read()
+get_ipython().run_line_magic('pinfo', 'client.connect')
+client.close()
+client.connect("192.168.56.101", username="root")
+client.connect("192.168.56.101", username="root", password="welcome")
+a, b, c = client.exec_command("echo $$")
+b.read()
+client.exec_command("echo $$")[1].read()
+client.exec_command("echo $$")[1].read()
+client.exec_command("echo $$")[1].read()
+client.exec_command("echo $$")[1].read()
+client.invoke_shell()
+r = client.invoke_shell()
+r
+get_ipython().run_line_magic('pinfo', 'r.makefile')
+stdin = r.makefile("w")
+stdout = r.makefile("r")
+stderr = r.makefile_stderr("r")
+stdin
+stdout
+stderr
+stdin.write("uname -a\n")
+stdout.readline()
+stdout.readline()
+stdout.readline()
+stdout.readline()
+stdin.write("echo $$\n")
+stdout.readline()
+stdout.readline()
+stdin.write("echo $$\n")
+stdout.readline()
+stdout.readline()
+stdin.write("ls /sdfsdf\n")
+stdout.readline()
+stdout.readline()
+stdout.readline()
+stdout.readline()
+stdin.write("bc -l\n")
+stdin.write("scale=1000\n")
+stdin.write("sqrt(2)\n")
+stdin.write("quit\n")
+stdout.readline()
+stdout.readline()
+stdout.readline()
+stdout.readline()
+stdout.readline()
+stdout.readline()
+stdout.readline()
+stdout.readline()
+stdout.readline()
+stdout.readline()
+stdout.readline()
+stdout.readline()
+stdout.readline()
+stdout.readline()
+stdout.readline()
+stdout.readline()
+stdout.readline()
+stdout.readline()
+stdout.readline()
+stdout.readline()
+stdout.readline()
+stdout.readline()
+stdout.readline()
+stdout.readline()
+stdin.write("passwd pythonista")
+stdin.write("\n")
+stdin.write("test123\n")
+stdin.write("test123\n")
+stdout.readline()
+stdout.readline()
+stdout.readline()
+stdin.flush()
+stdout.readline()
+stdout.readline()
+stdin.write("passwd pythonista\nwelcome123\nwelcome123\n")
+client.connect("192.168.56.101", username="root", password="welcome")
+shell = client.invoke_shell()
+shell
+stdin, stdout, stderr = shell.makefile("w"), shell.makefile("r"), shell.makefile_stderr("r")
+stdin
+stdout
+stderr
+stdin.write("passwd pythonista\nwelcome123\nwelcome123")
+stdin.flush()
+stdout.readline()
+stdout.readline()
+stdout.readline()
+stdout.readline()
+stdout.readline()
+stdout.readline()
+stdout.readline()
+stdout.readline()
+stdout.readline()
+stdout.readline()
+stdout.readline()
+stdout.readline()
+stdout.readline()
+stdout.readline()
+stdout.readline()
+stdout.readline()
+stdin.write("welcome123\n")
+stdin.write("welcome123\n")
+stdin.flush()
+stdout.readline()
+stdout.readline()
+stdout.readable
+stdout.readable()
+t = paramiko.Transport()
+get_ipython().run_line_magic('pinfo', 'paramiko.Transport')
+paramiko.transport
+t = paramiko.Transport(("192.168.56.101", 22))
+t
+t
+get_ipython().run_line_magic('pinfo', 't.connect')
+t.connect(username="root", password="welcome")
+t
+get_ipython().run_line_magic('pinfo', 't.open_channel')
+ch = t.open_channel("session")
+ch
+ch.exec_command("cat /etc/passwd")
+output = ch.makefile("r")
+output.read()
+ch.exec_command("cat")
+ch = t.open_channel("session")
+ch
+ch.exec_command("sort")
+stdin = ch.makefile("w")
+stdout = ch.makefile("r")
+stdin.write("sdsdsdf\ntryrtytr\nasdasda\nghjgjghj\nqweqweqwe\nbnghfghfgh\n")
+stdin.close()
+stdout.read()
+stdin.flush()
+stdin.close()
+stdout.read()
+t
+sftp = t.open_sftp_client()
+sftp
+client
+client.open_sftp()
+sftp
+sftp.get("/etc/passwd", "a.txt")
+get_ipython().run_line_magic('cat', 'a.txt')
+sftp.put("./a.txt", "/tmp/aa.txt")
+sftp.rename("/tmp/aa.txt", "/tmp/bb.txt")
+sftp.remove("/tmp/aa.txt")
+sftp.remove("/tmp/bb.txt")
+sftp.mkdir("/tmp/my_new_folder")
+sftp.chdir("/tmp/my_new_folder")
+sftp.getcwd()
+sftp.listdir(".")
+sftp.listdir("/usr/local")
+sftp.stat("/tmp/my_new_folder")
+sftp.stat("/tmp/my_new_folder").st_size
+outfile = sftp.open("/tmp/test.txt", "w")
+outfile.write("this is a test file\n")
+outfile.write("this is a test file\n")
+outfile.write("this is a test file\n")
+outfile.write("this is a test file\n")
+outfile.write("this is a test file\n")
+outfile.write("this is a test file\n")
+outfile.write("this is a test file\n")
+outfile.close()
+infile = sftp.open("/etc/passwd")
+infile.readline()
+infile.readline()
+infile.readline()
+infile.readline()
+infile.readline()
+for line in infile:
+    print(line)
+    
+
+get_ipython().run_line_magic('cd', 'paramiko/')
+from ssh_connection import SSHConnection
+sshconn = SSHConnection("192.168.56.101", "root", "welcome")
+sshconn
+sshconn.__enter__()
+sshconn.sftp_client
+sftp = sshconn.sftp_client
+sftp
+sftp.getcwd()
+sftp.chdir(".")
+sftp.getcwd()
+sftp.mkdir("/tmp/aaa/bbb")
+sftp.put("a.py", "~/a.txt")
+sftp.put("a.py", "/root/a.txt")
+sftp.stat("/tmp/aaaa")
+sftp.stat("/etc")
+from poplib import POP3
+get_ipython().run_line_magic('pinfo', 'POP3')
+mail = POP3("mail.chandrashekar.info")
+mail
+mail.user("testuser")
+mail.pass_("w3lc0me")
+mail.list()
+mail.retr(1)
+mail.retr(2)
+mail.dele(1)
+mail.close()
+from smtplib import SMTP
+get_ipython().run_line_magic('pinfo', 'SMTP')
+smtp = SMTP("mail.chandrashekar.info")
+smtp
+smtp.ehlo_or_helo_if_needed()
+get_ipython().run_line_magic('pinfo', 'smtp.auth_login')
+get_ipython().run_line_magic('pinfo', 'smtp.auth')
+get_ipython().run_line_magic('pinfo', 'smtp.login')
+smtp.login("testuser", "w3lc0me")
+get_ipython().run_line_magic('pinfo', 'smtp.send')
+get_ipython().run_line_magic('pinfo', 'smtp.send_message')
+get_ipython().run_line_magic('pinfo', 'smtp.sendmail')
+msg = """
+To: email@chandrashekar.info
+Cc: chandrashekar.babu@gmail.com
+From: testuser@chandrashekar.info
+Subject: This is a test email from Sep 27 2018
+
+this is a test sdfjsdl flksdjfklsdjflsdjfsldkfsdfsdfsdfsdf
+sdflskdjflksjflkjfkljfklsjdfsd
+fsdlfjsdklfjsdlkfjsdljfsldkjfds
+fsdfsdlsdjklsdjf
+"""
+msg
+smtp.sendmail(msg, "testuser@chandrashekar.info", ["email@chandrashekar.info", "chandrashekar.babu@gmail.com"])
+smtp = SMTP("mail.chandrashekar.info")
+smtp.ehlo_or_helo_if_needed()
+smtp.login("testuser", "w3lc0me")
+smtp.sendmail(msg, "testuser@chandrashekar.info", ["email@chandrashekar.info", "chandrashekar.babu@gmail.com"])
+get_ipython().run_line_magic('pinfo', 'smtp.sendmail')
+smtp.sendmail(msg, ["email@chandrashekar.info", "chandrashekar.babu@gmail.com"], "testuser@chandrashekar.info")

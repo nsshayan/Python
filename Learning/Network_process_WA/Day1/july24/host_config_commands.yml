@@ -1,0 +1,18 @@
+config:
+  192.168.56.101:
+    user: root
+    password: welcome
+    port: 22
+  dhrona.net:
+    user: user1
+    password: welcome
+    port: 12276
+commands:
+  192.168.56.101:
+    - uptime
+    - "uname -a"
+    - date
+  dhrona.net:
+    - "uname -r"
+    - who
+    - hostname

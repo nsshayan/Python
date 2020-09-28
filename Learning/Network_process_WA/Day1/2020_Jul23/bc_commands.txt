@@ -1,0 +1,4 @@
+scale=3000
+4*a(1)
+sqrt(2)
+quit

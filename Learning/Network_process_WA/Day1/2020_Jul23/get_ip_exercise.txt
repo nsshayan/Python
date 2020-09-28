@@ -1,0 +1,8 @@
+Exercise
+--------
+Write a python program to fetch the list of bound IPv4 addresses on the machine
+and print them.
+
+Capture and filter the output of  `ifconfig` on MacOS/Linux or `ipconfig` on Windows
+to get the IPv4 address.
+

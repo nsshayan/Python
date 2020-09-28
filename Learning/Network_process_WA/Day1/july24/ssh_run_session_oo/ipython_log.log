@@ -1,0 +1,22 @@
+
+from pssh.clients import SSHClient
+SSHClient
+get_ipython().run_line_magic('pinfo', 'SSHClient')
+from paramiko import Transport
+tn = Transport(("localhost", 22))
+get_ipython().run_line_magic('pinfo', 'tn.connect')
+get_ipython().run_line_magic('pinfo', 'tn.connect')
+tn.close()
+tn = Transport(("dhrona.net", 12276))
+tn.connect(username="user1", password="welcome")
+sftp = tn.open_sftp_client()
+sftp.listdir("/tmp")
+sftp.stat("/tmp/test.txt")
+sftp.stat("/tmp/test.txt").mode
+sftp.stat("/tmp/test.txt").st_mode
+sftp.stat("/tmp/test.txt").st_mode | 0o111
+oct(sftp.stat("/tmp/test.txt").st_mode | 0o111)
+get_ipython().run_line_magic('pinfo', 'sftp.chmod')
+a = "dsfsdf"
+vars(a)
+hasattr(a, "startswith")

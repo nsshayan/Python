@@ -1,0 +1,282 @@
+
+import os
+import platform
+platform.os
+platform.dist()
+platform.system
+platform.system()
+help(platform.system()
+)
+help(platform.system)
+
+import os
+os.path.getsize("/bin/bash")
+os.getcwd()
+os.listdir(".")
+os.walk(".")
+g = os.walk(".")
+g
+next(g)
+next(g)
+for p, subdirs, files in os.walk("."):
+    print(p)
+    
+for p, subdirs, files in os.walk("."):
+    for f in files:
+        print(f)
+        
+    
+d = "/usr/local"
+f = "bin/ls"
+d + f
+d + "/" + f
+"/".join(d, f)
+"/".join([d, f])
+os.path.join(d, f)
+for p, subdirs, files in os.walk("."):
+    for f in files:
+        print(os.path.join(p, f))
+        
+        
+    
+for p, subdirs, files in os.walk("."):
+    for f in files:
+        file_path = os.path.join(p, f)
+        print(os.path.getsize(file_path))
+        
+        
+    
+import pathlib
+from pathlib import Path
+p = Path(".")
+p
+p.absolute()
+p.as_uri()
+p.as_uri
+p.as_uri()
+p.absolute().uri()
+p.absolute()
+a = p.absolute()
+a.as_uri()
+p.absolute().as_uri()
+p.exists()
+Path("/etc").exists()
+Path("/etwerewr").exists()
+p.glob("*.py")
+list(p.glob("*.py"))
+list(p.glob("*.py"))
+list(p.glob("**/*.py"))
+Path("/etc/passwd")
+Path("/etc/passwd").stat()
+Path("/etc/passwd").stat().st_size
+import os
+os.system("ls")
+os.system("ifconfig")
+r = os.system("ifconfig")
+os.system("ls | wc")
+os.system("echo $$")
+os.system("pwd")
+from subprocess import Popen
+Popen('ls')
+get_ipython().run_line_magic('pinfo', 'Popen')
+from subprocess import run
+get_ipython().run_line_magic('pinfo', 'run')
+c = "ls /bin"
+c
+c.split()
+c = 'mkdir "Program Files" "Documents and Settings"'
+c
+print(c)
+c.split()
+import shlex
+shlex.split(c)
+from time import ctime
+ctime()
+from time import time
+time()
+s = time()
+e = time()
+e - s
+import re
+regex = r"\d{3}(\.\d{3}){3}"
+regex = r"\d{1,3}(\.\d{1,3}){3}"
+re.search(regex, "dljj dfklgfdg f 4.6.7.8 kdkfgdfgfd")
+patten = re.compile(regex)
+pattern = re.compile(regex)
+pattern.search("skf dshsdf 103.4.56.7 dkfdgdklgfd 192.168.56.100 hdfdfdf 10.10.10.10 dldsff")
+pattern.findall("skf dshsdf 103.4.56.7 dkfdgdklgfd 192.168.56.100 hdfdfdf 10.10.10.10 dldsff")
+pattern.search("skf dshsdf 103.4.56.7 dkfdgdklgfd 192.168.56.100 hdfdfdf 10.10.10.10 dldsff")
+pattern.search("skf dshsdf 103.4.56.7 dkfdgdklgfd 192.168.56.100 hdfdfdf 10.10.10.10 dldsff")
+pattern.finditer("skf dshsdf 103.4.56.7 dkfdgdklgfd 192.168.56.100 hdfdfdf 10.10.10.10 dldsff")
+for m in pattern.finditer("skf dshsdf 103.4.56.7 dkfdgdklgfd 192.168.56.100 hdfdfdf 10.10.10.10 dldsff"):
+    print(m)
+    
+for m in pattern.finditer("skf dshsdf 103.4.56.7 dkfdgdklgfd 192.168.56.100 hdfdfdf 10.10.10.10 dldsff"):
+    print(m.group())
+    
+for m in re.finditer(regex, "skf dshsdf 103.4.56.7 dkfdgdklgfd 192.168.56.100 hdfdfdf 10.10.10.10 dldsff"):
+    print(m.group())
+    
+a = "C:\temp\remote\newfolder\backup"
+print(a)
+a = r"C:\temp\remote\newfolder\backup"
+print(a)
+a
+dir(os)
+os.getloadavg()
+o.times()
+os.times()
+os.times().user
+os.times().user
+os.times().user
+import pexpect
+pexpect.spawn
+type(pexpect.spawn)
+c = pexpect.spawn(["/bin/sh", "-c", "telnet 192.168.56.104 2023"])
+c = pexpect.spawn(["/bin/sh", "-c", "telnet 192.168.56.104 2023"])
+c = pexpect.spawn("/bin/sh", ["-c", "telnet 192.168.56.104 2023"])
+c
+c.after
+c.before
+c.expect("login: ")
+c.before
+c.close()
+c = pexpect.spawn("/bin/sh", ["-c", "telnet 192.168.56.104 2023"], encoding="utf8")
+c.buffer
+c.expect("login:")
+c.buffer
+c.befor
+c.before
+print(c.before)
+c.after
+c.sendline("pythonista")
+c.before
+c.after
+c.expect("Password:")
+c = pexpect.spawn("/bin/sh", ["-c", "telnet 192.168.56.104 2023"], encoding="utf8")
+c.expect("login:")
+c.sendline("pythonista")
+c.expect("Password:")
+c.sendline("welcome")
+c.before
+c.after
+c.expect_exact("[pythonista@archvm ~]$")
+c.before
+c.sendline("uname -a")
+c.expect_exact("[pythonista@archvm ~]$")
+c.before
+c.close()
+c = pexpect.spawn("/bin/sh", ["-c", "telnet 192.168.56.104 2023"], encoding="utf8")
+c.expect("Login: ", timeout=5)
+get_ipython().run_line_magic('pinfo', 'c.expect')
+get_ipython().run_line_magic('pinfo', 'pexpect.spawn')
+c = pexpect.spawn("/bin/sh", ["-c", "telnet 192.168.56.104 2023"], encoding="utf8")
+c.expect("login:")
+c.sendline("pythonista")
+c.expect("[Pp]assword:")
+c.sendline("welcome")
+c.expect("\[pythonista@archvm ~\]\$")
+c.sendline("ls /etc")
+print(c.before)
+c.expect("\[pythonista@archvm ~\]\$")
+print(c.before)
+get_ipython().run_line_magic('pinfo', 'c.setwinsize')
+c.setwinsize(60, 30)
+c.sendline("ls /etc")
+c.expect("\[pythonista@archvm ~\]\$")
+print(c.before)
+print(c.before)
+get_ipython().run_line_magic('pinfo', 'c.expect')
+get_ipython().run_line_magic('pinfo', 'c.expect_exact')
+get_ipython().run_line_magic('pinfo', 'c.sendline')
+get_ipython().run_line_magic('pinfo', 'c.send')
+get_ipython().run_line_magic('pinfo', 'c.sendeof')
+get_ipython().run_line_magic('pinfo', 'c.sendintr')
+commands = {
+    "ftp ftp.chandrashekar.info": [
+        ("Name .*:", "testuser"),
+        ("Password: ", "w3lc0me"),
+        ("ftp> ", ["cd /www/files",
+                   "get xml.zip",
+                   "quit"])
+    ]
+}
+import yaml
+with open("ftp_session.yml", "w") as outfile:
+    yaml.dump(commands, outfile)
+    
+get_ipython().run_line_magic('cat', 'ftp_session.yml')
+with open("simple_telnet_session.yml") as infile:
+    c = yaml.load(infile)
+    
+    
+with open("simple_telnet_session.yml") as infile:
+    
+    c = yaml.load(infile)
+    
+    
+commands = {
+   "telnet 192.168.56.104 2023": [
+       ("login:", "pythonista"),
+       ("Password:", "welcome"),
+       ('\[pythonista@archvm ~\]\$', ["uptime", "ls -lR /etc", "find /usr/local/build", "exit"])
+       ]}
+
+       
+       
+commands
+with open("simple_telnet_session.yml", "w") as outfile:
+    yaml.dump(commands, outfile)
+    
+from telnetlib import Telnet
+get_ipython().run_line_magic('pinfo', 'Telnet')
+tn = Telnet("192.168.56.104", "2023")
+tn.close()
+tn = Telnet("192.168.56.101", "2023")
+tn = Telnet("192.168.56.104", "2023")
+tn.read_until(b"login: ")
+tn.write(b"pythonista\n")
+tn.read_until(b"Password: ")
+tn = Telnet("192.168.56.104", "2023")
+tn.expect([b"login: "])
+tn.close()
+tn = Telnet("192.168.56.104", "2023")
+tn.expect([b"sdfdsfsdf", b"werwerwer", b"(\(\w+\))\s+login: "])
+tn.expect([b"sdfdsfsdf", b"werwerwer", b"(\w+)\s+login: "])
+tn.close()
+tn = Telnet("192.168.56.104", "2023")
+index, match, before = tn.expect([b"sdfdsfsdf", b"werwerwer", b"(\w+)\s+login: "])
+match
+match.group(1)
+get_ipython().run_line_magic('pinfo', 'tn.read_all')
+get_ipython().run_line_magic('pinfo', 'tn.read_eager')
+get_ipython().run_line_magic('pinfo', 'tn.read_very_eager')
+get_ipython().run_line_magic('pinfo', 'tn.read_lazy')
+tn.debuglevel
+get_ipython().run_line_magic('pinfo', 'tn.debuglevel')
+get_ipython().run_line_magic('pinfo', 'Telnet')
+tn.debuglevel = 7
+tn.read_until("login:")
+tn.read_until(b"login:")
+tn = Telnet("192.168.56.104", "2023")
+tn.debuglevel = 7
+tn.read_until(b"login:")
+import paramiko
+client paramiko.SSHClient()
+client = paramiko.SSHClient()
+get_ipython().run_line_magic('pinfo', 'client')
+client.load_system_host_keys()
+client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
+get_ipython().run_line_magic('pinfo', 'client.connect')
+client.connect("192.168.56.104", username="pythonista", password="welcome")
+client.connect("192.168.56.104", username="root", password="welcome")
+a, b, c = client.exec_command("ls -l /usr/local")
+a
+b
+c
+for line in a: 
+    print(line)
+    
+for line in b: 
+    print(line)
+    

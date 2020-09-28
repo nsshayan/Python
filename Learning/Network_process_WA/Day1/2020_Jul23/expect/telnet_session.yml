@@ -1,0 +1,13 @@
+-
+  expect: 'Password:'
+  send: 'welcome'
+-
+  expect: '[pythonista@archvm ~]$'
+  send: 'ls /'
+-
+  expect: '[pythonista@archvm ~]$'
+  send: ''
+-
+  expect: '[pythonista@archvm ~]$'
+  get_output: 1
+  send: 'exit'

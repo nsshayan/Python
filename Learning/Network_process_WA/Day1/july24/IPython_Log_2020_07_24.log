@@ -1,0 +1,703 @@
+
+def ssh_connect(host, username, password):
+    from paramiko import SSHClient, AutoAddPolicy
+    client = SSHClient()
+    client.load_system_host_keys()
+    client.set_missing_host_key_policy(AutoAddPolicy())
+    client.connect(host, username=username, password=password)
+    return client
+    
+client = ssh_connect("192.168.56.105", "root", "welcome")
+client
+sftp = client.open_sftp()
+sftp.stat("/etc/passwd")
+sftp.stat("/etc/passwd.txt")
+import paramiko
+FileNotFoundError
+sftp.mkdir("/tmp/testfolder")
+sftp.mkdir("/tmp/test1")
+sftp.mkdir("/tmp/test2/test3")
+from parallel_ssh import SSHClient
+from pssh.clients import SSHClient 
+SSHClient
+get_ipython().run_line_magic('pinfo', 'SSHClient')
+client = SSHClient("192.168.56.105", "root", "welcome")
+client
+output = client.run_command("uptime")
+output
+ch, host, stdout, stderr, stdin = output
+for line in stdout:
+    print(line)
+    
+script = """
+import sys
+print(sys.version_info)
+exit()
+"""
+ch, host, stdout, stderr, stdin = client.run_command("python")
+stdin
+stdin.write(script)
+stdin.flush()
+for line in stdout:
+    print(line)
+    
+stdin.close()
+for line in stdout:
+    print(line)
+    
+client = SSHClient(host="192.168.56.105", user="root", password="welcome")
+get_ipython().run_line_magic('pinfo', 'client.run_command')
+output = client.run_command("python", use_pty=True)
+ch, host, stdout, stderr, stdin = output
+stdin.write(script)
+next(stderr)
+next(stdout)
+next(stdout)
+next(stdout)
+next(stdout)
+next(stdout)
+next(stdout)
+next(stdout)
+next(stdout)
+next(stdout)
+ch, host, stdout, stderr, stdin = client.run_command("python",
+                                                    use_pty=True)
+stdin.write(script)
+for line in stdout:
+    print(line)
+    
+client.copy_file("pssh_simple_run_command.py", "/tmp/aaa.txt")
+client.copy_remote_file("/tmp/proof_of_execution.txt", "testfile.txt")
+get_ipython().run_line_magic('cat', 'testfile.txt')
+client.scp_send("testfile.txt", "/tmp/bbb.txt")
+client.scp_recv("/tmp/bbb.txt", "newfile.txt")
+client.scp_send(".", "/root/testfolder", recurse=True)
+client.copy_file(".", "/root/testfolder2", recurse=True)
+get_ipython().run_line_magic('pinfo', 'client.copy_file')
+get_ipython().run_line_magic('pinfo', 'client.scp_send')
+client.host
+get_ipython().run_line_magic('pinfo', 'client.open_session')
+next(client.run_command("echo $$")[2])
+next(client.run_command("echo $$")[2])
+next(client.run_command("echo $$")[2])
+ch = client.open_session()
+ch
+ch.write("echo $$\n")
+ch.read()
+ch.read()
+ch.read()
+ch.flush()
+ch.read()
+ch.write("echo $$\n")
+ch.flush()
+ch.read()
+ch.read()
+ch.read_stderr()
+ch.read_stderr()
+host_config = {'192.168.56.105' : {
+                        'user': 'root',
+                        'password': 'welcome',
+                        'port': 22,
+                        },
+
+             "192.168.1.130": {
+                        'user': 'user01',
+                        'password': 'w3lc0me',
+                        'port': 22
+             },
+
+             "192.168.1.32": {
+                        'user': 'pythonista',
+                        'password': 'guido123',
+                        'port': 22
+                        #'pkey': load_private_key("/Users/chandrashekar/.ssh/id_rsa")
+             }
+}
+host_config
+hosts = list(host_config.keys())
+hosts
+from pssh.clients import ParallelSSHClient
+clients = ParallelSSHClient(hosts, host_config=host_config)
+clients
+output = clients.run_command("hostname")
+outputs
+output
+output.keys()
+output["192.168.56.105"]
+type(output["192.168.56.105"])
+output["192.168.56.105"].host
+output["192.168.56.105"].stdout
+next(output["192.168.56.105"].stdout)
+next(output["192.168.1.130"].stdout)
+next(output["192.168.1.32"].stdout)
+clients.copy_file("testfile.txt", "/tmp/newfile.txt")
+tasks = clients.copy_file("testfile.txt", "/tmp/newfile.txt")
+import gevent
+gevent.joinall(tasks)
+output = clients.run_command("mkdir %s", ("/tmp/one", "/tmp/two", "/tmp/three"))
+output
+output = clients.run_command("mkdir %s", host_args=("/tmp/one", "/tmp/two", "/tmp/three"))
+output = clients.run_command("%s", host_args=("uptime", "date", "uname -a"))
+for host, host_output in output.items():
+    print(host, "->", next(host_output.stdout))
+    
+get_ipython().run_line_magic('ls', '*log')
+import json
+get_ipython().run_line_magic('ls', '')
+get_ipython().run_line_magic('cat', 'open_weather_api.py')
+api_key = "932c152d6ff8d185bfdd9d2a5f8e33e4"
+endpoint = "api.openweathermap.org/data/2.5/weather"
+endpoint = "https://api.openweathermap.org/data/2.5/weather"
+import requests
+requests.get("http://www.chandrashekar.info/")
+r = requests.get("http://www.chandrashekar.info/")
+r.ok
+r.status_code
+r.headers
+r.headers["Content-Type"]
+r.headers["content-type"]
+r.headers["CONTENT-TYPE"]
+r.text
+type(r.text)
+r = requests.get("https://www.chandrashekar.info/themes/chandrashekar_babu_html5up_halcyonic/assets/images/iitm_262_128.jpeg")
+r.ok
+r.status_code
+r.headers["content-type"]
+r.text
+type(r.text)
+r.content
+type(r.content)
+get_ipython().run_line_magic('pinfo', 'r.iter_content')
+for chunk in r.iter_content(chunk_size=1024*1024):
+    print(chunk)
+    
+for chunk in r.iter_content(chunk_size=1024*1024, decode_unicode=True):
+    print(chunk)
+    
+    
+r.ok
+r.status_code
+requests.get("https://testing.chandrashekar.info/")
+requests.get("https://testing.chandrashekar.info/", verify_ssl=False)
+requests.get("https://testing.chandrashekar.info/", verifyssl=False)
+get_ipython().run_line_magic('pinfo', 'requests.get')
+requests.get
+requests.put
+requests.post
+requests.delte
+requests.delete
+requests.patch
+requests.head
+requests.Request
+get_ipython().run_line_magic('pinfo', 'requests.Request')
+requests.get("https://testing.chandrashekar.info/", ssl_verify=False)
+requests.get("https://testing.chandrashekar.info/", sslverify=False)
+r = requests.get("https://testing.chandrashekar.info/", verify=False)
+r
+r = requests.get("http://testing.chandrashekar.info/")
+r
+api_key
+endpoint
+query={"q": "Bengaluru", "appid": api_key, "units": "metric"}
+query
+r = requests.get(endpoint, params=query)
+r.ok
+r.status_code
+r.headers
+r.headers["content-type"]
+r.text
+import json
+json.loads(r.text)
+r.headers["content-type"]
+r.json()
+r.json()["main"]["temp"]
+query
+query["q"] = "Chennai"
+r = requests.get(endpoint, params=query)
+r.ok
+r.json()["main"]["temp"]
+requests.get("http://localhost:3000/posts")
+session = requests.Session()
+session
+r = session.get("http://localhost:3000/posts")
+r.ok
+r.json()
+r = session.post("http://localhost:3000/posts", json={"title": "dummy title", "author": "Chandrashekar"})
+r.ok
+r = session.get("http://localhost:3000/posts")
+r.json()
+requests.get("http://192.168.1.130/")
+requests.get("http://192.168.1.130/", auth=("testusr", "welcome"))
+requests.get("http://192.168.1.130/", auth=("testusr", "welcome")).text
+get_ipython().run_line_magic('pinfo', 'requests.Request')
+import grequests
+
+import grequests
+get_ipython().run_line_magic('pinfo', 'grequests.get')
+get_ipython().run_line_magic('pinfo', 'grequests.map')
+urls = ["http://www.chandrashekar.info", "http://www.python.org",
+"http://www.cisco.com", "http://kernel.org", "http://www.gnu.org"]
+urls
+rs = grequests.map(grequests.get(u) for u in urls)
+rs
+import xml.dom.minidom
+import xml.etree.ElementTree as et
+et
+
+import xml.etree.ElementTree as et
+doc = et.parse("xml/books.xml")
+doc
+tree = et.parse("xml/books.xml")
+tree
+tree.getroot()
+get_ipython().run_line_magic('load', 'xml/books.xml')
+c = tree.getroot()
+c
+c = tree.getroot()
+c
+c[0]
+c[1]
+len(c)
+c[-1]
+c[:3]
+c[1]
+c[0][0]
+c[0][1]
+c[0][1].text
+c.text
+c[0]
+c[0].text
+c.tag
+c.tag, c[0].tag
+c.tag, c[0].tag, c[1].tag
+c.attrib
+c.attrib, c[0].attrib
+c.text, c.tag, c.attrib
+c[0]
+b = c[0]
+b
+for child in b:
+    print(child.tag, "=", child.text)
+c
+# Supports very minimal xpath syntax
+c.find("./book/title")
+# Supports very minimal xpath syntax
+c.find("./book/title").text
+c.findall("./book/title")
+c.findall("./book/title").text
+c.findall("./book/title")
+[ t.text for t in c.findall("./book/title") ]
+c.iterfind("./book/title")
+[ t.text for t in c.iterfind("./book/title") ]
+c.find("./*/title")
+c.find(".//title")
+xml = """<?xml version='1.0?>'
+<user>
+   <info>
+       <author>
+          <title>Chandrashekar</title>
+        </author>
+    </info>
+    <book>
+        <title>Hello world</title>
+    </book>
+</user>
+"""
+
+u = et.fromstring(xml)
+u
+xml = """<?xml version='1.0' ?>
+<user>
+   <info>
+       <author>
+          <title>Chandrashekar</title>
+        </author>
+    </info>
+    <book>
+        <title>Hello world</title>
+    </book>
+</user>
+"""
+
+u = et.fromstring(xml)
+u
+u.find("./title")
+u.find("./info/author/title")
+u.find("./info/author/title").text
+u.find("./book/title").text
+u.findall("./title")
+u.findall("./book/title")
+u.findall(".//title")
+u.findall(".//title")
+[ t.text for t in u.iterfind(".//title") ]
+c.find("./book[@country]")
+c.find("./book[@country]").text
+c.find("./book/@country").text
+c.find("./book/@country")
+c.findall("./book/[@id]")
+c.findall("./book/[@id='bk105']")
+c.find("./book/[@id='bk105']")
+c.find("./book/[@id='bk105']").text
+c.find("./book/[@id='bk105']/title").text
+c.findall("./book[author='Corets, Eva']")
+[ t.text for t in c.iterfind("./book[author='Corets, Eva']/title") ]
+import xml.etree.ElementTree as et
+
+tree = et.parse("books.xml")
+c = tree.getroot()
+
+[ t.text for t in c.iterfind("./book[price < 6.0]/title") ]
+import xml.etree.ElementTree as et
+
+tree = et.parse("xml/books.xml")
+c = tree.getroot()
+
+[ t.text for t in c.iterfind("./book[price < 6.0]/title") ]
+import xml.etree.ElementTree as et
+
+tree = et.parse("xml/books.xml")
+c = tree.getroot()
+
+#[ t.text for t in c.iterfind("./book[price < 6.0]/title") ]
+
+for b in c.iterfind("./book"):
+    print(b)
+import xml.etree.ElementTree as et
+
+tree = et.parse("xml/books.xml")
+c = tree.getroot()
+
+#[ t.text for t in c.iterfind("./book[price < 6.0]/title") ]
+
+for b in c.iterfind("./book"):
+    print(b.find("./price"))
+import xml.etree.ElementTree as et
+
+tree = et.parse("xml/books.xml")
+c = tree.getroot()
+
+#[ t.text for t in c.iterfind("./book[price < 6.0]/title") ]
+
+for b in c.iterfind("./book"):
+    if float(b.find("./price").text) < 6.0:
+        print(b)
+import xml.etree.ElementTree as et
+
+tree = et.parse("xml/books.xml")
+c = tree.getroot()
+
+#[ t.text for t in c.iterfind("./book[price < 6.0]/title") ]
+
+for b in c.iterfind("./book"):
+    if float(b.find("./price").text) > 6.0:
+        print(b)
+import xml.etree.ElementTree as et
+
+tree = et.parse("xml/books.xml")
+c = tree.getroot()
+
+#[ t.text for t in c.iterfind("./book[price < 6.0]/title") ]
+
+for b in c.iterfind("./book"):
+    if float(b.find("./price").text) < 6.0:
+        print(b.find("./title").text)
+[ b.find("./title").text for b in c.iterfind("./book") if float(b.find("./price").text) < 6.0 ]
+import lxml.etree as et
+et
+import lxml.etree as et
+tree = et.parse("xml/books.xml")
+c = tree.getroot()
+
+#[ t.text for t in c.iterfind("./book[price < 6.0]/title") ]
+
+for b in c.iterfind("./book"):
+    if float(b.find("./price").text) < 6.0:
+        print(b.find("./title").text)
+tree
+c
+import xml.etree.ElementTree as et_old
+tree_old = et_old.parse("xml/books.xml")
+tree_old
+c_old = tree_old.getroot()
+c_old
+c
+list(dir(c))
+print(dir(c))
+print(dir(c))
+print([ a for a in dir(c) if a[0] != '_'])
+print([ a for a in dir(c_old) if a[0] != '_'])
+c.xpath("./book")
+c.xpath("./book/title")
+c.xpath("./book/title/text()")
+c.xpath("./book[price < 6.0]/title/text()")
+import requests
+import requests
+response = requests.get("http://www.chandrashekar.info/")
+response
+response.header
+response.headers
+response.headers["content-type"]
+import lxml.html as hp
+hp
+html = hp.fromstring(response.text)
+html
+html[0]
+html[1]
+html[1][0]
+html.xpath(".//a[@href]")
+html.xpath(".//a[@href]/@href")
+html.xpath(".//a[@href]/@href"), html.xpath(".//a[@href]/text()")
+for link, text in html.xpath(".//a[@href]/@href"), html.xpath(".//a[@href]/text()"):
+    print(link, text)
+html.xpath(".//a[@href]/@href"), html.xpath(".//a[@href]/text()"):
+html.xpath(".//a[@href]/@href"), html.xpath(".//a[@href]/text()")
+from bs4 import BeautifulSoup
+soup = BeautifulSoup(response.text)
+soup
+from bs4 import BeautifulSoup
+soup = BeautifulSoup(response.text)
+type(soup)
+soup.head
+soup.head.title
+soup.body
+soup.body.span
+soup.body.span.strong
+soup.head
+t = soup.head.title
+t = soup.head.title
+t
+t.next()
+t.next
+t.next.next
+t.next.next.next
+t.next.next.next.next
+soup.select("a")
+soup.select("a ::href")
+soup.select("a ::attr")
+soup.select("a ::attrs")
+soup.select("a attr(href)")
+soup.select("a attr")
+soup.select("a href")
+soup.select("a::attr")
+soup.select("a::attr(href)")
+soup.select("a ::attr(href)")
+import requests_html
+from requests_html import HTMLSession
+session = HTMLSession()
+response = session.get("https://www.cisco.com/")
+response.status_code
+response.headers["content-type"]
+response.html
+response.html.links
+response.html.absolute_links
+response.html.xpath(".//form")
+session.get("https://www.python.org/").html.xpath(".//form")
+
+element = "/html/body/div[1]/div/div/div[1]/div/div[2]/div/div/div[4]/div/div/div/div[3]/div/div/span[1]"
+
+res = session.get("https://finance.yahoo.com/quote/CSCO/options?p=CSCO")
+res
+res.html
+res.html.xpath(element)
+res.html.xpath(element)[0]
+res.html.xpath(element)[0].text
+res.html.xpath(".//span[@data-reactid='32']/text()")
+res.html.xpath("/html/body/div[1]/div/div/div[1]/div/div[2]/div/div/div[4]/div/div/div/div[3]/div/p/span[1]")
+res.html.xpath("/html/body/div[1]/div/div/div[1]/div/div[2]/div/div/div[4]/div/div/div/div[3]/div/p/span[1]")
+res.html.render()
+from requests_html import HTMLSession
+session = HTMLSession()
+res = session.get("https://finance.yahoo.com/quote/CSCO/options?p=CSCO")
+res
+res.html.xpath("/html/body/div[1]/div/div/div[1]/div/div[2]/div/div/div[4]/div/div/div/div[3]/div/p/span[1]")
+res.html.xpath("/html/body/div[1]/div/div/div[1]/div/div[2]/div/div/div[4]/div/div/div/div[3]/div/p/span[1]")
+res.html.xpath("/html/body/div[1]/div/div/div[1]/div/div[2]/div/div/div[4]/div/div/div/div[3]/div/p/span[1]")[0]
+res.html.xpath("/html/body/div[1]/div/div/div[1]/div/div[2]/div/div/div[4]/div/div/div/div[3]/div/p/span[1]")[0].text
+res.html.render()
+res.html.xpath("/html/body/div[1]/div/div/div[1]/div/div[2]/div/div/div[4]/div/div/div/div[3]/div/p/span[1]")[0].text
+el = "/html/body/div[2]/div[3]/div/div[2]/table/tbody/tr[1]/td[6]"
+res = session.get("https://datatables.net/examples/basic_init/data_rendering.html")
+res.html.xpath(el)
+res.html.xpath(el)
+res.html.xpath(el)
+res.html.render()
+res.html.xpath(el)
+res.html.xpath(el)
+res.html.xpath(el)
+res.html.xpath(el)
+res.html.xpath(".//table[@id='example']")
+res.html.xpath(".//table[@id='example']/tbody")
+res.html.xpath(".//table[@id='example']/tbody/tr")
+res.html.xpath(".//table[@id='example']/tbody/tr/td")
+res.html.xpath(".//table[@id='example']/tbody/tr/td")
+res.html.xpath(".//table[@id='example']/tbody/tr/td/text()")
+res.html.xpath(".//table[@id='example']/tbody/tr/td/text()")
+res.html.xpath(".//table[@id='example']/tbody/tr/td/text()")
+res.html.render()
+res.html.xpath(".//table[@id='example']/tbody/tr/td/text()")
+res.html.xpath(".//table[@id='example']/tbody/tr/td/text()")
+get_ipython().run_line_magic('pip', 'install mechanicalsoup')
+from mechanicalsoup import StatefulBrowser
+
+br = StatefulBrowser()
+get_ipython().run_line_magic('pinfo', 'StatefulBrowser')
+br
+br.open("https://www.python.org/")
+br.links
+br.links()
+br.get_url()
+get_ipython().run_line_magic('pinfo', 'br.follow_link')
+get_ipython().run_line_magic('pinfo', 'br.find_link')
+br.find_link(href="/jobs/")
+br.find_link(text"Jobs")
+br.find_link(text="Jobs")
+l = br.find_link(text="Jobs")
+br.follow_link(l)
+br.get_url()
+br.select_form()
+f = br.select_form()
+f.print_summary()
+br["q"] = "Guido Van Rossum"
+br.submit_selected()
+br.get_url()
+f.print_summary()
+#br.links()
+home_url = "http://testing.chandrashekar.info/"
+
+username = "testuser"
+password = "w3lc0me"
+
+login_url = "http://testing.chandrashekar.info/wp-login.php"
+
+logged_in_url = "http://testing.chandrashekar.info/wp-admin/"
+
+add_new_post_url = "http://testing.chandrashekar.info/wp-admin/post-new.php"
+br = StatefulBrowser(parser="lxml")
+br = StatefulBrowser()
+br.open(login_url)
+br.select_form()
+login_form = br.select_form()
+login_form.print_summary()
+br["log"] = username
+br["pwd"] = password
+br.submit_selected()
+br.get_url()
+br.find_link(text="Add New")
+post_new_link = br.find_link(text="Add New")
+br.follow_link(post_new_link)
+br.get_url()
+br.select_form()
+f = br.select_form()
+f.print_summary()
+get_ipython().run_line_magic('pinfo', 'br.select_form')
+get_ipython().run_line_magic('pinfo', 'br.get_current_form')
+br.select_form(name="post")
+br.select_form(id="post")
+get_ipython().run_line_magic('pinfo', 'br.select_form')
+br.select_form(selector='form.post')
+br.select_form(selector='#post')
+post_form = br.select_form(selector='#post')
+post_form.print_summary()
+br["post_title"] = "A new blog added by program - Chandrashekar Babu"
+br["content"] = "this is a test blog added using a Python program using mechanicalsoup framework"
+br.get_current_form().choose_submit("publish")
+br.submit_selected()
+br.get_url()
+get_ipython().run_line_magic('pinfo', 'br.get')
+br.response
+br.close()
+br = StatefulBrowser()
+br.open(login_url)
+br.select_form()
+br.select_form().print_summary()
+br.get_url()
+get_ipython().run_line_magic('pinfo', 'br.open')
+from selenium.webdriver import Safari as driver
+import selenium.webdriver as sw
+dir(sw)
+from selenium.webdriver import Safari as driver
+br = driver()
+br.get("www.google.com")
+br.get("http://www.google.com")
+br.find_element_by_id("q")
+br.find_element_by_name("q")
+el = br.find_element_by_name("q")
+el
+el.send_keys("Python")
+from selenium.webdriver.common.keys import Keys
+Keys.ENTER
+el.send_keys(Keys.ENTER)
+br.find_element_by_partial_link_text("Welcome to Python.org")
+lnk = br.find_element_by_partial_link_text("Welcome to Python.org")
+lnk.click()
+br.find_element_by_partial_link_text("Welcome to Python.org")
+br.find_element_by_partial_link_text("Welcome to Python.org").click()
+br.find_element_by_partial_link_text("The Python Tutorial").click()
+br.find_element_by_partial_link_text("Whetting Your Appetite").click()
+br.back()
+br.back()
+br.forward()
+br.window_handles
+get_ipython().run_line_magic('pinfo', 'br.switch_to')
+driver.get_cookies()
+get_ipython().run_line_magic('pinfo', 'driver.get_cookies')
+get_ipython().run_line_magic('pinfo', 'br.get_cookies')
+br.get_cookies()
+br.open("http://www.chandrashekar.info/")
+br.get("http://www.chandrashekar.info/")
+br.get_cookies()
+br.get("https://www.cisco.com/")
+br.get_cookies()
+get_ipython().run_line_magic('pinfo', 'br.get_cookie')
+br.get_cookie('cdc.cookie.newUser')
+br.save_screenshot("cisco_homepage.png")
+get_ipython().run_line_magic('pwd', '')
+get_ipython().run_line_magic('pinfo', 'br.set_window_size')
+br.set_window_size(1024, 768)
+br.set_window_size(2000, 768)
+br.set_window_size(640, 480)
+br.get("http://testing.chandrashekar.info/")
+br.set_window_size(1980, 1080)
+br.set_window_size(1024, 768)
+br.get("http://testing.chandrashekar.info/wp-login.php")
+br.find_element_by_name("log")
+br.find_element_by_name("log").send_keys("testuser")
+br.find_element_by_name("pwd").send_keys("w3lc0me")
+br.find_element_by_name("wp_submit").submit()
+br.find_element_by_name("wp-submit").submit()
+br.find_element_by_link_text("Post")
+br.find_element_by_link_text("Post").click()
+br.find_element_by_link_text("Posts").click()
+br.find_element_by_link_text("Add New").click()
+br.find_element_by_name("post_title").send_keys("A new post using selenium")
+br.find_element_by_name("content").send_keys("A nesldkflksdjflksdj fkldsw post using selenium")
+br.find_element_by_name("publish").submit()
+br.get("https://testing.chandrashekar.info/")
+br.get("http://testing.chandrashekar.info/")
+br.get("https://testing.chandrashekar.info/")
+br.find_element_by_partial_link_text("Show Details")
+br.window_handles
+br.window_handles
+br.switch_to_alert()
+br.close()
+br = driver()
+br.get("http://www.google.com/")
+el = br.find_element_by_name("q")
+el
+el.get_attributes()
+get_ipython().run_line_magic('pinfo', 'el.get_attribute')
+get_ipython().run_line_magic('pinfo', 'el.get_property')
+el.click()
+el.send_keys("Python" + Keys.ENTER)
+br.find_element_by_partial_link_text("Welcome to Python.org")
+lnk = br.find_element_by_partial_link_text("Welcome to Python.org")
+lnk
+lnk.click()
+el.is_enabled()
+el.click()
+lnk = br.find_elements_by_partial_link_text("Welcome to Python.org")
+lnk
+br.find_element_by_partial_link_text("Python For Beginners")
+br.find_element_by_partial_link_text("Python For Beginners").click()
+br.close()
+get_ipython().run_line_magic('pip', 'install scrapy')

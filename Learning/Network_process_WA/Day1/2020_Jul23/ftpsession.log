@@ -1,0 +1,16 @@
+Connected to ftp.chandrashekar.info.
+220 192.252.149.39 FTP server ready
+Name (ftp.chandrashekar.info:chandrashekar): testuser
+testuser
+331 Password required for testuser
+Password: w3lc0me
+
+230 User testuser logged in
+ftp> cd /www/files
+cd /www/files
+250 CWD command successful
+ftp> get xml23423.zip
+get xml23423.zip
+200 PORT command successful
+550 xml23423.zip: No such file or directory
+ftp> quit

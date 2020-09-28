@@ -1,0 +1,26 @@
+/boot:
+total 628276
+lrwxrwxrwx 1 root root        21 Dec 26  2016 System.map -> System.map-4.9.0-vbox
+-rw-r--r-- 1 root root  11833312 Sep 11  2017 System.map-4.9.0-vbox
+lrwxrwxrwx 1 root root        17 Dec 26  2016 config -> config-4.9.0-vbox
+-rw-r--r-- 1 root root    117359 Sep 11  2017 config-4.9.0-vbox
+drwxr-xr-x 6 root root      4096 Mar 20 15:19 grub
+-rw-r--r-- 1 root root  22652681 Jun 18  2017 initramfs-linux-fallback.img
+-rw-r--r-- 1 root root   5991323 Jun 18  2017 initramfs-linux.img
+-rw-r--r-- 1 root root   1148736 Sep 13  2017 initrd-4.9.0-vbox.gz
+lrwxrwxrwx 1 root root        26 Dec  6  2016 initrd.gz -> /boot/initrd-4.9.0-vbox.gz
+lrwxrwxrwx 1 root root        18 Dec 26  2016 vmlinux -> vmlinux-4.9.0-vbox
+-rwxr-xr-x 2 root root 579138980 Sep 11  2017 vmlinux-4.9.0-vbox
+lrwxrwxrwx 1 root root        18 Dec 26  2016 vmlinuz -> vmlinuz-4.9.0-vbox
+-rw-r--r-- 1 root root  17728416 Sep 11  2017 vmlinuz-4.9.0-vbox
+-rw-r--r-- 1 root root   4719456 Jun 14  2017 vmlinuz-linux
+
+/usr:
+total 108
+drwxr-xr-x   5 root root 36864 Mar 20 20:35 bin
+drwxr-xr-x 140 root root 20480 Mar  9 07:52 include
+drwxr-xr-x  87 root root 36864 Sep 15  2017 lib
+drwxr-xr-x  13 root root  4096 Jul 13  2017 local
+lrwxrwxrwx   1 root root     3 Mar 27  2017 sbin -> bin
+drwxr-xr-x 103 root root  4096 Sep 11  2017 share
+drwxr-xr-x   2 root root  4096 Sep 11  2017 src

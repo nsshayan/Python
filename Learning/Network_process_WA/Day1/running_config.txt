@@ -1,0 +1,723 @@
+IR1100_FCW23110H4A#show run | sec Flex
+aaa authorization network FlexVPN_Author local
+crypto pki certificate map FlexVPN_Cert_Map 1
+ issuer-name co cn = ipg-rsa-root-ca
+crypto ikev2 authorization policy FlexVPN_Author_Policy
+ route set interface
+ route set access-list FlexVPN_Client_IPv4_LAN
+ route set access-list ipv6 FlexVPN_Client_IPv6_LAN
+crypto ikev2 proposal FlexVPN_IKEv2_Proposal
+ encryption aes-cbc-256
+ integrity sha256
+ group 14
+ proposal FlexVPN_IKEv2_Proposal
+crypto ikev2 profile FlexVPN_IKEv2_Profile
+ match certificate FlexVPN_Cert_Map
+ identity local dn
+ authentication remote rsa-sig
+ authentication local rsa-sig
+ pki trustpoint LDevID
+ dpd 30 3 periodic
+ aaa authorization group cert list FlexVPN_Author FlexVPN_Author_Policy
+crypto ikev2 client flexvpn FlexVPN_Client_Secondary
+  peer 1 72.163.222.232
+  client connect Tunnel1
+crypto ikev2 client flexvpn FlexVPN_Client
+  peer 1 72.163.222.233
+  client connect Tunnel0
+crypto ipsec transform-set FlexVPN_IPsec_Transform_Set esp-aes esp-sha256-hmac
+ mode transport
+crypto ipsec profile FlexVPN_IPsec_Profile
+ set transform-set FlexVPN_IPsec_Transform_Set
+ set pfs group14
+ set ikev2-profile FlexVPN_IKEv2_Profile
+ tunnel protection ipsec profile FlexVPN_IPsec_Profile
+ tunnel protection ipsec profile FlexVPN_IPsec_Profile
+ip access-list standard FlexVPN_Client_IPv4_LAN
+ 30 permit 192.168.0.1
+ 20 permit 192.168.0.3
+ 10 permit 192.168.150.16
+ 40 permit 192.168.9.0 0.0.0.255
+ipv6 access-list FlexVPN_Client_IPv6_LAN
+ sequence 20 permit ipv6 host 2001:DB8:BABA:FACE:C057:9B2B:AD54:3FD2 any
+IR1100_FCW23110H4A#show run
+Building configuration...
+
+Current configuration : 23236 bytes
+!
+! Last configuration change at 11:09:40 IST Wed Jul 22 2020
+!
+version 17.2
+service timestamps debug datetime msec localtime show-timezone
+service timestamps log datetime msec localtime show-timezone
+service internal
+service call-home
+platform qfp utilization monitor load 80
+no platform punt-keepalive disable-kernel-core
+!
+hostname IR1100_FCW23110H4A
+!
+boot-start-marker
+boot system bootflash:ir1101-universalk9.17.02.01.SPA.bin
+boot-end-marker
+!
+!
+logging buffered 21474836
+enable secret 9 $9$79dSpQQiQM8uXE$5GYZoiU3FPHHT/2fX6rhW1uwnBm9bxc5drGi1/Hbn6c
+!
+aaa new-model
+!
+!
+aaa authentication login default local
+aaa authorization exec default local
+aaa authorization network FlexVPN_Author local
+!
+!
+!
+!
+!
+!
+aaa session-id common
+clock timezone IST 5 30
+!
+shutdown vlan 200
+!
+!
+!
+!
+!
+!
+!
+!
+!
+ip host ntp.ipg.cisco.com 123.108.200.124
+ip host ra.ipg.cisco.com 72.163.222.228
+ip host tps-san.ipg.cisco.com 72.163.222.234
+ip domain name ipg.cisco.com
+!
+!
+!
+login block-for 60 attempts 3 within 30
+login delay 3
+login on-success log
+ipv6 unicast-routing
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+crypto pki trustpoint LDevID
+ enrollment retry count 4
+ enrollment retry period 2
+ enrollment mode ra
+ enrollment profile LDevID
+ serial-number none
+ fqdn none
+ ip-address none
+ password
+ fingerprint ECF92E2D5376D5E81D882E3F691FE983D15AD56C
+ subject-name serialNumber=PID:IR1101-K9 SN:FCW23110H4A,CN=IR1100_FCW23110H4A.ipg.cisco.com
+ revocation-check none
+ rsakeypair LDevID 2048
+!
+crypto pki trustpoint SLA-TrustPoint
+ enrollment pkcs12
+ revocation-check crl
+!
+crypto pki trustpoint TP-self-signed-216601841
+ enrollment selfsigned
+ subject-name cn=IOS-Self-Signed-Certificate-216601841
+ revocation-check none
+ rsakeypair TP-self-signed-216601841
+!
+crypto pki trustpoint fnd
+ enrollment url bootflash://PnP-cert_08_12_13_UTC_Thu_Jul_11_2019
+ revocation-check none
+!
+crypto pki profile enrollment LDevID
+ enrollment url  http://ra.ipg.cisco.com
+!
+!
+!
+crypto pki certificate map FlexVPN_Cert_Map 1
+ issuer-name co cn = ipg-rsa-root-ca
+!
+crypto pki certificate chain LDevID
+ certificate 6500000370B836DA69A50167AD000300000370
+  308205BC 308204A4 A0030201 02021365 00000370 B836DA69 A50167AD 00030000
+  0370300D 06092A86 4886F70D 01010B05 00305B31 13301106 0A099226 8993F22C
+  64011916 03636F6D 31153013 060A0992 268993F2 2C640119 16056369 73636F31
+  13301106 0A099226 8993F22C 64011916 03697067 31183016 06035504 03130F49
+  50472D52 53412D52 4F4F542D 4341301E 170D3139 30373131 30343335 32375A17
+  0D323130 37313130 34343532 375A3052 31253023 06035504 05131C50 49443A49
+  52313130 312D4B39 20534E3A 46435732 33313130 48344131 29302706 03550403
+  0C204952 31313030 5F464357 32333131 30483441 2E697067 2E636973 636F2E63
+  6F6D3082 0122300D 06092A86 4886F70D 01010105 00038201 0F003082 010A0282
+  010100EF 69BC3E1D DB7C6E80 9195E56E C580F0AE A0ED274B 11E52A56 1D83AC7D
+  2D7582FB E6DF6C65 CB4229ED B7EFFEE6 10BD3152 ED37254D 36E8343D A0170D6A
+  90C004E2 AA9E2CDB F57C895D 3C117135 48417197 63F86865 C4340343 4B6D2BCB
+  AAC40C2A A53380C6 97ACC258 8854E488 0C1D5975 E15E7FB9 D5117F99 2E9CDD69
+  6ECF22E4 EBD3D042 9E3CF48E 78BA9A66 AC6B19C3 B9464EAA 61E4FF15 44141C27
+  7FED0918 A0D05E98 4B6AEBED F81E6FA7 50E7C535 CEF97D86 EEEE6F23 3C566B38
+  04F68141 68B79974 1C130F27 FC970EE3 6656EDDD 099CEFAD E40CDB3E 9234A849
+  6F3F4C30 98E1ED4D 08F07060 66F216E1 9F85D573 A325E914 65A2E786 E78D091B
+  34D08702 03010001 A3820280 3082027C 300B0603 551D0F04 04030204 F0301D06
+  03551D0E 04160414 812246CB FAF9CFCB EDDAC4FF F1C96117 F2879AA6 301F0603
+  551D2304 18301680 144050AD 98071BC6 1EAA8A0E 516FAB76 6A41C17C E53081DD
+  0603551D 1F0481D5 3081D230 81CFA081 CCA081C9 8681C66C 6461703A 2F2F2F43
+  4E3D4950 472D5253 412D524F 4F542D43 41283329 2C434E3D 57494E32 3031322D
+  53455256 4552312C 434E3D43 44502C43 4E3D5075 626C6963 2532304B 65792532
+  30536572 76696365 732C434E 3D536572 76696365 732C434E 3D436F6E 66696775
+  72617469 6F6E2C44 433D6970 672C4443 3D636973 636F2C44 433D636F 6D3F6365
+  72746966 69636174 65526576 6F636174 696F6E4C 6973743F 62617365 3F6F626A
+  65637443 6C617373 3D63524C 44697374 72696275 74696F6E 506F696E 743081C6
+  06082B06 01050507 01010481 B93081B6 3081B306 082B0601 05050730 028681A6
+  6C646170 3A2F2F2F 434E3D49 50472D52 53412D52 4F4F542D 43412C43 4E3D4149
+  412C434E 3D507562 6C696325 32304B65 79253230 53657276 69636573 2C434E3D
+  53657276 69636573 2C434E3D 436F6E66 69677572 6174696F 6E2C4443 3D697067
+  2C44433D 63697363 6F2C4443 3D636F6D 3F634143 65727469 66696361 74653F62
+  6173653F 6F626A65 6374436C 6173733D 63657274 69666963 6174696F 6E417574
+  686F7269 7479303C 06092B06 01040182 37150704 2F302D06 252B0601 04018237
+  1508FCC9 3C82FD9A 6087F197 168491E9 21EBE947 811F86FD 9C1587ED F9070201
+  64020107 301D0603 551D2504 16301406 082B0601 05050703 0106082B 06010505
+  07030230 2706092B 06010401 8237150A 041A3018 300A0608 2B060105 05070301
+  300A0608 2B060105 05070302 300D0609 2A864886 F70D0101 0B050003 82010100
+  9DF9089C 8EBF4F0D 926DA739 53A8BEED 10F58824 1125CEA4 75461049 0582206C
+  4A394D38 1CA8A561 E8742A02 29785C6C BC10977B A61A7530 FF448192 838AB253
+  D6179C49 9F673170 1BF5B2EB 0DDBCA0A A67976C9 AAFF96D5 3ABD3F33 8A1C0C6B
+  1DC5FFD4 B5985B15 D8D9D4DF DEF2324F 915582EF D07ABFE2 8A8A3E4F 7B3AE5D8
+  477602B6 E17F92C6 BDB9FF42 8CC4CC3F 83304125 5B25B9F7 9DF5DFDF 6C50DF95
+  CD7DE721 2024CF4F 93A53849 E881F053 A7525486 B3D9AD0F DE5EE213 2A85B74E
+  CB4296F1 49E417B6 8103FE44 CF34F903 5CB61D22 A2AE21DE F0FCD5C1 4A864712
+  B90E6F09 045C252C 21D1E270 9720F7FA 6E129D75 3876C893 E356FEAC 748F034C
+        quit
+ certificate ca 75DF1523320095AA45C3BA7A2911F45B
+  308203B8 308202A0 A0030201 02021075 DF152332 0095AA45 C3BA7A29 11F45B30
+  0D06092A 864886F7 0D01010B 0500305B 31133011 060A0992 268993F2 2C640119
+  1603636F 6D311530 13060A09 92268993 F22C6401 19160563 6973636F 31133011
+  060A0992 268993F2 2C640119 16036970 67311830 16060355 0403130F 4950472D
+  5253412D 524F4F54 2D434130 1E170D31 39303631 33303032 3431315A 170D3234
+  30363132 30303334 31315A30 5B311330 11060A09 92268993 F22C6401 19160363
+  6F6D3115 3013060A 09922689 93F22C64 01191605 63697363 6F311330 11060A09
+  92268993 F22C6401 19160369 70673118 30160603 55040313 0F495047 2D525341
+  2D524F4F 542D4341 30820122 300D0609 2A864886 F70D0101 01050003 82010F00
+  3082010A 02820101 00B31C98 9963A4AF FCEA5095 5FB358F3 2000A52D 890867C9
+  09FAD7BC 27790580 D7BBC6E8 A8378B0E 078C9D92 5E7F4C1D 035C4FCC 0CB66109
+  8442134D 8053470B 73364248 3B91A884 5C84CAA0 16754DDD 79E294CB 9DF09709
+  8372B46F FD2909CD B1ABC550 6F16D6E5 610C51AA 43FF335E 0FC249F2 E4736C3D
+  4377A425 C99F0EBC 4A72FD61 5078EBCD 6285E324 F8DC95B3 03BDB2A8 194AB7B5
+  705FCD45 26B1D4B7 418A8532 89EEE52E 8807EC71 8016BFCB 92D156D4 D51B5491
+  9EE0BF6D E1C7C81F C07942AD 8E978EDC FBAC9ED7 E8522FB0 6A344BEB D2937FF3
+  708C62D0 F1F265E3 D9910167 F80FEB3C 13859DC3 ACB8DB8B 564F0FA6 70B9E5D8
+  70ECA170 2CAB5438 6B020301 0001A378 3076300B 0603551D 0F040403 02018630
+  0F060355 1D130101 FF040530 030101FF 301D0603 551D0E04 16041440 50AD9807
+  1BC61EAA 8A0E516F AB766A41 C17CE530 1206092B 06010401 82371501 04050203
+  03000330 2306092B 06010401 82371502 04160414 D378A26B 48EE13C7 4C59E17B
+  1F93A6BF 91865A1B 300D0609 2A864886 F70D0101 0B050003 82010100 9AD3942A
+  93DBB586 8C1949A0 6B7D2825 2883E0A3 A2BD05FF C8EAF23B F0FD2A57 16C2D62B
+  BC282219 E2C7A34F 55A2F146 5CA344FD A2887178 7BA6F2C2 29C29CEF AE722230
+  26FD11B7 08397E1D 114AB736 10E740CB 1AA17602 54F99552 52765F6C 4018F7A5
+  CAC6A59D 54CA13DB B6E9066D 69EDAA8B C41B2780 E1EEEBAF C937DA5B B1A1BE4D
+  B84BD00F CDE650CA D39E1B62 404CF9F6 B48FE19F 04328747 BA848F2B 9823BD09
+  993329D8 6C1F8CD3 C248AD46 B6539314 C2967E62 41735CD1 E4C6820D 8067B27D
+  CE8848B4 2B7FB5E0 CD82E726 B3E94F9F 935A7A63 90F5D2D3 0B061409 B1D61F6C
+  0937E5ED 8AD1AD90 DE66E6E7 52C7E4F8 FA7F3143 D0E1311D 8E0C
+  FFD8
+        quit
+crypto pki certificate chain SLA-TrustPoint
+ certificate ca 01
+  30820321 30820209 A0030201 02020101 300D0609 2A864886 F70D0101 0B050030
+  32310E30 0C060355 040A1305 43697363 6F312030 1E060355 04031317 43697363
+  6F204C69 63656E73 696E6720 526F6F74 20434130 1E170D31 33303533 30313934
+  3834375A 170D3338 30353330 31393438 34375A30 32310E30 0C060355 040A1305
+  43697363 6F312030 1E060355 04031317 43697363 6F204C69 63656E73 696E6720
+  526F6F74 20434130 82012230 0D06092A 864886F7 0D010101 05000382 010F0030
+  82010A02 82010100 A6BCBD96 131E05F7 145EA72C 2CD686E6 17222EA1 F1EFF64D
+  CBB4C798 212AA147 C655D8D7 9471380D 8711441E 1AAF071A 9CAE6388 8A38E520
+  1C394D78 462EF239 C659F715 B98C0A59 5BBB5CBD 0CFEBEA3 700A8BF7 D8F256EE
+  4AA4E80D DB6FD1C9 60B1FD18 FFC69C96 6FA68957 A2617DE7 104FDC5F EA2956AC
+  7390A3EB 2B5436AD C847A2C5 DAB553EB 69A9A535 58E9F3E3 C0BD23CF 58BD7188
+  68E69491 20F320E7 948E71D7 AE3BCC84 F10684C7 4BC8E00F 539BA42B 42C68BB7
+  C7479096 B4CB2D62 EA2F505D C7B062A4 6811D95B E8250FC4 5D5D5FB8 8F27D191
+  C55F0D76 61F9A4CD 3D992327 A8BB03BD 4E6D7069 7CBADF8B DF5F4368 95135E44
+  DFC7C6CF 04DD7FD1 02030100 01A34230 40300E06 03551D0F 0101FF04 04030201
+  06300F06 03551D13 0101FF04 05300301 01FF301D 0603551D 0E041604 1449DC85
+  4B3D31E5 1B3E6A17 606AF333 3D3B4C73 E8300D06 092A8648 86F70D01 010B0500
+  03820101 00507F24 D3932A66 86025D9F E838AE5C 6D4DF6B0 49631C78 240DA905
+  604EDCDE FF4FED2B 77FC460E CD636FDB DD44681E 3A5673AB 9093D3B1 6C9E3D8B
+  D98987BF E40CBD9E 1AECA0C2 2189BB5C 8FA85686 CD98B646 5575B146 8DFC66A8
+  467A3DF4 4D565700 6ADF0F0D CF835015 3C04FF7C 21E878AC 11BA9CD2 55A9232C
+  7CA7B7E6 C1AF74F6 152E99B7 B1FCF9BB E973DE7F 5BDDEB86 C71E3B49 1765308B
+  5FB0DA06 B92AFE7F 494E8A9E 07B85737 F3A58BE1 1A48A229 C37C1E69 39F08678
+  80DDCD16 D6BACECA EEBC7CF9 8428787B 35202CDC 60E4616A B623CDBD 230E3AFB
+  418616A9 4093E049 4D10AB75 27E86F73 932E35B5 8862FDAE 0275156F 719BB2F0
+  D697DF7F 28
+        quit
+crypto pki certificate chain TP-self-signed-216601841
+ certificate self-signed 01
+  3082032E 30820216 A0030201 02020101 300D0609 2A864886 F70D0101 05050030
+  30312E30 2C060355 04031325 494F532D 53656C66 2D536967 6E65642D 43657274
+  69666963 6174652D 32313636 30313834 31301E17 0D313930 37313031 32333231
+  355A170D 33303031 30313030 30303030 5A303031 2E302C06 03550403 1325494F
+  532D5365 6C662D53 69676E65 642D4365 72746966 69636174 652D3231 36363031
+  38343130 82012230 0D06092A 864886F7 0D010101 05000382 010F0030 82010A02
+  82010100 89520169 F5BBB8CA D27148C3 7DE1D5A6 E22C5F78 CAD50605 CB162992
+  DA38EEAF 25613CAE 4AE0C08E BB3E7CEE DD8DDD2E C9BBB82E EB12645E 3E4FB258
+  4870A2EE 409FE6DA 0C66CE33 8D423BAA 41C82D85 0F927D1F 9F34F047 BF2830EB
+  4EF08EEC 4FA8CF29 07B486D5 5581AAD7 128B6203 FC16776B 63B36E80 A3296875
+  B7CBF234 4746DA8E 1147DC56 AB968405 F428570C 58126532 B9B10F84 915041A5
+  20970CAA 546C8D5F 4EF4C768 EF3DE969 E8BBAC56 24082B0C 3F835D8F E5C2C21A
+  AE46F627 ED82BBE8 6F67C8B2 5F1C358A 7F59C052 0A52D271 C550C80C 65829BC7
+  B7678466 F4F2F733 422C3C4A 6EA82500 1BE1E160 1E00D9F0 DC3C031E 60C56788
+  7BC841E5 02030100 01A35330 51300F06 03551D13 0101FF04 05300301 01FF301F
+  0603551D 23041830 16801422 58C1E199 F7BCBAEA B278B9C8 4FF96A66 0F9DB230
+  1D060355 1D0E0416 04142258 C1E199F7 BCBAEAB2 78B9C84F F96A660F 9DB2300D
+  06092A86 4886F70D 01010505 00038201 01002CF3 4EE9A0F4 6642F317 30DB1122
+  2479971D CA934853 C99A1F15 D23BB96D 79A89E67 5B96970C E5B238A0 C465FA40
+  5BAD156F CB3F6CFC 8928F0F8 FA13BCC7 30EC4524 F09C07AD CF9D69AD E650A40A
+  0A99D897 2FB22C45 8907FA20 713BF962 1A37B4EA B07A61AF 8DEB7E31 C9D53898
+  2BDC6C1D 8708DAD4 C424FA1D D0C3A2A1 A1CD7228 3BCA2B37 692CFA76 1830B42A
+  850E06F2 B9041F41 BFD4AA15 A7ECC10F 317B201A 3FD9BAE3 7A33B278 84C24703
+  59B157C1 DCD9A350 F1E350A1 4A37EFB3 CF2C8219 30EF2F07 EE2F4EFE F6D622F0
+  F2D255C6 3E19F013 F46C2791 E9B22038 A3CF66A1 C86E5968 7E20B5A6 3B12204B
+  A6028063 014F8F34 604AF166 8C247B18 9125
+        quit
+crypto pki certificate chain fnd
+ certificate ca 75DF1523320095AA45C3BA7A2911F45B
+  308203B8 308202A0 A0030201 02021075 DF152332 0095AA45 C3BA7A29 11F45B30
+  0D06092A 864886F7 0D01010B 0500305B 31133011 060A0992 268993F2 2C640119
+  1603636F 6D311530 13060A09 92268993 F22C6401 19160563 6973636F 31133011
+  060A0992 268993F2 2C640119 16036970 67311830 16060355 0403130F 4950472D
+  5253412D 524F4F54 2D434130 1E170D31 39303631 33303032 3431315A 170D3234
+  30363132 30303334 31315A30 5B311330 11060A09 92268993 F22C6401 19160363
+  6F6D3115 3013060A 09922689 93F22C64 01191605 63697363 6F311330 11060A09
+  92268993 F22C6401 19160369 70673118 30160603 55040313 0F495047 2D525341
+  2D524F4F 542D4341 30820122 300D0609 2A864886 F70D0101 01050003 82010F00
+  3082010A 02820101 00B31C98 9963A4AF FCEA5095 5FB358F3 2000A52D 890867C9
+  09FAD7BC 27790580 D7BBC6E8 A8378B0E 078C9D92 5E7F4C1D 035C4FCC 0CB66109
+  8442134D 8053470B 73364248 3B91A884 5C84CAA0 16754DDD 79E294CB 9DF09709
+  8372B46F FD2909CD B1ABC550 6F16D6E5 610C51AA 43FF335E 0FC249F2 E4736C3D
+  4377A425 C99F0EBC 4A72FD61 5078EBCD 6285E324 F8DC95B3 03BDB2A8 194AB7B5
+  705FCD45 26B1D4B7 418A8532 89EEE52E 8807EC71 8016BFCB 92D156D4 D51B5491
+  9EE0BF6D E1C7C81F C07942AD 8E978EDC FBAC9ED7 E8522FB0 6A344BEB D2937FF3
+  708C62D0 F1F265E3 D9910167 F80FEB3C 13859DC3 ACB8DB8B 564F0FA6 70B9E5D8
+  70ECA170 2CAB5438 6B020301 0001A378 3076300B 0603551D 0F040403 02018630
+  0F060355 1D130101 FF040530 030101FF 301D0603 551D0E04 16041440 50AD9807
+  1BC61EAA 8A0E516F AB766A41 C17CE530 1206092B 06010401 82371501 04050203
+  03000330 2306092B 06010401 82371502 04160414 D378A26B 48EE13C7 4C59E17B
+  1F93A6BF 91865A1B 300D0609 2A864886 F70D0101 0B050003 82010100 9AD3942A
+  93DBB586 8C1949A0 6B7D2825 2883E0A3 A2BD05FF C8EAF23B F0FD2A57 16C2D62B
+  BC282219 E2C7A34F 55A2F146 5CA344FD A2887178 7BA6F2C2 29C29CEF AE722230
+  26FD11B7 08397E1D 114AB736 10E740CB 1AA17602 54F99552 52765F6C 4018F7A5
+  CAC6A59D 54CA13DB B6E9066D 69EDAA8B C41B2780 E1EEEBAF C937DA5B B1A1BE4D
+  B84BD00F CDE650CA D39E1B62 404CF9F6 B48FE19F 04328747 BA848F2B 9823BD09
+  993329D8 6C1F8CD3 C248AD46 B6539314 C2967E62 41735CD1 E4C6820D 8067B27D
+  CE8848B4 2B7FB5E0 CD82E726 B3E94F9F 935A7A63 90F5D2D3 0B061409 B1D61F6C
+  0937E5ED 8AD1AD90 DE66E6E7 52C7E4F8 FA7F3143 D0E1311D 8E0C
+  FFD8
+        quit
+!
+license udi pid IR1101-K9 sn FCW23110H4A
+license boot level network-advantage
+diagnostic bootup level minimal
+!
+spanning-tree extend system-id
+archive
+ path bootflash:/archive
+ maximum 8
+memory free low-watermark processor 50357
+!
+!
+username cg-nms-administrator privilege 15 secret 8 $8$ySUgIvEv2QnuH.$aq/YgVdQIDsh9p6z8uBYgHfO/GRaorJJNsf191sd24U
+username cisco privilege 15 secret 8 $8$YZAIgrEXJkmAW.$F4cblmbX7B.GbBpfBM4vLb4ZPMfbTVoxTZMzVhCS7Mk
+username admin privilege 15 password 0 sentryo69!
+!
+redundancy
+!
+!
+crypto ikev2 authorization policy FlexVPN_Author_Policy
+ route set interface
+ route set access-list FlexVPN_Client_IPv4_LAN
+ route set access-list ipv6 FlexVPN_Client_IPv6_LAN
+!
+crypto ikev2 proposal FlexVPN_IKEv2_Proposal
+ encryption aes-cbc-256
+ integrity sha256
+ group 14
+!
+crypto ikev2 policy FLexVPN_IKEv2_Policy
+ proposal FlexVPN_IKEv2_Proposal
+!
+!
+crypto ikev2 profile FlexVPN_IKEv2_Profile
+ match certificate FlexVPN_Cert_Map
+ identity local dn
+ authentication remote rsa-sig
+ authentication local rsa-sig
+ pki trustpoint LDevID
+ dpd 30 3 periodic
+ aaa authorization group cert list FlexVPN_Author FlexVPN_Author_Policy
+!
+crypto ikev2 fragmentation
+crypto ikev2 client flexvpn FlexVPN_Client_Secondary
+  peer 1 72.163.222.232
+  client connect Tunnel1
+!
+crypto ikev2 client flexvpn FlexVPN_Client
+  peer 1 72.163.222.233
+  client connect Tunnel0
+!
+!
+controller Cellular 0/1/0
+!
+controller Cellular 0/3/0
+!
+!
+vlan internal allocation policy ascending
+!
+track 3 interface Cellular0/1/0 line-protocol
+ delay up 120
+!
+!
+class-map type inspect match-any IN-OUT
+ match protocol icmp
+ match protocol tcp
+ match protocol telnet
+ match protocol http
+ match protocol https
+ match protocol ssh
+class-map type inspect match-any OUT-IN
+ match protocol icmp
+ match protocol tcp
+ match protocol telnet
+ match protocol http
+ match protocol https
+ match protocol ssh
+!
+policy-map type inspect OUT-IN
+ class type inspect OUT-IN
+  inspect
+ class class-default
+policy-map type inspect IN-OUT
+ class type inspect IN-OUT
+  inspect
+ class class-default
+!
+zone security INSIDE
+zone security OUTSIDE
+zone-pair security IN-OUT-PAIR source INSIDE destination OUTSIDE
+ service-policy type inspect IN-OUT
+zone-pair security OUT-IN-PAIR source OUTSIDE destination INSIDE
+ service-policy type inspect OUT-IN
+!
+!
+!
+!
+!
+!
+!
+!
+crypto ipsec transform-set FlexVPN_IPsec_Transform_Set esp-aes esp-sha256-hmac
+ mode transport
+!
+crypto ipsec profile FlexVPN_IPsec_Profile
+ set transform-set FlexVPN_IPsec_Transform_Set
+ set pfs group14
+ set ikev2-profile FlexVPN_IKEv2_Profile
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+interface Loopback0
+ ip address 192.168.150.16 255.255.255.255
+ ip nat outside
+ ipv6 address 2001:DB8:BABA:FACE:C057:9B2B:AD54:3FD2/128
+!
+interface Loopback1
+ no ip address
+!
+interface Loopback999
+ description workaround for CSCvb49055
+ ip address 169.254.1.1 255.255.255.255
+!
+interface Tunnel0
+ description IPsec tunnel to HER1.ipg.cisco.com
+ ip unnumbered Loopback0
+ ip nat outside
+ zone-member security OUTSIDE
+ ipv6 unnumbered Loopback0
+ tunnel source Cellular0/1/0
+ tunnel destination dynamic
+ tunnel protection ipsec profile FlexVPN_IPsec_Profile
+ ip virtual-reassembly
+!
+interface Tunnel1
+ description IPsec tunnel to HER2.ipg.cisco.com
+ ip unnumbered Loopback0
+ shutdown
+ ipv6 unnumbered Loopback0
+ tunnel source Cellular0/3/0
+ tunnel destination dynamic
+ tunnel protection ipsec profile FlexVPN_IPsec_Profile
+!
+interface VirtualPortGroup0
+ description App ERSPAN
+ ip address 192.168.10.1 255.255.255.0
+ no mop enabled
+ no mop sysid
+!
+interface VirtualPortGroup1
+ description App Collection N/w
+ ip address 192.168.9.1 255.255.255.0
+ ip nat inside
+ zone-member security INSIDE
+ ip tcp adjust-mss 1160
+ no mop enabled
+ no mop sysid
+!
+interface GigabitEthernet0/0/0
+ ip address dhcp
+ media-type rj45
+!
+interface FastEthernet0/0/1
+!
+interface FastEthernet0/0/2
+!
+interface FastEthernet0/0/3
+ switchport mode trunk
+!
+interface FastEthernet0/0/4
+ switchport access vlan 1000
+ switchport mode access
+!
+interface GigabitEthernet0/0/5
+ switchport trunk allowed vlan 300,600,1000
+ switchport mode trunk
+!
+interface Cellular0/1/0
+ description Connection to DMZ UCS
+ ip address negotiated
+ dialer in-band
+ dialer idle-timeout 0
+ dialer watch-group 1
+ ipv6 enable
+ pulse-time 1
+ ip virtual-reassembly
+!
+interface Cellular0/1/1
+ no ip address
+ shutdown
+!
+interface Cellular0/3/0
+ ip address negotiated
+ shutdown
+ dialer in-band
+ dialer idle-timeout 0
+ dialer watch-group 2
+ ipv6 enable
+ pulse-time 1
+ ip virtual-reassembly
+!
+interface Cellular0/3/1
+ no ip address
+ shutdown
+!
+interface Vlan1
+ no ip address
+!
+interface Vlan200
+ description CVC Collection N/w
+ ip address 192.168.200.54 255.255.255.0
+!
+interface Vlan600
+ description "GOOSE_INTERCAB"
+ no ip address
+!
+interface Vlan1000
+ ip address 192.168.0.1 255.255.255.0
+ zone-member security INSIDE
+!
+interface Async0/2/0
+ no ip address
+ encapsulation raw-udp
+!
+iox
+ip forward-protocol nd
+!
+ip http server
+ip http auth-retry 3 time-window 1
+ip http authentication local
+ip http secure-server
+ip http secure-trustpoint LDevID
+ip http max-connections 200
+ip http timeout-policy idle 600 life 86400 requests 3
+ip http client source-interface Vlan1000
+ip nat inside source list CV_LIST interface Loopback0 overload
+ip tftp source-interface Tunnel0
+ip route 0.0.0.0 0.0.0.0 Cellular0/1/0
+ip route 8.8.4.0 255.255.255.0 Cellular0/3/0
+ip route 8.8.8.0 255.255.255.0 Cellular0/1/0
+ip route 172.16.101.200 255.255.255.255 10.10.32.1
+ip route 192.168.169.0 255.255.255.0 192.168.200.100
+ip ssh source-interface Loopback0
+ip ssh rsa keypair-name LDevID
+ip ssh version 2
+!
+ip access-list standard CV_LIST
+ 10 permit 192.168.9.0 0.0.0.255
+ip access-list standard FlexVPN_Client_IPv4_LAN
+ 30 permit 192.168.0.1
+ 20 permit 192.168.0.3
+ 10 permit 192.168.150.16
+ 40 permit 192.168.9.0 0.0.0.255
+!
+!
+ip sla 201
+ icmp-echo 72.163.222.229 source-interface Cellular0/1/0
+  threshold 1000
+  frequency 5
+ip sla schedule 201 life forever start-time now
+ip sla 202
+ icmp-echo 72.163.222.232 source-interface Cellular0/3/0
+  frequency 600
+ip sla schedule 202 life forever start-time now
+ip access-list standard 10
+ 10 permit any
+dialer watch-list 1 ip 5.6.7.8 255.255.255.255
+dialer watch-list 1 delay route-check initial 60
+dialer watch-list 1 delay connect 1
+dialer watch-list 2 ip 5.6.7.8 255.255.255.255
+dialer watch-list 2 delay route-check initial 60
+dialer watch-list 2 delay connect 1
+dialer-list 1 protocol ip permit
+dialer-list 1 protocol ipv6 permit
+ipv6 route ::/0 Cellular0/1/0
+ipv6 route ::/0 Cellular0/3/0 253
+!
+!
+snmp-server group cgnms v3 priv
+snmp-server trap-source Loopback0
+snmp-server enable traps snmp linkdown linkup coldstart
+snmp-server enable traps c3g
+snmp-server enable traps cisco-sys heartbeat
+snmp-server enable traps fru-ctrl
+snmp-server enable traps aaa_server
+snmp-server host 192.168.103.243 version 3 priv cg-nms-administrator
+snmp ifmib ifindex persist
+!
+tftp-server 192.168.150.16
+tftp-server bootflash:crashinfo_RP_00_00_20200624-141107-IST
+!
+!
+!
+ipv6 access-list FlexVPN_Client_IPv6_LAN
+ sequence 20 permit ipv6 host 2001:DB8:BABA:FACE:C057:9B2B:AD54:3FD2 any
+!
+control-plane
+!
+scada-gw protocol t101
+ channel T101_ch1
+  link-addr-size two
+  bind-to-interface Async0/2/0
+ session T101_ses1
+  attach-to-channel T101_ch1
+  link-addr 13
+ sector T101_sec1
+  attach-to-session T101_ses1
+  asdu-addr 14
+scada-gw protocol t104
+ channel T104_ch1
+  t3-timeout 20
+  tcp-connection 0 local-port default remote-ip 192.168.107.200/0
+ session T104_ses1
+  attach-to-channel T104_ch1
+ sector T104_sec1
+  attach-to-session T104_ses1
+  asdu-addr 15
+  map-to-sector T101_sec1
+!
+!
+line con 0
+ exec-timeout 0 0
+ password Cisco@123
+ transport preferred ssh
+ stopbits 1
+ speed 115200
+line 0/0/0
+line 0/2/0
+ raw-socket udp connection 192.168.107.200 27000 28000
+ transport preferred none
+ stopbits 1
+line vty 0 4
+ exec-timeout 40 0
+ logging synchronous
+ length 0
+ transport input all
+ transport output all
+line vty 5
+ exec-timeout 40 0
+ logging synchronous
+ transport input all
+ transport output all
+line vty 6 14
+ transport input all
+ transport output all
+!
+!
+monitor session 1 type erspan-source
+ source interface Tu0
+ destination
+  erspan-id 1
+  mtu 1464
+  ip address 192.168.10.2
+  origin ip address 192.168.10.1
+!
+!
+call-home
+ ! If contact email address in call-home is configured as sch-smart-licensing@cisco.com
+ ! the email address configured in Cisco Smart License Portal will be used as contact email address to send SCH notifications.
+ contact-email-addr sch-smart-licensing@cisco.com
+ profile "CiscoTAC-1"
+  active
+  destination transport-method http
+ntp server ntp.ipg.cisco.com minpoll 9
+!
+!
+!
+!
+!
+!
+!
+!
+!
+event manager environment wanmon_if_list1 {Cellular0/1/0 {ipsla 201} {recovery 2 {90 75} 0}}
+event manager applet test
+ event track 3 state up
+ action 1 syslog msg "Entered EEM_TEST"
+ action 2 syslog msg "Attempting to wait 10 seconds"
+ action 3 wait 10
+ action 4 syslog msg "Waited for 10 seconds"
+ action 5 syslog msg "Completed EEM_TEST"
+event manager policy tm_wanmon.tcl authorization bypass
+!
+end

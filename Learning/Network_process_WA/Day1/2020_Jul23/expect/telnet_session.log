@@ -1,0 +1,19 @@
+Trying 192.168.56.101...
+Connected to 192.168.56.101.
+Escape character is '^]'.
+
+Linux 4.9.0-vbox (localhost.localdomain) (pts/0)
+
+Password: welcome
+ls /
+
+Last login: Thu Nov 30 13:43:52 from ::ffff:192.168.56.1
+========> /etc/profile invoked
+This is a system-wide test script...
+ls /
+Profile scripts loaded. Shell is ready!
+]0;pythonista@archvm:~[pythonista@archvm ~]$ 
+ls /
+[0m[01;36mbin[0m   [01;34mdev[0m  [01;34mhome[0m  [01;34mlost+found[0m  [01;34mmnt[0m  [01;34mproc[0m  [01;34mrun[0m   [01;34msrv[0m  [30;42mtmp[0m  [01;34mvar[0m
+[01;34mboot[0m  [01;34metc[0m  [01;36mlib[0m   [01;34mmedia[0m       [01;34mopt[0m  [01;34mroot[0m  [01;36msbin[0m  [01;34msys[0m  [01;34musr[0m
+]0;pythonista@archvm:~[pythonista@archvm ~]$ exit

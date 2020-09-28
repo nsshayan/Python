@@ -1,0 +1,14 @@
+
+scrapy.Request("http://testing.chandrashekar.info/")
+r = scrapy.Request("http://testing.chandrashekar.info/")
+r
+r.headers
+Request
+req = scrapy.Request("http://testing.chandrashekar.info/")
+help
+shelp
+shelp()
+fetch(req)
+view
+view()
+res = fetch(req)

@@ -1,0 +1,397 @@
+
+
+import yaml
+get_ipython().run_line_magic('pwd', '')
+help(yaml)
+get_ipython().run_line_magic('cat', 'ssh_run_session_oo/ssh_transcript.yml')
+import yaml
+with open("ssh_run_session_oo/ssh_transcript.yml") as infile:
+    config = yaml.load(infile)
+    
+with open("ssh_run_session_oo/ssh_transcript.yml") as infile:
+    config = yaml.load(infile, Loader=yaml.CLoader)
+    
+config
+get_ipython().run_line_magic('pwd', '')
+get_ipython().run_line_magic('cd', 'ssh_run_session_oo/')
+from paramiko_connection import SSHConnection
+conn = SSHConnection("192.168.1.130", 22, "user01", "tuxedo")
+conn
+conn.mkdir("/tmp/newfolder")
+conn._execute("mkdir", "/tmp/newfolder")
+conn._execute("listdir", "/tmp/newfolder")
+conn._execute("getcwd")
+conn.sftp
+conn.sftp.listdir("/tmp")
+conn._execute("listdir", "/tmp")
+conn._execute("mkdir", "/tmp/another_folder")
+hasattr(conn, "mkdir")
+hasattr(conn.sftp, "mkdir")
+getattr(conn.sftp, "mkdir")
+m = getattr(conn.sftp, "mkdir")
+m("/tmp/newfolder2")
+conn._execute("hostname")
+conn._execute("ls")
+conn._execute("exec", "ls")
+conn._execute("exec", "uname")
+from pssh.clients import SSHClient
+
+from pssh.clients import SSHClient
+get_ipython().run_line_magic('pinfo', 'SSHClient')
+client = SSHClient("dhrona.duckdns.org", user="user01", password="tuxedo")
+client
+out = client.run_command("ls")
+out
+ch, host, stdout, stderr, stdin = client.run_command("ls")
+host
+stdout
+for line in stdout:
+    print(line)
+    
+for line in stderr:
+    print(line)
+    
+ch, host, stdout, stderr, stdin = client.run_command("python")
+next(stdout)
+stdin.write("print('Hello world')\n")
+stdin.write("exit()\n")
+stdin.close()
+for line in stdout: print(line)
+ch, host, stdout, stderr, stdin = client.run_command("python")
+stdin.write("print('Hello world')\n")
+stdin.write("exit()\n")
+stdin.close()
+for line in stdout: print(line)
+from pssh.clients import ParallelSSHClient
+get_ipython().run_line_magic('pinfo', 'ParallelSSHClient')
+home_machines_config = {
+ "192.168.1.130": {"user": "user01", "password": "tuxedo", "port": 22},
+ "192.168.1.32": {"user": "pythonista", "password": "guido123", "port": 22},
+ "192.168.1.7": {"user": "root", "password": "welcome", "port": 22},
+ }
+client = ParallelSSHClient(host_config.keys(), host_config=home_machines_config)
+client = ParallelSSHClient(home_machines_config.keys(), host_config=home_machines_config)
+client
+output = client.run_command("df -h")
+output
+for h, o in output.items():
+    print(f"On host: {h}")
+    print("\n".join(o.stdout))
+    print("-" * 40)
+    
+client.run_command("mkdir %s", host_args=[("/tmp/one",), ("/tmp/two",), ("/tmp/three",)])
+output = client.run_command("%s", host_args=["whoami", "id", "hostname"])
+output
+for h, o in output.items():
+    print(f"On host: {h}")
+    print("\n".join(o.stdout))
+    print("-" * 40)
+    
+get_ipython().run_line_magic('pwd', '')
+get_ipython().run_line_magic('ls', '')
+client.copy_file("pssh_simple.py", "/tmp")
+greenlets = client.copy_file("pssh_simple.py", "/tmp")
+import gevent
+gevent.joinall(greenlets)
+gevent.joinall(client.copy_file("pssh_simple.py", "/tmp/pssh_simple.py"))
+get_ipython().run_line_magic('pinfo', 'client.copy_remote_file')
+get_ipython().run_line_magic('ls', '')
+gevent.joinall(client.copy_file(".", "/tmp/scripts", recurse=True))
+get_ipython().run_line_magic('pinfo', 'client.scp_send')
+import urllib.request
+from urllib.request import urlopen
+res = urlopen("http://www.python.org/")
+res
+res.code
+res.headers
+res.headers.items()
+print(res.read())
+import requests
+get_ipython().run_line_magic('pip', 'install requests')
+r = request.get("http://www.python.org/")
+r
+r = requests.get("http://www.python.org/")
+r
+r.status_code
+r.ok
+r.headers
+r.headers["Content-Type"]
+r.headers["content-type"]
+r.text
+r.content
+requests.Request
+get_ipython().run_line_magic('pinfo', 'requests.Request')
+session = requests.Session()
+session
+r = session.get("http://www.chandrashekar.info/")
+r
+session.close()
+api_key = "932c152d6ff8d185bfdd9d2a5f8e33e4"
+url = "http://api.openweathermap.org/data/2.5/weather"
+params = {
+    "q": "Chennai",
+    "appid": api_key
+}
+weather_info = {
+    "q": "Chennai",
+    "appid": api_key
+}
+r = requests.get(url, params=weather_info)
+r
+r.headers
+r.json()
+r.json()["main"]["temp"]
+weather_info = {
+    "q": "Chennai",
+    "appid": api_key,
+    "units": "metric"
+}
+r = requests.get(url, params=weather_info)
+r
+r.json()["main"]["temp"]
+weather_info = {
+    "q": "Bengaluru",
+    "appid": api_key,
+    "units": "metric"
+}
+r = requests.get(url, params=weather_info)
+r
+r.json()["main"]["temp"]
+session = requests.Session()
+r = session.get(url, params=weather_info)
+if r.ok:
+    print(r.headers["main"]["temp"])
+#session = requests.Session()
+#r = session.get(url, params=weather_info)
+if r.ok:
+    print(r.json["main"]["temp"])
+#session = requests.Session()
+#r = session.get(url, params=weather_info)
+if r.ok:
+    print(r.json()["main"]["temp"])
+data = r.json()
+data
+r = session.patch(url, data)
+r
+
+import requests
+s = requests.Session()
+s.get("http://localhost:9090", params={"a": "10"}, headers={"test-header": "test data"})
+r = s.get("http://www.chandrashekar.info/")
+r.headers
+urls = [
+    "http://www.chandrashekar.info",
+    "https://notes.dhrona.net/p/apnpw",
+    "http://www.python.org/"
+]
+
+import grequests
+urls = [
+    "http://www.chandrashekar.info",
+    "https://notes.dhrona.net/p/apnpw",
+    "http://www.python.org/"
+]
+
+import grequests
+get_ipython().run_line_magic('pinfo', 'grequests.map')
+resp = grequests.map([ requests.get(u) for u in urls ])
+resp
+resp = grequests.map([ grequests.get(u) for u in urls ])
+resp
+reqs = (grequests.get(u) for u in urls)
+response = grequests.map(reqs)
+print(response)
+reqs = (grequests.get(u) for u in urls)
+response = grequests.map(reqs)
+print(response)
+get_ipython().run_line_magic('pip', 'install mechanicalsoup')
+from mechanicalsoup import StatefulBrowser
+b = StatefulBrowser()
+b.get("http://www.python.org/")
+
+from mechanicalsoup import StatefulBrowser
+b = StatefulBrowser()
+b.get("http://www.python.org/")
+b.get_url()
+b.get_url()
+b.get_url()
+b.links
+b.links()
+from mechanicalsoup import StatefulBrowser
+b = StatefulBrowser()
+b.get("http://www.python.org/")
+b.get_url()
+from mechanicalsoup import StatefulBrowser
+br = StatefulBrowser()
+br.get("http://www.python.org/")
+br.get_url()
+br.links()
+br.get_current_page()
+br
+b.open("http://www.python.org/")
+b.get_url()
+b.links()
+get_ipython().run_line_magic('pinfo', 'b.links')
+b.open("http://notes.dhrona.net/p/testclip")
+b.get_url()
+b.get_current_form()
+b.select_form()
+b.get_current_form()
+b.get_current_form().print_summary()
+from mechanicalsoup import StatefulBrowser
+b = StatefulBrowser()
+b.open("http://www.python.org/")
+r = b.open("http://www.python.org/")
+r.headers
+b.get_url()
+b.links
+b.links()
+b.links()[0]
+lnk = b.links()[0]
+print(type(lnk))
+lnk = b.links()
+b.links()
+b.follow_link("Python News")
+get_ipython().run_line_magic('pinfo', 'b.follow_link')
+b.follow_link(href="/blogs/")
+b.follow_link("/blogs/")
+b.follow_link(text="Python News")
+b.get_url()
+b.links()
+b.select_form()
+b.current_form()
+b.get_current_form()
+b.get_current_form().print_summary()
+b["q"] = "Guido Van Rossum"
+b.submit_selected()
+b.get_url()
+b.links()
+from mechanicalsoup import StatefulBrowser
+
+home_url = "http://testing.chandrashekar.info/"
+
+username = "testuser"
+password = "w3lc0me"
+
+login_url = "http://testing.chandrashekar.info/wp-login.php"
+
+logged_in_url = "http://testing.chandrashekar.info/wp-admin/"
+
+add_new_post_url = "http://testing.chandrashekar.info/wp-admin/post-new.php"
+
+browser = StatefulBrowser()
+
+browser.open(login_url)
+assert browser.get_url() == login_url
+browser.select_form()
+browser.get_current_form().print_summary()
+browser.select_form()
+browser["log"] = username
+browser["pwd"] = password
+browser.submit_selected()
+assert browser.get_url() == logged_in_url
+print(browser.get_url())
+browser.links()
+browser.links(text="Add New")
+browser.follow_link("post-new.php")
+browser.get_url()
+browser.select_form()
+browser.select_form(name="post")
+browser.select_form("name[post]")
+browser.select_form("form[name='post']")
+browser.get_current_form().print_summary()
+browser["title"]
+browser["content"]
+browser["post_title"]
+browser["post_title"] = "A new blog post - Chandrashekar"
+browser["content"] = "klsdjf lksdjflksdjfklsdjflksdfklsdjfklsdjfsdf"
+browser.get_current_form().choose_submit("publish")
+browser.submit_selected()
+get_ipython().run_line_magic('pinfo', 'browser.submit_selected')
+from robobrower import RoboBrowser
+from robobrowser import RoboBrowser
+import requests_html
+from bs4 import BeautifulSoup
+import requests
+resp = requests.get("https://finance.yahoo.com/quote/CSCO/options?p=CSCO")
+resp.text
+import lxml.html as html_parser
+html_parser.from_string(resp.text)
+dir(lxml.html)
+dir(html_parser)
+html_parser.fromstring(resp.text)
+html = html_parser.fromstring(resp.text)
+html.xpath("./html/body/div[1]/div/div/div[1]/div/div[2]/div/div/div[4]/div/div/div/div[3]/div/div/span[1]")
+html.xpath(".//span[@data-reactid='32']")
+from requests_html import HTMLSession
+s = HTML_Session()
+s = HTMLSession()
+s.get("https://finance.yahoo.com/quote/CSCO/options?p=CSCO")
+resp = s.get("https://finance.yahoo.com/quote/CSCO/options?p=CSCO")
+resp.html
+resp.html.links
+resp.html.absolute_links
+resp.html.render()
+resp.html.xpath(".//span[@data-reactid='32']")
+resp.html.xpath(".//span[@data-reactid='32']/text()")
+resp.html.xpath(".//form")
+get_ipython().run_line_magic('pinfo', 'resp.html.render')
+from selenium.webdriver import Firefox as Driver
+from selenium.webdriver import Safari as Driver
+import selenium.webdriver
+dir(selenium.webdriver)
+from selenium.webdriver import Firefox as Driver
+browser = Driver()
+browser
+browser.get("http://www.google.com/")
+browser.find_element_by_name("q")
+browser.find_element_by_name("q1")
+el = browser.find_element_by_name("q")
+el
+el
+el.send_keys("Python")
+el.clear()
+from selenium.webdriver.common.keys import Keys
+Keys.ENTER
+el.send_keys("Python" + Keys.ENTER)
+browser.find_element_link_text("Welcome to Python.org")
+browser.find_element_by_link_text("Welcome to Python.org")
+browser.find_element_by_partial_link_text("Welcome to Python.org")
+l = browser.find_element_by_partial_link_text("Welcome to Python.org")
+l.click()
+browser.find_element_by_link_text("Documentation")
+browser.find_element_by_link_text("Documentation").click()
+browser.find_element_by_link_test("Python Docs")
+browser.find_element_by_link_text("Python Docs")
+browser.find_element_by_link_text("Python Docs").click()
+browser.find_element_by_link_text("Python Docs").click()
+browser.get_window_size()
+get_ipython().run_line_magic('pinfo', 'browser.set_window_size')
+browser.set_window_size(width=800, height=600)
+browser.set_window_size(width=1024, height=768)
+browser.window_handles
+browser.switch_to_window("16")
+browser.switch_to.window("16")
+get_ipython().run_line_magic('pinfo', 'browser.switch_to_frame')
+browser.save_screenshot("/Users/chandrashekar/browser.png")
+browser.close()
+from selenium.webdriver import Chrome
+from selenium.webdriver import Firefox
+from selenium.webdriver import Safari
+b = Chrome()
+b = Chrome()
+b = Chrome()
+s = Safari()
+s = Safari()
+s.close()
+driver = Firefox()
+driver.get("http://demoqa.com/droppable/")
+from selenium.webdriver import ActionChainsaction_chains = ActionChains(driver)
+from selenium.webdriver import ActionChains
+action_chains = ActionChains(driver)
+draggable = driver.find_element_by_id("draggable")
+draggable
+draggable = driver.find_element_by_id("droppable")
+draggable = driver.find_element_by_id("draggable")
+dropable = driver.find_element_by_id("droppable")
+action_chains.drag_and_drop(draggable, dropable).perform()

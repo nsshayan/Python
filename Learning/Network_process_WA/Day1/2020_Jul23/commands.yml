@@ -1,0 +1,13 @@
+- commands:
+  - !!python/tuple ['Name .*: ', testuser]
+  - !!python/tuple ['Password: ', w3lc0me]
+  - !!python/tuple
+    - 'ftp> '
+    - [cd /www/files, get test.txt, quit]
+  program: ftp ftp.chandrashekar.info
+- commands:
+  - !!python/tuple ['Name .*: ', anonymous]
+  - !!python/tuple
+    - 'ftp> '
+    - [passive, cd /pub, get README, quit]
+  program: ftp ftp.gnu.org

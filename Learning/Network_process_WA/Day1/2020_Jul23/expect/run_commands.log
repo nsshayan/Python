@@ -1,0 +1,48 @@
+INFO:run_commands:Launched ftp ftp.chandrashekar.info
+DEBUG:run_commands:prompt = Name .*: , command = testuser
+DEBUG:run_commands:Expecting Name .*: 
+DEBUG:run_commands:Sending command testuser
+DEBUG:run_commands:prompt = Password .*: , command = w3lcome
+DEBUG:run_commands:Expecting Password .*: 
+DEBUG:run_commands:Sending command w3lcome
+DEBUG:run_commands:prompt = ftp> , command = ['cd /www/files/python', 'get may27.zip', 'quit']
+DEBUG:run_commands:Command is a list...
+DEBUG:run_commands:Expecting ftp> 
+DEBUG:run_commands:Sending cd /www/files/python
+DEBUG:run_commands:Expecting ftp> 
+DEBUG:run_commands:Sending get may27.zip
+DEBUG:run_commands:Expecting ftp> 
+DEBUG:run_commands:Sending quit
+INFO:run_commands:Launched ftp ftp.chandrashekar.info
+DEBUG:run_commands:prompt = Name .*: , command = testuser
+DEBUG:run_commands:Expecting Name .*: 
+DEBUG:run_commands:Sending command testuser
+DEBUG:run_commands:prompt = Password .*: , command = w3lcome
+DEBUG:run_commands:Expecting Password .*: 
+INFO:run_commands:Launched ftp ftp.chandrashekar.info
+DEBUG:run_commands:prompt = Name .*: , command = testuser
+DEBUG:run_commands:Expecting Name .*: 
+DEBUG:run_commands:Sending command testuser
+DEBUG:run_commands:prompt = Password .*: , command = w3lcome
+DEBUG:run_commands:Expecting Password .*: 
+INFO:run_commands:Launched ftp ftp.chandrashekar.info
+DEBUG:run_commands:prompt = Name .*: , command = testuser
+DEBUG:run_commands:Expecting Name .*: 
+DEBUG:run_commands:Sending command testuser
+DEBUG:run_commands:prompt = Password .*: , command = w3lcome
+DEBUG:run_commands:Expecting Password .*: 
+INFO:run_commands:Launched ftp ftp.chandrashekar.info
+DEBUG:run_commands:prompt = Name .*: , command = testuser
+DEBUG:run_commands:Expecting Name .*: 
+INFO:run_commands:Launched ftp ftp.chandrashekar.info
+DEBUG:run_commands:prompt = Name .*: , command = testuser
+DEBUG:run_commands:Expecting Name .*: 
+DEBUG:run_commands:Sending command testuser
+DEBUG:run_commands:prompt = Password .*: , command = w3lcome
+DEBUG:run_commands:Expecting Password .*: 
+INFO:run_commands:Launched ftp ftp.chandrashekar.info
+DEBUG:run_commands:prompt = Name .*: , command = testuser
+DEBUG:run_commands:Expecting Name .*: 
+DEBUG:run_commands:Sending command testuser
+DEBUG:run_commands:prompt = Password .*: , command = w3lcome
+DEBUG:run_commands:Expecting Password .*: 

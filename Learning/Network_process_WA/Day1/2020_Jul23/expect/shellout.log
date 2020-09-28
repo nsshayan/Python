@@ -1,0 +1,25 @@
+ganymede:expect chandrashekar$ pwd
+pwd
+/Users/chandrashekar/Training/AdvancedPython/Samples/2017_Jun29/expect
+ganymede:expect chandrashekar$ ftp ftp.chandrashekar.info
+ftp ftp.chandrashekar.info
+Connected to ftp.chandrashekar.info.
+220 192.252.149.39 FTP server ready
+Name (ftp.chandrashekar.info:chandrashekar): testuser
+testuser
+331 Password required for testuser
+Password: w3lc0me
+
+230 User testuser logged in
+Remote system type is UNIX.
+Using binary mode to transfer files.
+ftp> ls
+ls
+229 Entering Extended Passive Mode (|||3054|)
+150 Opening ASCII mode data connection for file list
+drwxrwxr-x   3 0        chandras     4096 Jun 13  2006 gallery
+drwxrwxr-x   9 0        chandras     4096 Apr 18  2016 playground
+drwxrwxr-x  11 0        chandras     4096 Nov 16  2012 testing
+drwxrwxr-x  11 0        chandras     4096 Dec 19  2016 www
+226 Transfer complete
+ftp> 

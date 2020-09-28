@@ -1,0 +1,36 @@
+from getpass import getpass
+import logging
+import sys
+from telnetlib import Telnet
+import re
+
+HOST = "localhost"
+user = "testuser" 
+password = "w3lc0me" 
+
+tn = Telnet(HOST)
+#tn.set_debuglevel(7)
+logging.basicConfig(filename='telnet_session.log',level=logging.DEBUG)
+
+logging.info("Expecting login prompt")
+tn.read_until("login: ")
+tn.write(user + "\r")
+logging.info("Sent username")
+
+logging.info("Expecting password")
+tn.read_until("Password:")
+tn.write(password + "\r")
+logging.info("Sent password")
+
+logging.info("Expecting $ prompt")
+tn.read_until("$ ")
+tn.write("uname -a\r")
+logging.info("Sent 'uname -a' command")
+print tn.read_until("\n")
+
+logging.info("Expecting $ prompt")
+tn.read_until("$ ")
+tn.write("exit\r")
+logging.info("Exiting")
+
+

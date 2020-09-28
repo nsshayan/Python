@@ -1,0 +1,128 @@
+
+from pssh.clients import SSHClient
+SSHClient
+get_ipython().set_next_input('client = SSHClient');get_ipython().run_line_magic('pinfo', 'SSHClient')
+client = SSHClient(host="dhrona.net", port=12276, user="user1", password="welcome")
+client
+output = client.run_command("free")
+output
+channel, host, stdout, stderr, stdin = output
+for line in stdout:
+    print(line)
+    
+list(client.run_command("uptime")[2])
+"".join(client.run_command("uptime")[2])
+"".join(client.run_command("ls /")[2])
+"\n".join(client.run_command("ls /")[2])
+print("\n".join(client.run_command("ls /")[2]))
+get_ipython().run_line_magic('pinfo', 'client.copy_file')
+get_ipython().run_line_magic('ls', '')
+get_ipython().run_line_magic('pwd', '')
+client.copyfile("IPython_Log_2020_04_07.log", "/tmp/testfile.log")
+client.copy_file("IPython_Log_2020_04_07.log", "/tmp/testfile.log")
+get_ipython().run_line_magic('pinfo', 'client.scp_send')
+get_ipython().run_line_magic('pinfo', 'client.scp_recv')
+get_ipython().run_line_magic('pinfo', 'client.copy_remoteftp')
+get_ipython().run_line_magic('pinfo', 'client.copy_remote_file')
+client
+get_ipython().run_line_magic('pinfo', 'client.close_channel')
+get_ipython().run_line_magic('pinfo', 'client.run_command')
+get_ipython().run_line_magic('pinfo', 'client.wait_finished')
+client.session
+from pssh.clients import ParallelSSHClient
+host_config = {
+"192.168.1.30": {"user": "testuser", "password": "welcome", "port": 22},
+"192.168.1.32": {"user": "testuser", "password": "w3lc0me", "port": 22},
+"192.168.1.24": {"user": "root", "password": "libreelec", "port": 22},
+"dhrona.net": {"user": "user1", "password": "welcome", "port": 12276}}
+host_config
+client = ParallelSSHClient(host_config.keys(), host_config=host_config)
+client.run_command("uptime")
+output = client.run_command("uptime")
+type(output)
+output.keys()
+output["192.168.1.30"]
+type(output["192.168.1.30"])
+output["192.168.1.30"].host
+output["192.168.1.30"].exit_code
+output["192.168.1.30"].stdout
+"\n".join(output["192.168.1.30"].stdout)
+for host, output =  client.run_command("uptime").items():
+    print(host, "-", "\n".join(output.stdout))
+for host, output in client.run_command("uptime").items():
+    print(host, "-", "\n".join(output.stdout))
+    
+output = client.run_command("uptime")
+output
+output.items()
+for k, v in output.items():
+    print("hostname:", k)
+    print("output": v)
+for k, v in output.items():
+    print("hostname:", k)
+    print("output:", v)
+    
+for host, output in client.run_command("uptime").items():
+    print(host, "-", "\n".join(output.stdout))
+    
+client.run_command("mkdir %s", ("/tmp/one", "/tmp/two", "/tmp/three", "/tmp/four"))
+for output in client.run_command("mkdir %s", ("/tmp/one", "/tmp/two", "/tmp/three", "/tmp/four")).values():
+    print(output.host, ":", "\n".join(output.stderr))
+    
+for output in client.run_command("mkdir %s", ("/tmp/one", "/tmp/two", "/tmp/three", "/tmp/four")).values():
+    print(output.host, ":", "\n".join(output.stderr))
+    
+get_ipython().run_line_magic('pinfo', 'client.run_command')
+client.run_command("mkdir %s", host_args=("/tmp/one", "/tmp/two", "/tmp/three", "/tmp/four"))
+
+    
+out = client.run_command("%s %s", host_args=(("mkdir", "/tmp/one"), ("rmdir" "/tmp/two", (":", ""), ("cat", "/etc/passwd"))))
+out = client.run_command("%s %s", host_args=(("mkdir", "/tmp/one"), ("rmdir", "/tmp/two"), (":", ""), ("cat", "/etc/passwd")))
+out["192.168.1.30"]
+next(out["192.168.1.30"].stderr)
+next(out["192.168.1.24"].stderr)
+next(out["192.168.1.24"].stdout)
+print("\n".join(out["dhrona.net"].stdout))
+out = client.run_command("%s", host_args=(
+                                ("uptime", "free", "uname -r"),
+                                ("w", "df -h"),
+                                ("cat /etc/os-release",),
+                                ("cat /proc/version", "uptime"))) 
+get_ipython().run_line_magic('ls', '')
+get_ipython().run_line_magic('pwd', '')
+get_ipython().run_line_magic('cat', 'IPython_Log_2020_04_07.log')
+API_KEY = "932c152d6ff8d185bfdd9d2a5f8e33e4"
+get_ipython().run_line_magic('pwd', '')
+get_ipython().run_line_magic('cd', '..')
+from requests_html import HTMLSession
+sess = HTMLSession()
+r = sess.get("https://finance.yahoo.com/quote/CSCO/options?p=CSCO")
+r.html
+r.html.xpath(".//span[@class='Trsdu(0.3s) Fw(b) Fz(36px) Mb(-4px) D(ib)']/text()")
+r.html.xpath(".//option")
+r.html.xpath(".//option")
+r.html.render()
+r.html.xpath(".//option")
+get_ipython().run_line_magic('pip', 'install selenium')
+from selenium.webdriver import Safari
+import selenium.webdriver
+driver = Safari()
+driver.get("http://www.google.com/")
+driver.find_element_by_id("q")
+driver.find_element_by_name("q")
+el = driver.find_element_by_name("q")
+from selenium.webdriver.common.keys import Keys
+Keys.ENTER
+el.send_keys("Python" + Keys.ENTER)
+driver.find_element_by_partial_link_text("Welcome to Python")
+driver.find_element_by_partial_link_text("Welcome to Python").click()
+driver.find_element_by_partial_link_text("Welcome to Python.org")
+driver.find_element_by_partial_link_text("Welcome to Python.org").click()
+driver.find_element_by_link_text("Welcome to Python.org")
+driver.find_element_by_link_text("Welcome to Python.org ")
+driver.find_element_by_partial_link_text("Welcome to Python.org")
+driver.find_element_by_partial_link_text("Python For Beginners")
+driver.find_element_by_partial_link_text("Python For Beginners").click()
+get_ipython().run_line_magic('pinfo', 'driver.set_window_size')
+driver.set_window_size(1280, 1024)
+driver.save_screenshot("python_page.png")

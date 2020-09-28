@@ -1,0 +1,4 @@
+print(45 + 67)
+print("Hello world")
+exit()
+
